@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  height: 1
+  width: 1
+  podcast_id: 1
+
+two:
+  url: MyString
+  height: 1
+  width: 1
+  podcast_id: 1

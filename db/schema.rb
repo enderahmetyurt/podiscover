@@ -10,16 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_24_170411) do
+ActiveRecord::Schema.define(version: 2022_02_06_191342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "image_urls", force: :cascade do |t|
+    t.string "url"
+    t.integer "height"
+    t.integer "width"
+    t.integer "podcast_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "podcasts", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uid"
+    t.string "language"
+    t.string "publisher"
+    t.string "uri"
+    t.string "external_url"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,16 +1,9 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="inline-block px-3 py-2 mb-5 font-medium text-green-500 rounded-lg bg-green-50" id="notice"><%= notice %></p>
-  <% end %>
-
   <div class="flex items-center justify-between">
     <h1 class="text-4xl font-bold">Podcasts</h1>
-    <%= link_to 'New podcast', new_podcast_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div id="podcasts" class="min-w-full">
     <%= render @podcasts %>
   </div>
-  
-  <%= button_to 'Sign in with Spotify', user_spotify_omniauth_authorize_path, method: :post, data: {turbo: "false"} %>
 </div>

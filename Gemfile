@@ -3,6 +3,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+source 'https://gem.fury.io/enderahmetyurt/' do
+  gem 'rspotify'
+end
+
 ruby '3.0.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -82,5 +86,3 @@ end
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'
-gem 'rspotify'
-# gem 'omniauth-spotify', path: '/Users/ender/Projects/Personal/omniauth-spotify'

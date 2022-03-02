@@ -23,14 +23,17 @@ class User < ApplicationRecord
 
     until response.present?
       response = spotify_user.saved_shows(limit: 50, offset: 0)
-      podcasts += response
-      i += 1
+
+      if response.present?
+        podcasts += response
+        i += 1
+      else
+        break
+      end
     end
 
-    already_podcasts_uid = user.podcasts.pluck(:uid)
-
     podcasts.each do |podcast|
-      next if already_podcasts_uid.include?(podcast.id)
+      next if user.podcasts.includes(:uid).find_by(uid: podcast.id).present?
 
       pp = Podcast.new(user_id: user.id)
       pp.name = podcast.name

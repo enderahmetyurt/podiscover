@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class PodcastsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_podcast, only: %i[show edit update destroy]
 
   # GET /podcasts or /podcasts.json
   def index
-    @podcasts = Podcast.all
+    @podcasts = current_user.podcasts
   end
 
   # GET /podcasts/1 or /podcasts/1.json

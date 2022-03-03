@@ -53,4 +53,8 @@ class User < ApplicationRecord
 
     user
   end
+
+  def nickname
+    email.split('@').first
+  end
 end

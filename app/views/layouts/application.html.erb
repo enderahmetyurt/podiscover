@@ -15,11 +15,13 @@
     <main class="container flex px-5 mx-auto mt-28">
       <div>
         <% if user_signed_in? %>
-          Logged in as <strong><%= current_user.email %></strong>.
+          Logged in as <strong><%= current_user.email %></strong>
           <%= button_to "Logout", destroy_user_session_path, method: :delete %>
         <% end %>
-      </div>    
-      <%= yield %>
+      </div>
+      <div class="w-full">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

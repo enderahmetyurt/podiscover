@@ -33,7 +33,7 @@ class User < ApplicationRecord
     end
 
     podcasts.each do |podcast|
-      next if user.podcasts.includes(:uid).find_by(uid: podcast.id).present?
+      next if user.podcasts.find_by(uid: podcast.id).present?
 
       pp = Podcast.new(user_id: user.id)
       pp.name = podcast.name

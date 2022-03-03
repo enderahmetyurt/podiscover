@@ -1,3 +1,8 @@
-<div>
-<%= button_to 'Sign in with Spotify', user_spotify_omniauth_authorize_path, method: :post, data: { turbo: "false" } %>
+<div class="flex flex-col items-center justify-center">
+  <div class="inline-block mb-20 text-2xl font-extrabold tracking-tight sm:text-3xl text-slate-900 dark:text-slate-200">
+    Discover Your Next Favourite Podcast!
+  </div>
+  <div class="p-10 font-bold text-white bg-[#1db954] border rounded-lg shadow-lg">
+    <%= button_to 'Sign in with Spotify', user_spotify_omniauth_authorize_path, method: :post, data: { turbo: "false" } %>
+  </div>
 </div>

@@ -1,4 +1,13 @@
-<div>
-  <h1 class="font-bold text-4xl">Dashboard#index</h1>
-  <p>Find me in app/views/dashboard/index.html.erb</p>
+<div class="w-full">
+  <div class="flex items-center justify-between">
+    <h1 class="text-4xl font-bold">My Podcasts</h1>
+  </div>
+
+  <div id="podcasts" class="min-w-full">
+    <%= render @podcasts %>
+  </div>
+  
+  <div id="pagination">
+    <%== pagy_next_link(@pagy, link_extra: 'data-controller="infinite-scroll"') unless @pagy.page == @pagy.last %>
+  </div>  
 </div>

@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   resources :podcasts, only: [:index, :show]
 
+  resources :dashboard, only: [:index]
+
   root 'home#index'
 end

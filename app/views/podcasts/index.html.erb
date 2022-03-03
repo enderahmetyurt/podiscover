@@ -6,4 +6,8 @@
   <div id="podcasts" class="min-w-full">
     <%= render @podcasts %>
   </div>
+  
+  <div id="pagination">
+    <%== pagy_next_link(@pagy, link_extra: 'data-controller="infinite-scroll"') unless @pagy.page == @pagy.last %>
+  </div>  
 </div>

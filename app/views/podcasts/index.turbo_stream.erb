@@ -1,0 +1,7 @@
+<%= turbo_stream.append "podcasts" do %>
+  <%= render partial: "podcasts/podcast", collection: @podcasts %>
+<% end %>
+
+<%= turbo_stream.update "pagination" do %>
+  <%== pagy_next_link(@pagy, link_extra: 'data-controller="infinite-scroll"') unless @pagy.page == @pagy.last %>
+<% end %>

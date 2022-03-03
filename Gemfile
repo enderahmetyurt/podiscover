@@ -86,3 +86,5 @@ end
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'
+
+gem "pagy", "~> 5.10"

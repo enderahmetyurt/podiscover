@@ -6,7 +6,7 @@ class PodcastsController < ApplicationController
 
   # GET /podcasts or /podcasts.json
   def index
-    @pagy, @podcasts = pagy_countless(Podcast.where.not(user_id: current_user.id).order(:name))
+    @podcasts = Podcast.where.not(user_id: current_user.id).order(:name)
   end
 
   # GET /podcasts/1 or /podcasts/1.json

@@ -19,8 +19,8 @@
           <%= button_to "Logout", destroy_user_session_path, method: :delete %>
           <hr />
           <div class="flex flex-col mt-5">
-            <span><%= link_to "Home", root_path %></span>
-            <span><%= link_to "My podcasts", dashboard_index_path %></span>
+            <span><%= link_to "Home", root_path, class: current_class?('/podcasts') %></span>
+            <span><%= link_to "My podcasts", dashboard_index_path, class: current_class?(dashboard_index_path) %></span>
           </div>
         <% end %>
       </div>

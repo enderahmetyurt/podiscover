@@ -1,0 +1,9 @@
+<div class="w-full">
+  <div class="flex items-center justify-between">
+    <h1 class="text-4xl font-bold"><%= @user.nickname%> Podcasts</h1>
+  </div>
+
+  <div id="podcasts" class="grid min-w-full grid-flow-col grid-rows-6 gap-4">
+    <%= render @podcasts %>
+  </div> 
+</div>

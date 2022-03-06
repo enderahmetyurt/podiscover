@@ -4,8 +4,8 @@
       <%= image_tag @podcast.image_urls.last.url %>
       <% if action_name == "show" %>
         <%= link_to "Listen on Spotify", @podcast.external_url, class: "ml-5 bg-transparent text-[#1db954] font-semibold" %>
-      <% end %>       
-    </div>    
+      <% end %>
+    </div>
 
     <p class="my-5">
       <strong class="block mb-1 font-medium">Name:</strong>
@@ -22,7 +22,7 @@
       <%= @podcast.description %>
     </p>
 
-    <p class="my-5">      
+    <p class="my-5">
       Listening by <%= link_to @podcast.user.nickname, @podcast.user, class: "text-blue-500" %>
     </p>  
     

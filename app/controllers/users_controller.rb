@@ -7,4 +7,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @podcasts = @user.podcasts
   end
+
+  # def following
+  #   @title = 'Following'
+  #   @user  = User.find(params[:id])
+  #   @users = @user.following
+    
+  #   render 'show'
+  # end
+
+  # def followers
+  #   @title = 'Followers'
+  #   @user  = User.find(params[:id])
+  #   @users = @user.followers
+    
+  #   render 'show'
+  # end
 end

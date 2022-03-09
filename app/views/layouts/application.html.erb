@@ -11,8 +11,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container flex px-5 mx-auto mt-28">
+  <body class="flex flex-col min-h-screen ">
+    <main class="container flex flex-grow px-5 mx-auto mt-28">
       <div class="mr-10">
         <% if user_signed_in? %>
           <strong><%= current_user.email %></strong>
@@ -28,8 +28,8 @@
         <%= yield %>
       </div>     
     </main>
-      <div>
+      <footer>
         <%= render partial: 'shared/footer' %>
-      </div>     
+      </footer>     
   </body>
 </html>

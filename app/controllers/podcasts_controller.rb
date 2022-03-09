@@ -6,7 +6,13 @@ class PodcastsController < ApplicationController
 
   # GET /podcasts or /podcasts.json
   def index
+    @podcasts = current_user.feed.order(:name)
+  end
+
+  def all
     @podcasts = Podcast.where.not(user_id: current_user.id).order(:name)
+    
+    render 'index'
   end
 
   # GET /podcasts/1 or /podcasts/1.json

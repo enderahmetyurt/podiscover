@@ -4,12 +4,13 @@
       <div class="w-full md:w-1/2 md:px-3">
         <div class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
           <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl">
-            <span class="block xl:inline">Discover Your Next</span>
-            <span class="block text-[#1db954] xl:inline">Favourite Podcast!</span>
+            <span class="block xl:inline text-[#561ff4]">Discover</span>
+            <span class="text-[#DD1B1B]">your next favourite</span>
+            <span class="block text-[#561ff4] xl:inline">Podcast!</span>
           </h1>
           <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">Find which podcasts your friends are listening to</p>
           <div class="relative flex flex-col sm:flex-row sm:space-x-4">
-            <%= button_to 'Sign in with Spotify', user_spotify_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "bg-[#1db954] flex items-center w-full px-6 py-3 mb-3 text-lg text-white rounded-md sm:mb-0 sm:w-auto" %>   
+            <%= button_to 'Log in with Spotify', user_spotify_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "bg-[#1db954] flex items-center w-full px-6 py-3 mb-3 text-lg text-white rounded-md sm:mb-0 sm:w-auto" %>   
           </div>
         </div>
       </div>

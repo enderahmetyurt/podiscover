@@ -14,17 +14,27 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   def self.from_omniauth(auth)
-    user = where(provider: auth.provider, uid: auth.uid).first_or_create do |u|
-      u.provider = auth.provider
-      u.uid = auth.uid
-      u.email = auth.info.email
-      u.display_name = auth.info.display_name
-      u.external_url = auth.info.external_urls['spotify']
-      u.image_url = self.image(auth)
-      u.password = Devise.friendly_token[0, 20]
+    user = User.find_by(email: auth.info.email)
+
+    if user.present?
+      user.update!(
+        display_name: auth.info.display_name,
+        image_url: User.image(auth),
+        external_url: auth.info.external_urls['spotify']
+      )
+    else
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.email = auth.info.email
+      user.display_name = auth.info.display_name
+      user.external_url = auth.info.external_urls['spotify']
+      user.image_url = image(auth)
+      user.password = Devise.friendly_token[0, 20]
+
+      user.save!
     end
 
-    self.fetch_podcasts(user, auth)
+    fetch_podcasts(user, auth)
 
     user
   end
@@ -54,11 +64,9 @@ class User < ApplicationRecord
     Podcast.where("user_id IN (#{following_ids})", user_id: id)
   end
 
-  private
-
   def self.image(auth)
     return nil if auth.info.images.empty?
-    
+
     auth.info.images.first.url
   end
 
@@ -82,7 +90,7 @@ class User < ApplicationRecord
     podcasts.each do |podcast|
       next if user.podcasts.find_by(uid: podcast.id).present?
 
-      pp = self.set_podcast(user, podcast)
+      pp = set_podcast(user, podcast)
 
       podcast.images.each do |image|
         ImageUrl.create(url: image['url'], height: image['height'], width: image['width'], podcast_id: pp.reload.id)
@@ -94,7 +102,7 @@ class User < ApplicationRecord
 
   def self.set_podcast(user, podcast)
     pp = Podcast.new(user_id: user.id)
-    
+
     pp.name = podcast.name
     pp.description = podcast.description
     pp.uid = podcast.id

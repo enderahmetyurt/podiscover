@@ -23,7 +23,7 @@
     </p>
 
     <p class="my-5">
-      Listening by <%= link_to @podcast.user.nickname, @podcast.user, class: "text-blue-500" %>
+      Listening by <%= link_to @podcast.user.display_name, @podcast.user, class: "text-blue-500" %>
     </p>  
     
     <%= link_to 'Back to podcasts', podcasts_path, class: "font-medium" %>

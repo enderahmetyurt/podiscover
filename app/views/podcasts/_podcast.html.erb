@@ -12,7 +12,7 @@
   
   <% if controller_name == "podcasts" %>
     <div class="mt-3 text-xs font-thin">
-      <%= link_to podcast.user.nickname, podcast.user, class: "text-blue-500" %> is listening
+      <%= link_to podcast.user.display_name, podcast.user, class: "text-blue-500" %> is listening
     </div>
   <% end %>
 </div>

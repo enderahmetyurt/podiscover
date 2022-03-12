@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'all', on: :collection
   end
   resources :dashboard, only: [:index]
-  resources :users, only: [:show] do
+  resources :users, only: %i[index show] do
     member do
       get :following, :followers
     end

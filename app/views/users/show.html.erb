@@ -1,6 +1,6 @@
 <div class="w-full">
   <div class="flex items-center justify-between">
-    <h1 class="text-4xl font-bold"><%= @user.nickname%>'s Podcasts</h1> 
+    <h1 class="text-4xl font-bold"><%= @user.display_name %>'s Podcasts</h1> 
     <div class="stats">
       <a href="<%= following_user_path(@user) %>">
         <strong id="following" class="stat">
@@ -16,15 +16,15 @@
       </a>
     </div>  
     
-    
+    <% if current_user != @user %>
       <div id="follow_form">
-      <% if current_user.following?(@user) %>
-        <%= render 'shared/unfollow' %>
-      <% else %>
-        <%= render 'shared/follow' %>
-      <% end %>
+        <% if current_user.following?(@user) %>
+          <%= render 'shared/unfollow' %>
+        <% else %>
+          <%= render 'shared/follow' %>
+        <% end %>
       </div>
-    
+    <% end %>
   </div>
 
   <div id="podcasts" class="grid min-w-full grid-cols-6 gap-4">

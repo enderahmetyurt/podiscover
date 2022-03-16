@@ -23,6 +23,7 @@ class User < ApplicationRecord
         external_url: auth.info.external_urls['spotify']
       )
     else
+      user = User.new
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email

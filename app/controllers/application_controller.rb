@@ -4,7 +4,17 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   protect_from_forgery with: :exception
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     podcasts_path
-  end  
+  end
+
+  protected
+
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to root_path
+    end
+  end
 end

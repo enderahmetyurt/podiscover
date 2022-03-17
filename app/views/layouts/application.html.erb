@@ -50,8 +50,8 @@
               <% end %>
             </span>
             <span>
-              <%= link_to dashboard_index_path, class: current_class?(dashboard_index_path) do %>
-                🎙&nbsp;&nbsp;My podcasts 
+              <%= link_to user_path(current_user), class: current_class?(user_path(current_user)) do %>
+                📍&nbsp;&nbsp;Profile
               <% end %>
             </span>
             <span>

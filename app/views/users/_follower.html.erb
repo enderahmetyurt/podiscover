@@ -1,20 +1,25 @@
 <%= turbo_frame_tag "#{dom_id(user)}_follows", class: "grid grid-cols-2 gap-4 items-center" do %>
   <div>
-    <span class="font-bold"><%= user.following.count %></span> following
-    <span class="font-bold"><%= user.followers.count %></span> followers
+    <%= link_to following_user_path(@user), class: 'hover:underline', 'data-turbo-frame': "_top" do %>
+      <span class="font-bold"><%= user.following.count %></span> following
+    <% end %>
+    <%= link_to followers_user_path(@user), class: 'hover:underline', 'data-turbo-frame': "_top" do %>
+      <span class="font-bold"><%= user.followers.count %></span> followers
+    <% end %>
   </div>
   <div>
-    <% if current_user.following?(user) %>
-      <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
-                  html: { method: :delete }) do |f| %>
-        <%= f.submit "Unfollow", class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
-      <% end %>
-    <% else %>
-      <%= form_for(current_user.active_relationships.build, id: "#{dom_id(current_user)}_follow_form") do |f| %>
-        <div><%= hidden_field_tag :followed_id, user.id %></div>
-        <%= f.submit "Follow", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
-      <% end %>
-    <% end %>    
+    <% if current_user != user %>
+      <% if current_user.following?(user) %>
+        <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
+                    html: { method: :delete }) do |f| %>
+          <%= f.submit "Unfollow", class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+        <% end %>
+      <% else %>
+        <%= form_for(current_user.active_relationships.build, id: "#{dom_id(current_user)}_follow_form") do |f| %>
+          <div><%= hidden_field_tag :followed_id, user.id %></div>
+          <%= f.submit "Follow", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
+        <% end %>
+      <% end %>    
+    <% end %> 
   </div>
 <% end %>
-

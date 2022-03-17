@@ -12,19 +12,15 @@ class UsersController < ApplicationController
     @podcasts = @user.podcasts
   end
 
-  # def following
-  #   @title = 'Following'
-  #   @user  = User.find(params[:id])
-  #   @users = @user.following
-    
-  #   render 'show'
-  # end
+  def following
+    @title = 'Following'
+    @user  = User.find(params[:id])
+    @users = @user.following
+  end
 
-  # def followers
-  #   @title = 'Followers'
-  #   @user  = User.find(params[:id])
-  #   @users = @user.followers
-    
-  #   render 'show'
-  # end
+  def followers
+    @title = 'Followers'
+    @user  = User.find(params[:id])
+    @users = @user.followers
+  end
 end

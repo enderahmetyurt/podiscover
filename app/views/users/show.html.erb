@@ -1,10 +1,22 @@
 <div class="w-full">
-  <div class="flex items-center justify-between">
-    <h1 class="text-4xl font-bold"><%= @user.nickname %>'s Podcasts</h1> 
-    <%= render partial: 'users/follower', locals: { user: @user } %>
+  <div class="flex items-center">
+    <div class="relative w-24 h-24">
+      <% if @user.image_url.present? %>
+        <%= image_tag @user.image_url, class: "rounded-full border border-gray-100 shadow-sm" %>
+      <% else %>
+        <%= image_tag "default.png", class: "rounded-full border border-gray-100 shadow-sm" %>
+      <% end %>
+    </div>
+    <div class="ml-4">
+      <div class="text-lg font-bold"><%= @user.nickname %></div> listens <%= @user.podcasts.count %> podcasts
+    </div>
   </div>
-
+  <div>
+    <div>
+      <%= render partial: 'users/follower', locals: { user: @user } %>
+    </div>
+  </div>
   <div id="podcasts" class="grid min-w-full grid-cols-6 gap-4">
     <%= render @podcasts %>
-  </div> 
+  </div>   
 </div>

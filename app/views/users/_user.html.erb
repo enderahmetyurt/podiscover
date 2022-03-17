@@ -1,16 +1,16 @@
 <div id="<%= dom_id user %>">
   <%= link_to(user) do %>
-    <div class="grid content-around gap-4 mt-6 grid-row-2">
-      <div>
+    <div class="flex items-center">
+      <div class="relative w-12 h-12">
         <% if user.image_url.present? %>
-          <%= image_tag user.image_url, class: "object-cover h-48 w-96" %>
+          <%= image_tag user.image_url, class: "rounded-full border border-gray-100 shadow-sm" %>
         <% else %>
-          <%= image_tag "default.png", class: "object-cover h-48 w-96" %>
+          <%= image_tag "default.png", class: "rounded-full border border-gray-100 shadow-sm" %>
         <% end %>
       </div>
-      <div class="text-lg">
-        <%= user.nickname %> listens <span class="text-[#561ff4] font-extrabold"><%= user.podcasts.count %></span> podcasts
-      </div>      
+      <div class="ml-4">
+        <div class="text-lg font-bold"><%= user.nickname %></div> listens <%= user.podcasts.count %> podcasts
+      </div>
     </div>
   <% end %>
 </div>

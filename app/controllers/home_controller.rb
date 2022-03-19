@@ -2,8 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    if current_user
-      redirect_to podcasts_path
-    end
+    redirect_to podcasts_path if current_user
   end
 end

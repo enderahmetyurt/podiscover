@@ -5,6 +5,7 @@ module ApplicationHelper
 
   def current_class?(current_path)
     return 'text-red-600' if request.path == current_path
+
     ''
-  end  
+  end
 end

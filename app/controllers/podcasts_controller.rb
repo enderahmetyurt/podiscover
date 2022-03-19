@@ -11,7 +11,7 @@ class PodcastsController < ApplicationController
 
   def all
     @podcasts = Podcast.where.not(user_id: current_user.id).order(:name)
-    
+
     render 'index'
   end
 

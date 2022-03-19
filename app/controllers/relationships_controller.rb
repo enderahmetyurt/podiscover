@@ -13,7 +13,7 @@ class RelationshipsController < ApplicationController
         render turbo_stream: turbo_stream.replace(
           "#{dom_id(user)}_follows",
           partial: 'users/follower',
-          locals: { user: user }
+          locals: { user: }
         )
       end
     end

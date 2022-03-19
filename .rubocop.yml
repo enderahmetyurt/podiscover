@@ -1,3 +1,16 @@
 AllCops:
-  Style/Documentation:
-    Enabled: false
+  TargetRubyVersion: 2.7
+  # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
+  # to ignore them, so only the ones explicitly set in this file are enabled.
+  DisabledByDefault: true
+  Exclude:
+    - '/bin/*'
+    - '/test/fixtures/**/*'
+  SuggestExtensions: false
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false

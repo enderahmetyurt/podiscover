@@ -91,6 +91,13 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = {
+    host: 'podiscover.me',
+    protocol: 'https'
+  }    
+
   ActionMailer::Base.smtp_settings = {
     :user_name => ENV['SENDGRID_API_KEY'],
     :password => ENV['SENDGRID_PASSWORD'],

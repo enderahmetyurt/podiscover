@@ -1,8 +1,8 @@
 class UserMailer < ApplicationMailer
   def new_follower_email
     @follower = params[:follower]
-    @user = params[:user]
+    @followed = params[:followed]
 
-    mail(to: @follower.email, subject: "You have a new follower 🥳")
+    mail(to: @followed.email, subject: "You have a new follower 🥳")
   end  
 end

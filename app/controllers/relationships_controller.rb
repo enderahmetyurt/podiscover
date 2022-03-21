@@ -7,7 +7,7 @@ class RelationshipsController < ApplicationController
   def create
     user = User.find(params[:followed_id])
     current_user.follow(user)
-    UserMailer.with(follower: current_user, user: user).new_follower_email.deliver_later
+    UserMailer.with(follower: current_user, followed: user).new_follower_email.deliver_later
 
     # respond_to do |format|
     #   format.turbo_stream do

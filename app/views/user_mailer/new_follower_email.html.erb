@@ -5,8 +5,8 @@
   </head>
   <body>
     <h1>Horay! You have a new follower</h1>
-    <p><%= @user.nickname %> starts to follow you.</p>
+    <p><%= @follower.nickname %> starts to follow you.</p>
     
-    <p><%= link_to 'Check it', followers_user_url(@follower) %></p>
+    <p><%= link_to 'Check it', followers_user_url(@followed) %></p>
   </body>
 </html>

@@ -98,9 +98,9 @@ Rails.application.configure do
     protocol: 'https'
   }    
 
-  ActionMailer::Base.smtp_settings = {
-    :user_name => ENV['SENDGRID_API_KEY'],
-    :password => ENV['SENDGRID_PASSWORD'],
+  config.action_mailer.smtp_settings = {
+    :user_name => 'apikey',
+    :password => ENV['SENDGRID_API_KEY'],
     :domain => 'podiscover.com',
     :address => 'smtp.sendgrid.net',
     :port => 587,

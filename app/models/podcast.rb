@@ -5,11 +5,11 @@ class Podcast < ApplicationRecord
   has_many :image_urls, dependent: :destroy
 
   def listener_count
-    count = Podcast.where(name:).count
-    if count > 1
-      "#{count} listeners"
-    else
-      " #{count} listener"
-    end
+    Podcast.where(name:).count
+  end
+
+  def listeners
+    user_ids = Podcast.where(uid: uid).pluck(:user_id)
+    User.where(id: user_ids)
   end
 end

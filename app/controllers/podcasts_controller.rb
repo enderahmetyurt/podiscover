@@ -6,12 +6,13 @@ class PodcastsController < ApplicationController
 
   # GET /podcasts or /podcasts.json
   def index
-    @podcasts = current_user.feed.order(:name)
+    podcasts = current_user.feed.uniq { |p| p.uid }
+    @podcasts = podcasts.sort_by! &:name
   end
 
   def all
     @podcasts = Podcast.where.not(user_id: current_user.id).order(:name)
-
+    
     render 'index'
   end
 

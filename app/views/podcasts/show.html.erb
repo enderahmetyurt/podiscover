@@ -23,7 +23,17 @@
     </p>
 
     <p class="my-5">
-      Listening by <%= link_to @podcast.user.nickname, @podcast.user, class: "text-blue-500" %>
+      <% if @podcast.listener_count > 1 %>
+        Listening by
+        <% @podcast.listeners.each_with_index do |listener, index| %>
+          <%= link_to listener.nickname, listener, class: "text-blue-500" %>
+          <% unless @podcast.listeners.count-1 == index %>
+            <%= " and " %>
+          <% end %>
+        <% end %>
+      <% else %>
+        Listening by <%= link_to @podcast.user.nickname, @podcast.user, class: "text-blue-500" %>
+      <% end %>      
     </p>  
     
     <%= link_to 'Back to podcasts', podcasts_path, class: "font-medium" %>

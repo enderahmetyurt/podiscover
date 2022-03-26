@@ -40,6 +40,10 @@ class User < ApplicationRecord
     user
   end
 
+  def is_admin?
+    email == ENV['ADMIN_EMAIL']
+  end
+
   def nickname
     display_name.present? ? display_name : email.split('@').first
   end

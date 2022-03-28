@@ -7,7 +7,7 @@ class PodcastsController < ApplicationController
   # GET /podcasts or /podcasts.json
   def index
     podcasts = current_user.feed.uniq { |p| p.uid }
-    @podcasts = podcasts.sort_by! &:name
+    @podcasts = podcasts.sort_by!(&:listener_count).reverse
   end
 
   def all

@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.where.not(id: current_user.id)
+    users = User.where.not(id: current_user.id).uniq
+    @users = users.sort_by!(&:podcasts).reverse
   end
 
   def show

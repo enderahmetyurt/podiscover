@@ -12,8 +12,6 @@ class User < ApplicationRecord
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  
-  scope :featured, order('podcasts_count DESC')
 
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)

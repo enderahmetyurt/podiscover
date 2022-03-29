@@ -1,3 +1,8 @@
+<% if flash[:warn] %>
+  <div class="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800" role="alert">
+    <span class="font-medium"><%= flash[:warn] %></span>
+  </div>
+<% end %>
 <section class="px-2 py-32 bg-white md:px-0">
   <div class="container items-center max-w-6xl px-8 mx-auto xl:px-5">
     <div class="flex flex-wrap items-center sm:-mx-3">

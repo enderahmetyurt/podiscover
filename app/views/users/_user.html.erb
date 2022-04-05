@@ -5,7 +5,7 @@
         <% if user.image_url.present? %>
           <%= image_tag user.image_url, class: "w-12 h-12 rounded-full border border-gray-100 shadow-sm" %>
         <% else %>
-          <%= image_tag "default.png", class: "rounded-full border border-gray-100 shadow-sm" %>
+          <%= image_tag "default.png", class: "w-12 h-12 rounded-full border border-gray-100 shadow-sm" %>
         <% end %>
       </div>
       <div class="ml-4">

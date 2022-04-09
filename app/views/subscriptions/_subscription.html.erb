@@ -1,19 +1,19 @@
-<div id="<%= dom_id podcast %>">
+<div id="<%= dom_id subscription %>">
   <%= link_to(subscription.podcast) do %>
     <div class="grid content-around gap-4 mt-6 grid-row-2">
       <div >
-        <%= image_tag subscription.podcast.image_urls.second.url, class: "object-cover h-48 w-96" %>
+        <%= image_tag podcast_middle_image_url(subscription), class: "object-cover h-48 w-96" %>
       </div>
       <div class="text-lg">
-        <%= podcast.name %>
+        <%= subscription.podcast.name %>
       </div>      
     </div>
   <% end %>
   
-  <% if controller_name == "podcasts" %>
+  <% if controller_name == "subscriptions" %>
     <div class="mt-3 text-xs font-thin">
-      <% if subscription.podcast.listener_count > 1 %>
-        <span class="text-blue-500"><%= pluralize subscription.podcast.listener_count, "person" %></span> listen this podcast
+      <% if subscription.podcast.users.count > 1 %>
+        <span class="text-blue-500"><%= pluralize subscription.podcast.users.count, "person" %></span> listen this podcast
       <% else %>
         <%= link_to subscription.user.nickname, subscription.user, class: "text-blue-500" %> is listening
       <% end %>

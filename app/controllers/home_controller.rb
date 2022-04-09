@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    redirect_to podcasts_path if current_user
+    redirect_to subscriptions_path if current_user
   end
 end

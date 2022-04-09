@@ -1,8 +1,12 @@
 <div id="<%= dom_id subscription %>">
   <%= link_to(subscription.podcast) do %>
     <div class="grid content-around gap-4 mt-6 grid-row-2">
-      <div >
-        <%= image_tag podcast_middle_image_url(subscription), class: "object-cover h-48 w-96" %>
+      <div>
+        <% if subscription.podcast.image_urls.any? %>
+          <%= image_tag subscription.podcast.image_urls.second.url %>
+        <% else %>
+          <%= image_tag "podiscover_medium.png" %>
+        <% end %>
       </div>
       <div class="text-lg">
         <%= subscription.podcast.name %>

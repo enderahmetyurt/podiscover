@@ -1,7 +1,11 @@
 <div class="flex w-full mx-auto">
   <div>
     <div class="flex flex-col items-center justify-start my-5 sm:flex-row">
-      <%= image_tag @podcast.image_urls.second.url %>
+      <% if @podcast.image_urls.any? %>
+        <%= image_tag @podcast.image_urls.second.url %>
+      <% else %>
+        <%= image_tag "podiscover_medium.png" %>
+      <% end %>      
       <% if action_name == "show" %>
         <%= link_to  @podcast.external_url, class: "flex items-center" do %>
           <%= image_tag "spotify_logo.png", class: "ml-5 w-8 h-8" %>

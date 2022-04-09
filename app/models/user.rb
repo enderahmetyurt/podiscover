@@ -6,7 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
 
-  has_many :podcasts, dependent: :destroy
+  has_many :subscriptions, dependent: :destroy
+  has_many :podcasts, through: :subscriptions, source: :podcast
+
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
 
@@ -66,7 +68,7 @@ class User < ApplicationRecord
   def feed
     following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :user_id"
-    Podcast.where("user_id IN (#{following_ids})", user_id: id)
+    Subscription.where("user_id IN (#{following_ids})", user_id: id)
   end
 
   def self.image(auth)
@@ -93,31 +95,31 @@ class User < ApplicationRecord
     end
 
     podcasts.each do |podcast|
-      next if user.podcasts.find_by(uid: podcast.id).present?
+      pp = Podcast.find_or_initialize_by(uid: podcast.id)
 
-      pp = set_podcast(user, podcast)
-
-      podcast.images.each do |image|
-        ImageUrl.create(url: image['url'], height: image['height'], width: image['width'], podcast_id: pp.reload.id)
+      pp.name = podcast.name
+      pp.description = podcast.description
+      pp.uid = podcast.id
+      pp.language = podcast.languages.first # TODO: make it an array
+      pp.publisher = podcast.publisher
+      pp.uri = podcast.uri
+      pp.external_url = podcast.external_urls['spotify']    
+      
+      pp.save!
+      
+      if pp.image_urls.any?
+        pp.image_urls.destroy_all
+        podcast.images.each do |image|
+          ImageUrl.create(url: image['url'], height: image['height'], width: image['width'], podcast_id: pp.reload.id)
+        end            
+      else 
+        podcast.images.each do |image|
+          ImageUrl.create(url: image['url'], height: image['height'], width: image['width'], podcast_id: pp.reload.id)
+        end        
       end
+
+      subscription = Subscription.find_by(user_id: user.id, podcast_id: pp.id)
+      Subscription.create(user_id: user.id, podcast_id: pp.id) if subscription.blank?
     end
-
-    user
-  end
-
-  def self.set_podcast(user, podcast)
-    pp = Podcast.new(user_id: user.id)
-
-    pp.name = podcast.name
-    pp.description = podcast.description
-    pp.uid = podcast.id
-    pp.language = podcast.languages.first # TODO: make it an array
-    pp.publisher = podcast.publisher
-    pp.uri = podcast.uri
-    pp.external_url = podcast.external_urls['spotify']
-
-    pp.save!
-
-    pp
   end
 end

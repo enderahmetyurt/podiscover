@@ -4,7 +4,7 @@ class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @subscriptions = current_user.feed  
+    @subscriptions = current_user.feed.uniq { |s| s.podcast_id }
   end
 
   def show

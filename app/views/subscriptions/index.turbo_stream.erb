@@ -1,0 +1,9 @@
+<%= turbo_stream.append "subscriptions" do %>
+  <%= render partial: "subscriptions/subscription", collection: @subscriptions %>
+<% end %>
+
+<% unless @pagy.page == @pagy.last %>
+  <%= turbo_stream.replace "pagination" do %>
+    <%= turbo_frame_tag "pagination", src: subscriptions_path(page: @pagy.next, format: :turbo_stream), loading: :lazy %>
+  <% end %>
+<% end %>

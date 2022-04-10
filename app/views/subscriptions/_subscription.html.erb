@@ -1,28 +1,27 @@
-<% cache(subscription) do %>
-  <div id="<%= dom_id subscription %>">
-    <%= link_to(subscription.podcast) do %>
-      <div class="grid content-around gap-4 mt-6 grid-row-2">
-        <div>
-          <% if subscription.podcast.image_urls.any? %>
-            <%= image_tag subscription.podcast.image_urls.second.url %>
-          <% else %>
-            <%= image_tag "podiscover_medium.png" %>
-          <% end %>
-        </div>
-        <div class="text-lg">
-          <%= subscription.podcast.name %>
-        </div>      
-      </div>
-    <% end %>
-    
-    <% if controller_name == "subscriptions" %>
-      <div class="mt-3 text-xs font-thin">
-        <% if subscription.podcast.users.count > 1 %>
-          <span class="text-blue-500"><%= pluralize subscription.podcast.users.count, "person" %></span> listen this podcast
+<div id="<%= dom_id subscription %>">
+  <%= link_to(subscription.podcast) do %>
+    <div class="grid content-around gap-4 mt-6 grid-row-2">
+      <div>
+        <% if subscription.podcast.image_urls.any? %>
+          <%= image_tag subscription.podcast.image_urls.second.url %>
         <% else %>
-          <%= link_to subscription.user.nickname, subscription.user, class: "text-blue-500" %> is listening
+          <%= image_tag "podiscover_medium.png" %>
         <% end %>
       </div>
-    <% end %>
-  </div>
-<% end %>
+      <div class="text-lg">
+        <%= subscription.podcast.name %>
+      </div>      
+    </div>
+  <% end %>
+  
+  <% if controller_name == "subscriptions" %>
+    <div class="mt-3 text-xs font-thin">
+      <% if subscription.podcast.users.count > 1 %>
+        <span class="text-blue-500"><%= pluralize subscription.podcast.users.count, "person" %></span> listen this podcast
+      <% else %>
+        <%= link_to subscription.user.nickname, subscription.user, class: "text-blue-500" %> is listening
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

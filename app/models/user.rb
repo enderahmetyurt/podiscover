@@ -84,11 +84,12 @@ class User < ApplicationRecord
     i = 0
 
     until response.present?
-      response = spotify_user.saved_shows(limit: 50, offset: 0)
+      response = spotify_user.saved_shows(limit: 50, offset: i)
 
       if response.present?
         podcasts += response
         i += 1
+        response = nil
       else
         break
       end

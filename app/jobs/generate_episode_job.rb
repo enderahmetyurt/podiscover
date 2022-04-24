@@ -2,33 +2,28 @@ class GenerateEpisodeJob
   include Sidekiq::Worker
   sidekiq_options queue: "default"
 
-  def perform(user_id)
-    user = User.find(user_id)
-    podcasts = user.podcasts 
+  def perform(podcast_id)
+    podcast = Podcast.find(podcast_id)
+    puts "For podcast #{podcast.name} starts to fetch episodes"
+    response = nil
+    episodes = []
+    i = 0
     
-    podcasts.each do |podcast|
-      puts "For podcast #{podcast.name} starts to fetch episodes"
-      response = nil
-      episodes = []
-      i = 0
-      
-      begin
-        podcast_response = RSpotify::Show.find(podcast.uid, market: 'US')
-      rescue RestClient::NotFound => e
-        puts "Error Podcast: #{podcast.name}"
-        next
-      end
+    begin
+      podcast_response = RSpotify::Show.find(podcast.uid, market: 'US')
+    rescue RestClient::NotFound => e
+      puts "Error Podcast: #{podcast.name}"
+    end
 
-      episodes = podcast_response.episodes
-      latest_episode = podcast.episodes.sort_by { |e| e.release_date.to_date }.last
-      
-      if podcast.episodes.empty?
-        save_episodes(episodes, podcast)
-      elsif episodes.count > 0 && (episodes.first.release_date.to_date > latest_episode.release_date.to_date)
-        save_episodes(episodes, podcast)
-      else
-        puts "No new episodes for #{podcast.name}"
-      end
+    episodes = podcast_response.episodes
+    latest_episode = podcast.episodes.sort_by { |e| e.release_date.to_date }.last
+
+    if podcast.episodes.empty?
+      save_episodes(episodes, podcast)
+    elsif episodes.count > 0 && (episodes.first.release_date.to_date > latest_episode.release_date.to_date)
+      save_episodes(episodes, podcast)
+    else
+      puts "No new episodes for #{podcast.name}"
     end
   end
 

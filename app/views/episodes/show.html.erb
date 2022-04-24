@@ -1,0 +1,28 @@
+<div class="w-full mx-auto">
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-bold"><%= @episode.name %></h1>
+  </div>
+  <div class="mt-10">
+    <div class="flex flex-col items-center justify-start my-5 sm:flex-row">
+      <% if @episode.episode_image_urls.any? %>
+        <%= image_tag @episode.episode_image_urls.second.url %>
+      <% else %>
+        <%= image_tag "podiscover_medium.png" %>
+      <% end %>
+      <div class="flex flex-col items-center">
+        <div>
+          <%= link_to @episode.external_urls, class: "flex items-center mb-4" do %>
+            <%= image_tag "spotify_logo.png", class: "ml-5 w-8 h-8" %>
+            <span class="ml-2 bg-transparent text-[#1db954] font-semibold">Listen on Spotify</span>
+          <% end %>
+        </div>
+        <div class="ml-4">
+          <audio data-turbo-permanent id="white-noise-player" controls src=<%= @episode.audio_preview_url %>></audio>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10">
+      <div><%= sanitize @episode.html_description %></div>
+    </div>
+  </div>
+</div>

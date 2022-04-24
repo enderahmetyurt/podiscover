@@ -1,9 +1,15 @@
 # frozen_string_literal: true
+require 'sidekiq/web'
 
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end  
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  resources :podcasts, only: %i[index show]
+  resources :podcasts, only: %i[index show] do
+    resources :episodes, only: %i[show]
+  end
   
   resources :dashboard, only: [:index]
   

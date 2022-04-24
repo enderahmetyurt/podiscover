@@ -39,6 +39,8 @@ class User < ApplicationRecord
 
     fetch_podcasts(user, auth)
 
+    GenerateEpisodeJob.perform_async(user.id)
+
     user
   end
 

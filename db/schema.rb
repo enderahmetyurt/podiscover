@@ -10,12 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_09_112905) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_16_134405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "episode_image_urls", force: :cascade do |t|
+    t.string "url"
+    t.integer "height"
+    t.integer "width"
+    t.integer "episode_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "episodes", force: :cascade do |t|
+    t.string "audio_preview_url"
+    t.bigint "duration_ms"
+    t.string "external_urls"
+    t.text "html_description"
+    t.string "uid"
+    t.string "language"
+    t.string "name"
+    t.string "release_date"
+    t.integer "podcast_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -93,3 +93,4 @@ gem 'sendgrid-ruby'
 
 gem 'rails_admin'
 gem "sassc-rails"
+gem "sidekiq"

@@ -37,7 +37,7 @@ class User < ApplicationRecord
       user.save!
     end
 
-    # fetch_podcasts(user, auth)
+    FetchUserPodcasts.perform_async(user.id, auth)
 
     user
   end
@@ -75,52 +75,5 @@ class User < ApplicationRecord
     return nil if auth.info.images.empty?
 
     auth.info.images.first.url
-  end
-
-  def self.fetch_podcasts(user, auth)
-    spotify_user = RSpotify::User.new(auth)
-    podcasts = []
-    response = nil
-    i = 0
-
-    until response.present?
-      response = spotify_user.saved_shows(limit: 50, offset: i)
-
-      if response.present?
-        podcasts += response
-        i += 1
-        response = nil
-      else
-        break
-      end
-    end
-
-    podcasts.each do |podcast|
-      pp = Podcast.find_or_initialize_by(uid: podcast.id)
-
-      pp.name = podcast.name
-      pp.description = podcast.description
-      pp.uid = podcast.id
-      pp.language = podcast.languages.first # TODO: make it an array
-      pp.publisher = podcast.publisher
-      pp.uri = podcast.uri
-      pp.external_url = podcast.external_urls['spotify']    
-      
-      pp.save!
-      
-      if pp.image_urls.any?
-        pp.image_urls.destroy_all
-        podcast.images.each do |image|
-          ImageUrl.create(url: image['url'], height: image['height'], width: image['width'], podcast_id: pp.reload.id)
-        end            
-      else 
-        podcast.images.each do |image|
-          ImageUrl.create(url: image['url'], height: image['height'], width: image['width'], podcast_id: pp.reload.id)
-        end        
-      end
-
-      subscription = Subscription.find_by(user_id: user.id, podcast_id: pp.id)
-      Subscription.create(user_id: user.id, podcast_id: pp.id) if subscription.blank?
-    end
   end
 end

@@ -37,7 +37,7 @@ class User < ApplicationRecord
       user.save!
     end
 
-    fetch_podcasts(user, auth)
+    # fetch_podcasts(user, auth)
 
     user
   end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Podcast < ApplicationRecord
+  validates :name, uniqueness: true
+
   has_many :subscriptions
   has_many :users, through: :subscriptions, source: :user
   

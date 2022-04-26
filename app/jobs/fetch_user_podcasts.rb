@@ -47,7 +47,7 @@ class FetchUserPodcasts
       end
 
       subscription = Subscription.find_by(user_id: user_id, podcast_id: pp.id)
-      Subscription.create(user_id: user_id, podcast_id: pp.id) if subscription.blank?
+      Subscription.create!(user_id: user_id, podcast_id: pp.id) if subscription.blank?
     end    
   end
 

@@ -2,6 +2,7 @@
 
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
+  
   def index
     subscriptions = current_user.feed.uniq { |s| s.podcast_id }
     @subscriptions = subscriptions.sort_by{ |s| s.podcast.users.count }.reverse

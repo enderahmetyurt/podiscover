@@ -42,6 +42,14 @@ class User < ApplicationRecord
     user
   end
 
+  def display_email
+    if allow_email_confirmation
+      email
+    else
+      'Hidden'
+    end
+  end
+
   def is_admin?
     email == ENV['ADMIN_EMAIL']
   end

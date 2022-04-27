@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(resource)
-    subscriptions_path
+    if resource.allow_email_usage_at.nil?
+      email_confirmation_user_path(resource) 
+    else
+      subscriptions_path
+    end
   end
 
   protected

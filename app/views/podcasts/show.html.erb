@@ -30,7 +30,7 @@
     </p>
 
     <p class="my-5">
-      Listening by
+      Listened by
       <% @podcast.users.each_with_index do |listener, index| %>
         <%= link_to listener.nickname, listener, class: "text-blue-500" %>
         <% unless @podcast.users.count-1 == index %>

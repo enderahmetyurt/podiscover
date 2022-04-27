@@ -31,7 +31,7 @@
 
     <p class="my-5">
       <% if @subscription.podcast.users.count > 1 %>
-        Listening by
+        Listened by
         <% @subscription.podcast.users.each_with_index do |listener, index| %>
           <%= link_to listener.nickname, listener, class: "text-blue-500" %>
           <% unless podcast_listeners_count(@subscription)-1 == index %>
@@ -39,7 +39,7 @@
           <% end %>
         <% end %>
       <% else %>
-        Listening by <%= link_to @subscription.user.nickname, @subscription.user, class: "text-blue-500" %>
+        Listened by <%= link_to @subscription.user.nickname, @subscription.user, class: "text-blue-500" %>
       <% end %>
     </p>
 

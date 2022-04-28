@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_27_133325) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_27_172708) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_27_133325) do
     t.integer "episode_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["episode_id"], name: "index_episode_image_urls_on_episode_id"
   end
 
   create_table "episodes", force: :cascade do |t|
@@ -41,6 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_27_133325) do
     t.integer "podcast_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["podcast_id"], name: "index_episodes_on_podcast_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -57,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_27_133325) do
     t.integer "podcast_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["podcast_id"], name: "index_image_urls_on_podcast_id"
   end
 
   create_table "podcasts", force: :cascade do |t|

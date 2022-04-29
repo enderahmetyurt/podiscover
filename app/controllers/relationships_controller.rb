@@ -8,7 +8,7 @@ class RelationshipsController < ApplicationController
     user = User.find(params[:followed_id])
     current_user.follow(user)
     
-    if current_user.allow_email_usage?
+    if user.allow_email_usage_at.present?
       UserMailer.with(follower: current_user, followed: user).new_follower_email.deliver_later
     end
 

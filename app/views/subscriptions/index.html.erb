@@ -11,7 +11,7 @@
   <% end %>
 
   <%= turbo_stream_from "subscriptions" %>
-  <div id="subscriptions" class="grid min-w-full gap-4 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2">
-    <%= render @subscriptions %>
+  <div id="subscriptions" class="grid min-w-full gap-4 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2">    
   </div>
+  <%= turbo_frame_tag "pagination", src: subscriptions_path(format: :turbo_stream), loading: :lazy %>
 </div>

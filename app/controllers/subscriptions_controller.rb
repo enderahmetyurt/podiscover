@@ -5,7 +5,8 @@ class SubscriptionsController < ApplicationController
   
   def index
     subscriptions = current_user.feed.uniq { |s| s.podcast_id }
-    @subscriptions = subscriptions.sort_by{ |s| s.podcast.users.count }.reverse
+    sorted_subscriptions = subscriptions.sort_by{ |s| s.podcast.users.count }.reverse
+    @pagy, @subscriptions = pagy_array(sorted_subscriptions, items: 50)
   end
 
   def show

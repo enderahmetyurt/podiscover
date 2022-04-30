@@ -13,5 +13,10 @@
   <%= turbo_stream_from "subscriptions" %>
   <div id="subscriptions" class="grid min-w-full gap-4 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2">    
   </div>
-  <%= turbo_frame_tag "pagination", src: subscriptions_path(format: :turbo_stream), loading: :lazy %>
+  
+  <%= turbo_frame_tag "pagination", src: subscriptions_path(format: :turbo_stream), loading: :lazy do %>
+    <div class="flex items-center justify-center mt-10">
+      <%= image_tag "spinner.gif" %>
+    </div>
+  <% end %>
 </div>

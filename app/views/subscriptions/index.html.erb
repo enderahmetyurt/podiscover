@@ -16,7 +16,9 @@
   
   <%= turbo_frame_tag "pagination", src: subscriptions_path(format: :turbo_stream), loading: :lazy do %>
     <div class="flex items-center justify-center mt-10">
-      <%= image_tag "spinner.gif" %>
+      <% unless @subscriptions.empty? %>
+        <%= image_tag "spinner.gif" %>
+      <% end %>
     </div>
   <% end %>
 </div>

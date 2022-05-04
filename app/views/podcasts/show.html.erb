@@ -42,7 +42,9 @@
     <% if @podcast.categories.any? %>
       <p class="my-5">
         <strong class="block mb-1 font-medium">Categories:</strong>
-        <%= @podcast.categories.pluck(:name).join(', ') %>
+        <% @podcast.categories.each do |category| %>
+          <%= link_to category.name, category_path(category), class: "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 uppercase last:mr-0 mr-1" %>
+        <% end %>
       </p>
     <% end %>
 

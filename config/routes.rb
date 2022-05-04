@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   
   resources :relationships, only: %i[create destroy]
   resources :subscriptions, only: %i[index show]
+  resources :categories, only: %i[show]
 
   root 'home#index'
 end

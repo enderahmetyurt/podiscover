@@ -1,6 +1,6 @@
 <div class="w-full mx-auto">
   <div class="flex items-center justify-between">
-    <h1 class="text-2xl font-bold"><%= @episode.name %></h1>
+    <h1 class="text-2xl font-bold"><%= link_to @episode.podcast.name, podcast_path(@episode.podcast), class: "text-red-600" %> / <%= @episode.name %></h1>
   </div>
   <div class="mt-10">
     <div class="flex flex-col items-center justify-start my-5 sm:flex-row">

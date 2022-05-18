@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   layout "email_confirmation_layout", only: [:email_confirmation]
 
   def index
@@ -31,18 +31,18 @@ class UsersController < ApplicationController
   end
 
   def allow_email_confirmation
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
     @user.update(allow_email_usage_at: Time.now, tmp_email: nil)
-    
+
     redirect_to subscriptions_path
   end
 
   def deny_email_confirmation
-    @user = User.find(params[:id]) 
+    @user = User.find(params[:id])
     @user.update(allow_email_usage_at: nil, tmp_email: tmp_email_generator)
 
     redirect_to subscriptions_path
-  end  
+  end
 
   private
 

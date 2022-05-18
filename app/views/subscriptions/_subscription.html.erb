@@ -5,7 +5,7 @@
         <% if subscription.podcast.image_urls.any? %>
           <%= image_tag subscription.podcast.image_urls.second.url %>
         <% else %>
-          <%= image_tag "podiscover_medium.png" %>
+          <%= image_tag "podiscover.png" %>
         <% end %>
       </div>
       <div>
@@ -18,7 +18,7 @@
       </div>
     </div>
   <% end %>
-  
+
   <% if controller_name == "subscriptions" %>
     <div class="mt-3 text-xs font-thin">
       <% if subscription.podcast.users.count > 1 %>

@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= favicon_link_tag asset_path('podiscover.png')%>
-    
+
     <!-- Hotjar Tracking Code for https://www.podiscover.me -->
     <script>
         (function(h,o,t,j,a,r){
@@ -21,7 +21,7 @@
             r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-    </script>    
+    </script>
   </head>
 
   <body class="flex flex-col min-h-screen ">
@@ -46,10 +46,10 @@
 			<stop offset="1" stop-color="#561FF4"/>
 		</linearGradient>
 	</defs>
-</svg>      
+</svg>
       <%= link_to "Podiscover", root_path, class: "relative z-10 flex items-center w-auto text-2xl font-extrabold leading-none text-black select-none" %>
       </div>
-    </section>  
+    </section>
     <main class="container flex flex-grow px-5 mx-auto mt-10">
       <div class="mr-10">
         <% if user_signed_in? %>
@@ -59,7 +59,7 @@
           <div class="flex flex-col mt-5">
             <span>
               <%= link_to root_path, class: current_class?('/subscriptions') do %>
-                🏡&nbsp;&nbsp;Home 
+                🏡&nbsp;&nbsp;Home
               <% end %>
             </span>
             <span>
@@ -69,7 +69,12 @@
             </span>
             <span>
               <%= link_to users_path, class: current_class?(users_path) do %>
-                👻&nbsp;&nbsp;Community 
+                👻&nbsp;&nbsp;Community
+              <% end %>
+            </span>
+            <span>
+              <%= link_to categories_path, class: current_class?(categories_path) do %>
+                🏷&nbsp;&nbsp;Categories
               <% end %>
             </span>
           </div>
@@ -77,10 +82,10 @@
       </div>
       <div class="w-full">
         <%= yield %>
-      </div>     
+      </div>
     </main>
       <footer>
         <%= render partial: 'shared/footer' %>
-      </footer>     
+      </footer>
   </body>
 </html>

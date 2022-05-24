@@ -31,24 +31,28 @@ class FetchUserPodcasts
       pp.language = podcast.languages.first # TODO: make it an array
       pp.publisher = podcast.publisher
       pp.uri = podcast.uri
-      pp.external_url = podcast.external_urls['spotify']    
-      
+      pp.external_url = podcast.external_urls['spotify']
+
       pp.save!
-      
+
       if pp.image_urls.any?
         pp.image_urls.destroy_all
         podcast.images.each do |image|
           ImageUrl.create(url: image['url'], height: image['height'], width: image['width'], podcast_id: pp.reload.id)
-        end            
-      else 
+        end
+      else
         podcast.images.each do |image|
           ImageUrl.create(url: image['url'], height: image['height'], width: image['width'], podcast_id: pp.reload.id)
-        end        
+        end
       end
 
       subscription = Subscription.find_by(user_id: user_id, podcast_id: pp.id)
-      Subscription.create!(user_id: user_id, podcast_id: pp.id) if subscription.blank?
-    end    
+
+      if subscription.blank?
+        Subscription.create!(user_id: user_id, podcast_id: pp.id)
+        Activity.create!(activityable: Listen.new(podcast_id: pp.id, action: 'starts'), user_id: user_id)
+      end
+    end
   end
 
   private
@@ -62,5 +66,9 @@ class FetchUserPodcasts
 
     puts "Missing podcast ids: #{podcast_ids} for user #{user.email}"
     Subscription.where(user_id: user.id, podcast_id: podcast_ids).destroy_all
+
+    podcast_ids.each do |podcast_id|
+      Activity.create!(activityable: Listen.new(podcast_id: podcast_id, action: 'stops'), user_id: user_id)
+    end
   end
 end

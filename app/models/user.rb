@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :activities, dependent: :destroy
+
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)
 
@@ -77,6 +79,12 @@ class User < ApplicationRecord
     following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :user_id"
     Subscription.where("user_id IN (#{following_ids})", user_id: id)
+  end
+
+  def activity_feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :user_id"
+    Activity.where("user_id IN (#{following_ids})", user_id: id)
   end
 
   def self.image(auth)

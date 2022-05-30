@@ -1,0 +1,5 @@
+<div class="p-5 mt-3 border">
+  <div><%= comment.body %></div>
+  <div class="mt-3 italic">written by <%= link_to comment.user.display_name, user_path(comment.user), class: "text-blue-500" %> at <%= comment.created_at.to_date %></div>
+</div>
+

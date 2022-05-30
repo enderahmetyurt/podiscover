@@ -2,6 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get 'comment/index'
   get 'category/index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   authenticate :user, lambda { |u| u.is_admin? } do
@@ -10,7 +11,9 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :podcasts, only: %i[index show] do
-    resources :episodes, only: %i[show]
+    resources :episodes, only: %i[show] do
+      resources :comments
+    end
   end
 
   resources :dashboard, only: [:index]

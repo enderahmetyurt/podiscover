@@ -1,0 +1,5 @@
+<%= form_with model: [podcast, episode, comment] do |form| %>
+  <%= form.text_area :body, class: "rounded-md resize w-full" %>
+  <br>
+  <%= form.submit class: "rounded-lg py-2 px-2 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+<% end %>

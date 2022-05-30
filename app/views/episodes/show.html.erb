@@ -24,5 +24,22 @@
     <div class="mt-10">
       <div><%= sanitize @episode.html_description %></div>
     </div>
+
+    <h1 class="mt-10 text-xl font-bold">Comments</h1>
+    <% if @episode.comments.any? %>
+      <%= render @episode.comments %>
+    <% else %>
+      <div class="mt-10">
+        <div class="flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-gray-600">No comments yet.</div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="mt-10">
+      <div><%= render partial: 'comments/form', locals: { comment: Comment.new, podcast: @episode.podcast, episode: @episode } %></div>
+    </div>
   </div>
 </div>

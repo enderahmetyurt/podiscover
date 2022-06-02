@@ -5,5 +5,5 @@ class Comment < ApplicationRecord
   belongs_to :user
 
   validates :body, presence: true
-  validates :body, length: { maximum: 5, too_long: "%{count} characters is the maximum allowed" }
+  validates :body, length: { maximum: 140, too_long: "%{count} characters is the maximum allowed" }
 end

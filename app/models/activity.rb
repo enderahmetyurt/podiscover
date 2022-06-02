@@ -2,5 +2,5 @@
 
 class Activity < ApplicationRecord
   belongs_to :user
-  delegated_type :activityable, types: %w[ Listen ]
+  delegated_type :activityable, types: %w[ Listen Commentable ]
 end

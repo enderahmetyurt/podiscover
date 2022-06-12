@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  include ActionView::RecordIdentifier
+  before_action :authenticate_user!
 
   def create
     @comment = Comment.new(comment_params)

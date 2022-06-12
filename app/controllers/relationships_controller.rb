@@ -7,20 +7,10 @@ class RelationshipsController < ApplicationController
   def create
     user = User.find(params[:followed_id])
     current_user.follow(user)
-    
+
     if user.allow_email_usage_at.present?
       UserMailer.with(follower: current_user, followed: user).new_follower_email.deliver_later
     end
-
-    # respond_to do |format|
-    #   format.turbo_stream do
-    #     render turbo_stream: turbo_stream.replace(
-    #       "#{dom_id(current_user)}_follows",
-    #       partial: 'users/follower',
-    #       locals: { user: user }
-    #     )
-    #   end
-    # end
 
     redirect_to user
   end
@@ -28,16 +18,6 @@ class RelationshipsController < ApplicationController
   def destroy
     user = Relationship.find(params[:id]).followed
     current_user.unfollow(user)
-    
-    # respond_to do |format|
-    #   format.turbo_stream do
-    #     render turbo_stream: turbo_stream.replace(
-    #       "#{dom_id(current_user)}_follows",
-    #       partial: 'users/follower',
-    #       locals: { user: user }
-    #     )
-    #   end
-    # end
 
     redirect_to user
   end

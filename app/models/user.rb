@@ -1,8 +1,7 @@
 # frozen_string_literal: true
+require 'open-uri'
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
 
@@ -89,6 +88,13 @@ class User < ApplicationRecord
   def self.image(auth)
     return nil if auth.info.images.empty?
 
-    auth.info.images.first.url
+    profile_image_url = auth.info.images.first.url
+
+    begin
+      URI.parse(profile_image_url).open
+      profile_image_url
+    rescue
+      nil
+    end
   end
 end

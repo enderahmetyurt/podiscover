@@ -82,7 +82,7 @@ class User < ApplicationRecord
   def activity_feed
     following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :user_id"
-    Activity.where("user_id IN (#{following_ids})", user_id: id)
+    Activity.where("user_id IN (#{following_ids})", user_id: id).order(created_at: :desc)
   end
 
   def self.image(auth)

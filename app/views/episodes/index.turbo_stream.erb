@@ -1,0 +1,9 @@
+<%= turbo_stream.append "episodes" do %>
+  <%= render partial: "episodes/episode", collection: @episodes %>
+<% end %>
+
+<% unless @pagy.page == @pagy.last %>
+  <%= turbo_stream.replace "pagination" do %>
+    <%= turbo_frame_tag "pagination", src: podcast_episodes_path(page: @pagy.next, format: :turbo_stream), loading: :lazy %>
+  <% end %>
+<% end %>

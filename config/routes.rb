@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :podcasts, only: %i[index show] do
-    resources :episodes, only: %i[show] do
+    resources :episodes, only: %i[show index] do
       resources :comments
     end
   end

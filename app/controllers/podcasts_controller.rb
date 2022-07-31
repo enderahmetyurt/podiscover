@@ -8,8 +8,8 @@ class PodcastsController < ApplicationController
   end
 
   def show
-    @podcast = Podcast.find(params[:id])
+    @podcast = Podcast.find(69)
     @all_episodes = @podcast.episodes.sort_by { |e| e.release_date.to_date }.reverse
-    @episodes = @all_episodes.last(5)
+    @episodes = @all_episodes.first(5)
   end
 end

@@ -77,6 +77,13 @@
                 🏷&nbsp;&nbsp;Categories
               <% end %>
             </span>
+            <% if current_user.is_admin? %>
+              <span>
+                <%= link_to rails_admin_path, target: '_blank' do %>
+                  🧑‍💼&nbsp;&nbsp;Admin
+                <% end %>
+              </span>
+            <% end %>
           </div>
         <% end %>
       </div>

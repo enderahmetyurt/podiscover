@@ -14,9 +14,9 @@
         </div>
         <div>
           <% if activity.activityable_type == "Listen" %>
-            <%= activity.listen.action %> listen to <%= link_to activity.listen.podcast.name, podcast_path(activity.listen.podcast), class: "text-[#561ff4]" %>
+            <%= activity.listen.action %> to subscribe <%= link_to activity.listen.podcast.name, podcast_path(activity.listen.podcast), class: "text-[#561ff4]" %>
           <% else %>
-            Wrote a comment to <%= link_to activity.commentable.episode.name, podcast_episode_path(activity.commentable.episode.podcast, activity.commentable.episode), class: "text-[#561ff4]" %>
+            wrote a comment to <%= link_to activity.commentable.episode.name, podcast_episode_path(activity.commentable.episode.podcast, activity.commentable.episode), class: "text-[#561ff4]" %>
           <% end %>
         </div>
       </div>

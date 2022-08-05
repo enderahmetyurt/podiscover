@@ -9,7 +9,7 @@
       <% if action_name == "show" %>
         <%= link_to  @subscription.podcast.external_url, class: "flex items-center" do %>
           <%= image_tag "spotify_logo.png", class: "ml-5 w-8 h-8" %>
-          <span class="ml-2 bg-transparent text-[#1db954] font-semibold">Listen on Spotify</span>
+          <span class="ml-2 bg-transparent text-[#1db954] font-semibold">See on Spotify</span>
         <% end %>      
       <% end %>
     </div>
@@ -31,7 +31,7 @@
 
     <p class="my-5">
       <% if @subscription.podcast.users.count > 1 %>
-        Listened by
+        <strong class="block mb-1 font-medium">Subscribers:</strong>
         <% @subscription.podcast.users.each_with_index do |listener, index| %>
           <%= link_to listener.nickname, listener, class: "text-blue-500" %>
           <% unless podcast_listeners_count(@subscription)-1 == index %>
@@ -39,7 +39,7 @@
           <% end %>
         <% end %>
       <% else %>
-        Listened by <%= link_to @subscription.user.nickname, @subscription.user, class: "text-blue-500" %>
+        <strong class="block mb-1 font-medium">Subscriber:</strong> <%= link_to @subscription.user.nickname, @subscription.user, class: "text-blue-500" %>
       <% end %>
     </p>
 

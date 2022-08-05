@@ -22,9 +22,9 @@
   <% if controller_name == "subscriptions" %>
     <div class="mt-3 text-xs font-thin">
       <% if subscription.podcast.users.count > 1 %>
-        <span class="text-blue-500"><%= pluralize subscription.podcast.users.count, "person" %></span> listen this podcast
+        <span class="text-blue-500"><%= pluralize subscription.podcast.users.count, "person" %></span> subscribe this podcast
       <% else %>
-        <%= link_to subscription.user.nickname, subscription.user, class: "text-blue-500" %> is listening
+        <%= link_to subscription.user.nickname, subscription.user, class: "text-blue-500" %> subscribes
       <% end %>
     </div>
   <% end %>

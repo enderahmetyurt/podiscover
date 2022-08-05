@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :relationships, only: %i[create destroy]
   resources :subscriptions, only: %i[index show]
   resources :categories, only: %i[index show]
-  resources :activities, only: %i[index]
+  resources :activities, only: %i[index], path: "feed"
 
   root 'home#index'
 end

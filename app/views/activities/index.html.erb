@@ -13,7 +13,7 @@
           <span class="font-bold"><%= activity.user.display_name %></span> <span class="text-sm text-red-800"><%= time_ago_in_words(activity.created_at) %></span>
         </div>
         <div>
-          <% if activity.activityable_type == "Listen" %>
+          <% if activity.activatable_type == "Listen" %>
             <%= activity.listen.action %> to subscribe <%= link_to activity.listen.podcast.name, podcast_path(activity.listen.podcast), class: "text-[#561ff4]" %>
           <% else %>
             wrote a comment to <%= link_to activity.commentable.episode.name, podcast_episode_path(activity.commentable.episode.podcast, activity.commentable.episode), class: "text-[#561ff4]" %>

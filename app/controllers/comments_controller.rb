@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      Activity.create!(activityable: Commentable.new(comment_id: @comment.id, episode_id: @comment.episode.id), user_id: current_user.id)
+      Activity.create!(activatable: Commentable.new(comment_id: @comment.id, episode_id: @comment.episode.id), user_id: current_user.id)
 
       redirect_to podcast_episode_path(@comment.episode.podcast.id, @comment.episode_id)
     else

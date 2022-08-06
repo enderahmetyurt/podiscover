@@ -50,7 +50,7 @@ class FetchUserPodcasts
 
       if subscription.blank?
         Subscription.create!(user_id: user_id, podcast_id: pp.id)
-        Activity.create!(activityable: Listen.new(podcast_id: pp.id, action: 'started'), user_id: user_id)
+        Activity.create!(activatable: Listen.new(podcast_id: pp.id, action: 'started'), user_id: user_id)
       end
     end
   end
@@ -68,7 +68,7 @@ class FetchUserPodcasts
     Subscription.where(user_id: user.id, podcast_id: podcast_ids).destroy_all
 
     podcast_ids.each do |podcast_id|
-      Activity.create!(activityable: Listen.new(podcast_id: podcast_id, action: 'stoped'), user_id: user_id)
+      Activity.create!(activatable: Listen.new(podcast_id: podcast_id, action: 'stoped'), user_id: user_id)
     end
   end
 end

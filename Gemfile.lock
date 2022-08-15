@@ -122,6 +122,10 @@ GEM
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (2.0.1)
     ffi (1.15.5)
+    flipper (0.25.0)
+    flipper-active_record (0.25.0)
+      activerecord (>= 4.2, < 8)
+      flipper (~> 0.25.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
@@ -350,6 +354,8 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  flipper
+  flipper-active_record
   importmap-rails
   jbuilder
   omniauth

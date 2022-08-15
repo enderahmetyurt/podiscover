@@ -97,3 +97,6 @@ gem "sidekiq"
 
 gem "sentry-ruby"
 gem "sentry-rails"
+
+gem 'flipper'
+gem 'flipper-active_record'

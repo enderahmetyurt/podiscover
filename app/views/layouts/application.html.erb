@@ -60,8 +60,15 @@
             <span>
               <%= link_to root_path, class: current_class?('/subscriptions') do %>
                 🏡&nbsp;&nbsp;Home
-              <% end %>
+                <% end %>
             </span>
+            <% if Flipper.enabled? :feed, current_user %>
+              <span>
+                <%= link_to activities_path, class: current_class?(activities_path) do %>
+                  🐻&nbsp;&nbsp;Feed
+                <% end %>
+              </span>
+            <% end %>
             <span>
               <%= link_to user_path(current_user), class: current_class?(user_path(current_user)) do %>
                 📍&nbsp;&nbsp;Profile
@@ -83,7 +90,7 @@
                   🧑‍💼&nbsp;&nbsp;Admin
                 <% end %>
               </span>
-            <% end %>
+            <% end %>           
           </div>
         <% end %>
       </div>

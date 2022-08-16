@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class EpisodesController < ApplicationController
-  before_action :authenticate_user!
-  
+  before_action :authenticate_user!, only: [:index]
+
   def index
-    @podcast = Podcast.find(params[:podcast_id]) 
+    @podcast = Podcast.find(params[:podcast_id])
     sorted_episodes = @podcast.episodes.sort_by { |e| e.release_date.to_date }.reverse
     @pagy, @episodes = pagy_array(sorted_episodes, items: 30)
   end

@@ -17,5 +17,9 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
+
+    function({addVariant}) {
+      addVariant('admin', 'body[data-admin] &')
+    }
   ]
 }

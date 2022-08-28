@@ -24,7 +24,7 @@
     </script>
   </head>
 
-  <body class="flex flex-col min-h-screen" <%= 'data-admin' if  current_user.is_admin? %>>
+  <body class="flex flex-col min-h-screen" <%= 'data-admin' if  current_user && current_user.is_admin? %>>
     <section class="relative w-full px-8 text-gray-700 body-font">
       <div class="container flex flex-wrap items-center py-5 mx-auto md:flex-row max-w-7xl">
         <%= render partial: 'shared/pd_logo' %>

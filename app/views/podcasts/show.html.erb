@@ -50,7 +50,7 @@
 
     <% if @episodes.any? %>
       <h2 class="mt-16 text-xl font-bold">Last <%= @episodes.count %> Episodes</h2>
-      <div>
+      <div class="mb-10">
         <% @episodes.each_with_index do |episode, index| %>
           <%= render partial: 'episodes/episode', locals: { episode: episode } %>
 
@@ -58,9 +58,9 @@
             <hr class="my-5">
           <% end %>
         <% end %>
-
-        <%= link_to 'All episodes', podcast_episodes_path(@podcast), class: "font-medium" %>
       </div>
+
+       <%= link_to 'All episodes', podcast_episodes_path(@podcast), class: "font-medium" %>
     <% end %>
   </div>
 </div>

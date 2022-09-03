@@ -4,8 +4,8 @@
 		<%= episode.likes %>
 	</p>
 	<% if action == 'like' %>
-		<%= button_to 'Like!', podcast_episode_like_path(episode.podcast, episode), method: :patch, data: { turbo_frame: '_top' } %>
+		<%= button_to 'Like!', podcast_episode_like_path(episode.podcast, episode), method: :patch, data: { turbo_frame: '_top' }, class: "text-green-500 font-bold" %>
 	<% else %>
-		<%= button_to 'Dislike!', podcast_episode_dislike_path(episode.podcast, episode), method: :patch, data: { turbo_frame: '_top' } %>
+		<%= button_to 'Dislike!', podcast_episode_dislike_path(episode.podcast, episode), method: :patch, data: { turbo_frame: '_top' }, class: "text-red-500 font-bold" %>
 	<% end %>
 <% end %>

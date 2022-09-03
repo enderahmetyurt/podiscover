@@ -15,9 +15,9 @@
 		  <%= episode.release_date %>
 	 </p>
 
-	<div id="<%= dom_id episode %>">
+	<div id="<%= dom_id episode %>" class="my-5">
 		<% last_likeable = current_user.activities.where(activatable_type: "Likeable").last&.likeable %>
-		<% if last_likeable && last_likeable.episode_id == episode.id && last_likeable.action == 'like' %>
+		<% if last_likeable && last_likeable.episode_id == episode.id && last_likeable.action == 'liked' %>
 			<%= render partial: 'episodes/likes', locals: { episode: episode, action: 'dislike' } %>
 		<% else %>
 			<%= render partial: 'episodes/likes', locals: { episode: episode, action: 'like' } %>

@@ -19,7 +19,7 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:episode_id])
 
     @episode.increment!(:likes)
-    Activity.create!(activatable: Likeable.new(podcast_id: @episode.podcast.id, episode_id: @episode.id, action: 'like'), user_id: current_user.id)
+    Activity.create!(activatable: Likeable.new(podcast_id: @episode.podcast.id, episode_id: @episode.id, action: 'liked'), user_id: current_user.id)
 
     respond_to do |format|
       format.turbo_stream do
@@ -36,7 +36,7 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:episode_id])
 
     @episode.decrement!(:likes)
-    Activity.create!(activatable: Likeable.new(podcast_id: @episode.podcast.id, episode_id: @episode.id, action: 'dislike'), user_id: current_user.id)
+    Activity.create!(activatable: Likeable.new(podcast_id: @episode.podcast.id, episode_id: @episode.id, action: 'disliked'), user_id: current_user.id)
 
     respond_to do |format|
       format.turbo_stream do

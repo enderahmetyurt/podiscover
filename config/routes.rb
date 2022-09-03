@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :podcasts, only: %i[index show] do
     resources :episodes, only: %i[show index] do
       resources :comments
+      patch :like, to: 'episodes#like'
     end
   end
 

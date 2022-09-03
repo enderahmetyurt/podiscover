@@ -14,4 +14,11 @@
 	 	 <strong class="block mb-1 font-medium">Release Date:</strong>
 		  <%= episode.release_date %>
 	 </p>
+
+	<div id="<%= dom_id episode %>">
+		<%= render partial: 'episodes/likes', locals: { episode: episode } %>
+		<%= button_to 'Like!',
+					podcast_episode_like_path(episode.podcast, episode),
+					method: :patch, data: { turbo_frame: '_top' } %>
+	</div>
 </div>

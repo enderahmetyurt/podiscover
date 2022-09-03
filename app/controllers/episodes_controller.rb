@@ -17,13 +17,33 @@ class EpisodesController < ApplicationController
 
   def like
     @episode = Episode.find(params[:episode_id])
+
     @episode.increment!(:likes)
+    Activity.create!(activatable: Likeable.new(podcast_id: @episode.podcast.id, episode_id: @episode.id, action: 'like'), user_id: current_user.id)
+
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
           "#{dom_id(@episode)}_likes",
           partial: 'episodes/likes',
-          locals: { episode: @episode }
+          locals: { episode: @episode, action: 'dislike' }
+        )
+      end
+    end
+  end
+
+  def dislike
+    @episode = Episode.find(params[:episode_id])
+
+    @episode.decrement!(:likes)
+    Activity.create!(activatable: Likeable.new(podcast_id: @episode.podcast.id, episode_id: @episode.id, action: 'dislike'), user_id: current_user.id)
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "#{dom_id(@episode)}_likes",
+          partial: 'episodes/likes',
+          locals: { episode: @episode, action: 'like' }
         )
       end
     end

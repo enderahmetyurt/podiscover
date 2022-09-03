@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :episodes, only: %i[show index] do
       resources :comments
       patch :like, to: 'episodes#like'
+      patch :dislike, to: 'episodes#dislike'
     end
   end
 

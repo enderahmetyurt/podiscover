@@ -1,0 +1,2 @@
+class Likeable < ApplicationRecord
+end

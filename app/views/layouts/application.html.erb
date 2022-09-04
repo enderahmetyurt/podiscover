@@ -11,6 +11,12 @@
     <%= javascript_importmap_tags %>
     <%= favicon_link_tag asset_path('podiscover.png')%>
 
+    <% if content_for?(:og_header) %>
+      <%= yield :og_header %>
+    <% else %>
+      <%= render "layouts/default_og_header" %>
+    <% end %>
+
     <!-- Hotjar Tracking Code for https://www.podiscover.me -->
     <script>
         (function(h,o,t,j,a,r){

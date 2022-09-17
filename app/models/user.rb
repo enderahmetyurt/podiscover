@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  after_create :send_new_user_email
+
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)
 
@@ -96,5 +98,9 @@ class User < ApplicationRecord
     rescue
       nil
     end
+  end
+
+  def send_new_user_email
+    UserMailer.new_user(self).deliver_now
   end
 end

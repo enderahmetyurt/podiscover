@@ -4,5 +4,10 @@ class UserMailer < ApplicationMailer
     @followed = params[:followed]
 
     mail(to: @followed.email, subject: "You have a new follower 🥳")
-  end  
+  end
+
+  def new_user(user)
+    @user = user
+    mail(to: ENV['ADMIN_EMAIL'], subject: "A new user has joined 🥹")
+  end
 end

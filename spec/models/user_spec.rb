@@ -15,4 +15,22 @@ RSpec.describe User, :type => :model do
       expect(user.activities.first.broadcastable.action).to eq 'new_user_has_joined'
     end
   end
+
+  describe '#activity_feed' do
+    let!(:podcast) { FactoryBot.create(:podcast) }
+    let!(:episode) { FactoryBot.create(:episode, podcast_id: podcast.id) }
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:followed_user) { FactoryBot.create(:user) }
+    let!(:relationship) { Relationship.create(follower_id: user.id, followed_id: followed_user.id) }
+    let!(:likeable_activity) { Activity.create!(activatable: Likeable.new(podcast_id: podcast.id, episode_id: episode.id), user_id: followed_user.id) }
+    let!(:new_user) { FactoryBot.create(:user) }
+
+    it 'should see new users broadcastable activity' do
+      expect(user.activity_feed).to include(Activity.broadcastables.where(user_id: new_user.id).first)
+    end
+
+    it 'should see followed users likeable activity' do
+      expect(user.activity_feed).to include(Activity.likeables.where(user_id: followed_user.id).first)
+    end
+  end
 end

@@ -2,7 +2,6 @@ class Broadcastable < ApplicationRecord
   AVAILABLE_ACTIONS = %w(new_user_has_joined
                         new_version_has_released).freeze
 
-  validates_presence_of :action
   validates :action, inclusion: { in: AVAILABLE_ACTIONS }
 
   def new_user_has_joined?

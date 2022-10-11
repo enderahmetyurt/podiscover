@@ -7,7 +7,6 @@ class Activity < ApplicationRecord
   delegated_type :activatable, types: %w[ Listen Commentable Likeable Broadcastable]
 
   def user_owned_activity?
-    return false unless broadcastable? && broadcastable.new_version_has_released?
-    true
+    !broadcastable? || !broadcastable.new_version_has_released?
   end
 end

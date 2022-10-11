@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  after_create :send_new_user_email
+  after_create :send_new_user_email, :create_broadcast_activity
 
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)
@@ -84,7 +84,7 @@ class User < ApplicationRecord
   def activity_feed
     following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :user_id"
-    Activity.where("user_id IN (#{following_ids})", user_id: id).order(created_at: :desc)
+    Activity.where("user_id IN (#{following_ids})", user_id: id).or(Broadcastable.all).order(created_at: :desc)
   end
 
   def self.image(auth)
@@ -102,5 +102,10 @@ class User < ApplicationRecord
 
   def send_new_user_email
     UserMailer.new_user(self).deliver_now
+  end
+
+  def create_broadcast_activity
+    Activity.create!(activatable: Broadcastable.new(action: 'new_user_has_joined'),
+                     user_id: id)
   end
 end

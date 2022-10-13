@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
 class Activity < ApplicationRecord
-  belongs_to :user, optional: true
-  validates_presence_of :user, if: :user_owned_activity?
-
+  belongs_to :user
   delegated_type :activatable, types: %w[Listen Commentable Likeable Broadcastable]
-
-  def user_owned_activity?
-    !broadcastable? || !broadcastable.new_version_has_released?
-  end
 end

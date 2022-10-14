@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  describe 'after create callbacks' do
+  describe "after create callbacks" do
     let(:user) { FactoryBot.create(:user) }
 
     it "should send new user email after a user created" do
@@ -16,7 +16,7 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe '#activity_feed' do
+  describe "#activity_feed" do
     let!(:podcast) { FactoryBot.create(:podcast) }
     let!(:episode) { FactoryBot.create(:episode, podcast_id: podcast.id) }
     let!(:user) { FactoryBot.create(:user) }
@@ -25,16 +25,22 @@ RSpec.describe User, :type => :model do
     let!(:likeable_activity) { Activity.create(activatable: Likeable.new(podcast_id: podcast.id, episode_id: episode.id), user_id: followed_user.id) }
     let!(:new_user) { FactoryBot.create(:user) }
 
-    it 'should show new users broadcastable activity' do
-      expect(user.activity_feed).to include(Activity.broadcastables.where(user_id: new_user.id).first)
+    it "should show new user's new_user_has_joined broadcastable activity" do
+      activity = Activity.broadcastables.where(user_id: new_user.id).first
+
+      expect(user.activity_feed).to include(activity)
+      expect(activity.broadcastable.action).to eq "new_user_has_joined"
     end
 
-    it 'should not show its own broadcastable activity' do
-      expect(user.activity_feed).not_to include(Activity.broadcastables.where(user_id: user.id).first)
+    it "should not show to new user its own new_user_has_joined broadcastable activity" do
+      activity = Activity.broadcastables.where(user_id: user.id).first
+
+      expect(user.activity_feed).not_to include(activity)
+      expect(activity.broadcastable.action).to eq "new_user_has_joined"
     end
 
-    it 'should show followed users likeable activity' do
-      expect(user.activity_feed).to include(Activity.likeables.where(user_id: followed_user.id).first)
+    it "should show followed user's likeable activity" do
+      expect(user.activity_feed).to include(likeable_activity)
     end
   end
 end

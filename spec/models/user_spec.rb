@@ -32,7 +32,7 @@ RSpec.describe User, :type => :model do
       expect(activity.broadcastable.action).to eq "new_user_has_joined"
     end
 
-    it "should not show to new user its own new_user_has_joined broadcastable activity" do
+    it "should not show to user its own new_user_has_joined broadcastable activity" do
       activity = Activity.broadcastables.where(user_id: user.id).first
 
       expect(user.activity_feed).not_to include(activity)

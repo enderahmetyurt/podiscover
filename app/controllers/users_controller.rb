@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.friendly.find_by_slug(params[:slug])
+    @user = User.friendly.find_by_friendly_id(params[:slug])
   end
 
   def tmp_email_generator

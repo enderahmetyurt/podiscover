@@ -64,11 +64,12 @@ class User < ApplicationRecord
 
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
+    Activity.create!(activatable: Followable.create(follower_id: id, followed_id: other_user.id, action: 'followed'), user_id: id)
   end
-
 
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
+    Activity.create!(activatable: Followable.create(follower_id: id, followed_id: other_user.id, action: 'unfollowed'), user_id: id)
   end
 
   def following?(other_user)

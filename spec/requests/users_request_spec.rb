@@ -1,5 +1,4 @@
 require 'rails_helper'
-include Warden::Test::Helpers
 
 RSpec.describe Episode, type: :request do
   let(:user) { FactoryBot.create(:user) }

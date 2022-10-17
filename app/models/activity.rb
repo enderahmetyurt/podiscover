@@ -2,5 +2,5 @@
 
 class Activity < ApplicationRecord
   belongs_to :user
-  delegated_type :activatable, types: %w[Listen Commentable Likeable Broadcastable]
+  delegated_type :activatable, types: %w[Listen Commentable Likeable Broadcastable Followable]
 end

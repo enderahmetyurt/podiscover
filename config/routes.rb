@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index]
 
-  resources :users, only: %i[index show], param: :slug do
+  resources :users, only: %i[index show] do
     member do
       get :following, :followers
       get :email_confirmation

@@ -42,5 +42,14 @@ RSpec.describe User, :type => :model do
     it "should show followed user's likeable activity" do
       expect(user.activity_feed).to include(likeable_activity)
     end
+
+    it "should create a followed activity when user starts to follow another user" do
+      expect{ user.follow(new_user) }.to change{ Followable.where(action: 'followed').count }.from(0).to(1)
+    end
+
+    it "should create an unfollowed activity when user stops to follow another user" do
+      user.follow(new_user)
+      expect{ user.unfollow(new_user) }.to change{ Followable.where(action: 'unfollowed').count }.from(0).to(1)
+    end
   end
 end

@@ -1,31 +1,48 @@
-<div class="mb-5 divide-y divide-slate-200">
-  <% @activities.each do |activity| %>
-    <div class="flex p-5">
-      <div>
-        <% if activity.user.image_url.present? %>
-          <%= image_tag activity.user.image_url, class: "w-12 h-12 rounded-full border border-gray-100 shadow-sm" %>
-        <% else %>
-          <%= image_tag "default.png", class: "w-12 h-12 rounded-full border border-gray-100 shadow-sm" %>
-        <% end %>
-      </div>
-      <div class="flex flex-col ml-5">
-        <div class="flex items-center space-x-4">
-          <span class="font-bold"><%= activity.user.display_name %></span> <span class="text-sm text-red-800"><%= time_ago_in_words(activity.created_at) %></span>
-        </div>
-        <div>
-          <% if activity.activatable_type == "Listen" %>
-            <%= activity.listen.action %> to subscribe <%= link_to activity.listen.podcast.name, podcast_path(activity.listen.podcast), class: "text-[#561ff4]" %>
-          <% elsif activity.activatable_type == "Likeable" %>
-            <%= activity.likeable.action %> <%= link_to activity.likeable.episode.name, podcast_episode_path(activity.likeable.episode.podcast, activity.likeable.episode), class: "text-[#561ff4]" %>
-          <% elsif activity.broadcastable? && activity.broadcastable.new_user_has_joined? %>
-            New user <%= link_to activity.user.display_name, user_path(activity.user_id), class: "text-[#561ff4]" %> has joined! 🎉
-          <% elsif activity.activatable_type == "Followable" %>
-            <%= activity.followable.action %> <%= link_to activity.followable.followed.display_name, user_path(activity.followable.followed.id), class: "text-[#561ff4]" %>
-          <% else %>
-            wrote a comment to <%= link_to activity.commentable.episode.name, podcast_episode_path(activity.commentable.episode.podcast, activity.commentable.episode), class: "text-[#561ff4]" %>
-          <% end %>
-        </div>
-      </div>
+<div class="w-full">
+  <div class="flex items-center justify-between">
+    <h1 class="text-4xl font-bold">Feed</h1>
+  </div>
+
+  <% if current_user.following.count.zero? %>
+    <div class="flex flex-col items-center justify-center">
+      <p class="text-gray-500">😳 You need to follow some people to see their activities</p>
+      <%= link_to 'Find some cool people 🥳', users_path %>
+    </div>
+  <% elsif @activities.empty? %>
+     <div class="flex flex-col items-center justify-center">
+      <p class="text-gray-500">😳 Your followings haven't done any activity yet </p>
     </div>
   <% end %>
+
+  <div class="mb-5 divide-y divide-slate-200">
+    <% @activities.each do |activity| %>
+      <div class="flex p-5">
+        <div>
+          <% if activity.user.image_url.present? %>
+            <%= image_tag activity.user.image_url, class: "w-12 h-12 rounded-full border border-gray-100 shadow-sm" %>
+          <% else %>
+            <%= image_tag "default.png", class: "w-12 h-12 rounded-full border border-gray-100 shadow-sm" %>
+          <% end %>
+        </div>
+        <div class="flex flex-col ml-5">
+          <div class="flex items-center space-x-4">
+            <span class="font-bold"><%= activity.user.display_name %></span> <span class="text-sm text-red-800"><%= time_ago_in_words(activity.created_at) %></span>
+          </div>
+          <div>
+            <% if activity.activatable_type == "Listen" %>
+              <%= activity.listen.action %> to subscribe <%= link_to activity.listen.podcast.name, podcast_path(activity.listen.podcast), class: "text-[#561ff4]" %>
+            <% elsif activity.activatable_type == "Likeable" %>
+              <%= activity.likeable.action %> <%= link_to activity.likeable.episode.name, podcast_episode_path(activity.likeable.episode.podcast, activity.likeable.episode), class: "text-[#561ff4]" %>
+            <% elsif activity.broadcastable? && activity.broadcastable.new_user_has_joined? %>
+              New user <%= link_to activity.user.display_name, user_path(activity.user_id), class: "text-[#561ff4]" %> has joined! 🎉
+            <% elsif activity.activatable_type == "Followable" %>
+              <%= activity.followable.action %> <%= link_to activity.followable.followed.display_name, user_path(activity.followable.followed.id), class: "text-[#561ff4]" %>
+            <% elsif activity.activatable_type == "Commentable" %>
+              wrote a comment to <%= link_to activity.commentable.episode.name, podcast_episode_path(activity.commentable.episode.podcast, activity.commentable.episode), class: "text-[#561ff4]" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

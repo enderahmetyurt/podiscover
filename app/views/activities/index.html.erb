@@ -34,9 +34,9 @@
             <% elsif activity.activatable_type == "Likeable" %>
               <%= activity.likeable.action %> <%= link_to activity.likeable.episode.name, podcast_episode_path(activity.likeable.episode.podcast, activity.likeable.episode), class: "text-[#561ff4]" %>
             <% elsif activity.broadcastable? && activity.broadcastable.new_user_has_joined? %>
-              New user <%= link_to activity.user.display_name, user_path(activity.user_id), class: "text-[#561ff4]" %> has joined! 🎉
+              New user <%= link_to activity.user.display_name, user_path(activity.user), class: "text-[#561ff4]" %> has joined! 🎉
             <% elsif activity.activatable_type == "Followable" %>
-              <%= activity.followable.action %> <%= link_to activity.followable.followed.display_name, user_path(activity.followable.followed.id), class: "text-[#561ff4]" %>
+              <%= activity.followable.action %> <%= link_to activity.followable.followed.display_name, user_path(activity.followable.followed), class: "text-[#561ff4]" %>
             <% elsif activity.activatable_type == "Commentable" %>
               wrote a comment to <%= link_to activity.commentable.episode.name, podcast_episode_path(activity.commentable.episode.podcast, activity.commentable.episode), class: "text-[#561ff4]" %>
             <% end %>

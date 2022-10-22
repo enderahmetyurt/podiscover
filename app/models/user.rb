@@ -19,6 +19,9 @@ class User < ApplicationRecord
 
   after_create :send_new_user_email, :create_broadcast_activity
 
+  extend FriendlyId
+  friendly_id :nickname, use: :slugged
+
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)
 

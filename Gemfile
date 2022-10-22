@@ -87,6 +87,7 @@ group :test do
 end
 
 gem 'devise'
+gem 'friendly_id'
 gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'
 

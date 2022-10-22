@@ -29,13 +29,13 @@ class UsersController < ApplicationController
   def allow_email_confirmation
     @user.update(allow_email_usage_at: Time.now, tmp_email: nil)
 
-    redirect_to subscriptions_path
+    redirect_to activities_path
   end
 
   def deny_email_confirmation
     @user.update(allow_email_usage_at: nil, tmp_email: tmp_email_generator)
 
-    redirect_to subscriptions_path
+    redirect_to activities_path
   end
 
   private

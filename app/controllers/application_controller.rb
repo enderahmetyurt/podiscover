@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.allow_email_usage_at.nil?
-      email_confirmation_user_path(resource) 
+      email_confirmation_user_path(resource)
     else
-      subscriptions_path
+      activities_path
     end
   end
 

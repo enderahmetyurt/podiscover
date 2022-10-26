@@ -20,7 +20,7 @@ class User < ApplicationRecord
   after_create :send_new_user_email, :create_broadcast_activity
 
   extend FriendlyId
-  friendly_id :nickname, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
 
   def self.from_omniauth(auth)
     user = User.find_by(email: auth.info.email)
@@ -113,5 +113,18 @@ class User < ApplicationRecord
   def create_broadcast_activity
     Activity.create!(activatable: Broadcastable.new(action: 'new_user_has_joined'),
                      user_id: id)
+  end
+
+  def slug_candidates
+    [
+      :sluggified_nickname,
+      [:sluggified_nickname, SecureRandom.hex(2)]
+    ]
+  end
+
+  private
+
+  def sluggified_nickname
+    nickname.parameterize
   end
 end

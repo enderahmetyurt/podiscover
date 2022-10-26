@@ -13,6 +13,6 @@ class Podcast < ApplicationRecord
   has_many :categories, through: :genres
 
   def self.today_podcast
-    where.not(podcast_of_the_day_at: nil).order(podcast_of_the_day_at: :desc).first
+    find_by(podcast_of_the_day_at: Date.today.all_day)
   end
 end

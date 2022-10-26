@@ -16,6 +16,21 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  describe "slug vales" do
+    let!(:user) { FactoryBot.create(:user, display_name: "John Doe") }
+    let(:another_user) { FactoryBot.create(:user, display_name: "John Doe") }
+
+    it "should be parameterized" do
+      expect(user.slug).to eq "john-doe"
+    end
+
+    it "should have appended 4 character uid if nickname is used as a slug for a different user" do
+      expect(user.nickname).to eq another_user.nickname
+      expect(another_user.slug).to include 'john-doe'
+      expect(another_user.slug.split('john-doe-').last.size).to eq 4
+    end
+  end
+
   describe "#activity_feed" do
     let!(:podcast) { FactoryBot.create(:podcast) }
     let!(:episode) { FactoryBot.create(:episode, podcast_id: podcast.id) }

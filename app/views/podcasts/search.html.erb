@@ -1,18 +1,27 @@
 <div class="w-full">
-  <div class="flex items-center justify-between">
-    <h1 class="text-4xl font-bold">Podcasts</h1>
-    <%= form_with(url: search_podcasts_path, method: :get, data: { turbo_frame: "podcasts" }) do |form| %>
-      <%= form.text_field :query, placeholder: "Search by podcast name", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+  <div class="flex items-center">
+    <div class="w-3/4">
+      <h1 class="text-4xl font-bold">Podcasts</h1>
+    </div>
+    <% if @podcasts.any? %>
+      <div class="w-1/4">
+        <%= render partial: "shared/search_form" %>
+      </div>
     <% end %>
   </div>
 
-  <div id="podcasts" class="grid min-w-full gap-4 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2">
-    <% if @podcasts.any? %>
+  <% if @podcasts.any? %>
+    <div id="podcasts" class="grid min-w-full gap-4 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2">
       <% @podcasts.each do |podcast| %>
-        <%= render partial: "podcast_hele", locals: { podcast: podcast } %>
+        <%= render partial: "search_result", locals: { podcast: podcast } %>
       <% end %>
-    <% else %>
-      <p class="text-lg">No podcasts found</p>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <div>
+      <div>
+        <p class="mt-5 mb-5 text-2xl ">No podcasts found</p>
+        <%= render partial: "shared/search_form" %>
+      </div>
+    </div>
+  <% end %>
 </div>

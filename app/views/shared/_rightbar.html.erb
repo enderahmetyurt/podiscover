@@ -1,8 +1,6 @@
 <div>
   <div>
-    <%= form_with(url: search_podcasts_path, method: :get, data: { turbo_frame: "podcasts" }) do |form| %>
-      <%= form.text_field :query, placeholder: "Search by podcast name", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
-    <% end %>
+    <%= render partial: "shared/search_form" %>
   </div>
   <div class="mt-5">
     <strong>Podcast of the day</strong>

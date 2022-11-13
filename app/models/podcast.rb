@@ -13,6 +13,14 @@ class Podcast < ApplicationRecord
   has_many :categories, through: :genres
 
   def self.today_podcast
-    find_by(podcast_of_the_day_at: Date.today.all_day)
+    if Rails.env.production?
+      find_by(podcast_of_the_day_at: Date.today.all_day)
+    else
+      Podcast.first
+    end
+  end
+
+  def self.search(query)
+    where("name ILIKE ?", "%#{query}%")
   end
 end

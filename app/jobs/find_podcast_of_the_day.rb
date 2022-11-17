@@ -19,8 +19,9 @@ class FindPodcastOfTheDay
   end
 
   def send_zapier(podcast)
-    uri = URI("https://hooks.zapier.com/hooks/catch/758406/bpfbsua/?podcast=#{podcast.external_url}")
-    res = Net::HTTP.post_form(uri, {})
+    uri = URI("https://hooks.zapier.com/hooks/catch/758406/bpfbsua/")
+    body = {name: podcast.name, external_url: podcast.external_url}
+    res = Net::HTTP.post_form(uri, body)
     Rails.logger.info(res.body) if res.is_a?(Net::HTTPSuccess)
   end
 end

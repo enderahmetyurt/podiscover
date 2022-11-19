@@ -20,18 +20,16 @@
       </div>
     <% end %>
 
-    <div class="divide-y">
-        <%= turbo_stream_from "activities" %>
-        <div id="activities">
-        </div>
-        <%= turbo_frame_tag "pagination", src: activities_path(format: :turbo_stream), loading: :lazy do %>
-            <div class="flex items-center justify-center mt-10">
-                <% unless @activities.empty? %>
-                    <%= image_tag "spinner.gif" %>
-                <% end %>
-            </div>
-        <% end %>
+    <%= turbo_stream_from "activities" %>
+    <div id="activities" class="divide-y">
     </div>
+    <%= turbo_frame_tag "pagination", src: activities_path(format: :turbo_stream), loading: :lazy do %>
+      <div class="flex items-center justify-center mt-10">
+        <% unless @activities.empty? %>
+            <%= image_tag "spinner.gif" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="w-1/4 ml-10">

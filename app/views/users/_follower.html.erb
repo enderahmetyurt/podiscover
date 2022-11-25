@@ -1,10 +1,13 @@
-<%= turbo_frame_tag "#{dom_id(user)}_follows", class: "grid grid-cols-2 gap-4 items-center" do %>
-  <div>
-    <%= link_to following_user_path(@user), class: 'hover:underline', 'data-turbo-frame': "_top" do %>
-      <span class="font-bold"><%= user.following.count %></span> following
+<%= turbo_frame_tag "#{dom_id(user)}_follows", class: "flex space-x-12" do %>
+  <div class="flex items-center space-x-12">
+    <%= link_to following_user_path(@user), class: 'flex flex-col items-center hover:underline', 'data-turbo-frame': "_top" do %>
+      <span class="font-bold"><%= user.following.count %></span>
+      <span class="text-xs font-medium text-gray-400">Following</span>
     <% end %>
-    <%= link_to followers_user_path(@user), class: 'hover:underline', 'data-turbo-frame': "_top" do %>
-      <span class="font-bold"><%= user.followers.count %></span> followers
+    <span class="w-1 h-1 rounded-full bg-gray-400 block"></span>
+    <%= link_to followers_user_path(@user), class: 'flex flex-col items-center hover:underline', 'data-turbo-frame': "_top" do %>
+      <span class="font-bold"><%= user.followers.count %></span>
+      <span class="text-xs font-medium text-gray-400">Followers</span>
     <% end %>
   </div>
   <div>
@@ -12,12 +15,12 @@
       <% if current_user.following?(user) %>
         <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
                     html: { method: :delete }) do |f| %>
-          <%= f.submit "Unfollow", class: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" %>
+          <%= f.submit "Unfollow", class: "bg-white border border-primary hover:bg-secondary cursor-pointer text-primary font-bold py-2 px-4 rounded-full" %>
         <% end %>
       <% else %>
         <%= form_for(current_user.active_relationships.build, id: "#{dom_id(current_user)}_follow_form") do |f| %>
           <div><%= hidden_field_tag :followed_id, user.id %></div>
-          <%= f.submit "Follow", class: "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" %>
+          <%= f.submit "Follow", class: "bg-primary border border-transparent hover:bg-secondary hover:text-primary cursor-pointer text-white font-bold py-2 px-6 rounded-full" %>
         <% end %>
       <% end %>    
     <% end %> 

@@ -28,25 +28,32 @@
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
   </head>
 
-  <body class="flex flex-col min-h-screen" <%= 'data-admin' if  current_user && current_user.is_admin? %>>
-    <section class="relative w-full px-8 text-gray-700 body-font">
-      <div class="container flex flex-wrap items-center py-5 mx-auto md:flex-row max-w-7xl">
+  <body class="flex flex-col h-screen overflow-hidden bg-gray-100" <%= 'data-admin' if  current_user && current_user.is_admin? %>>
+    <header class="relative w-full px-8 text-gray-700 body-font bg-white shadow">
+      <div class="flex flex-wrap items-center py-5 md:flex-row">
         <%= render partial: 'shared/pd_logo' %>
         <%= link_to "Podiscover", root_path, class: "relative z-10 flex items-center w-auto text-2xl font-extrabold leading-none text-black select-none" %>
       </div>
-    </section>
-    <main class="container flex flex-grow px-5 mx-auto mt-10">
-      <div class="mr-10">
+    </header>
+
+    <main class="flex flex-grow overflow-hidden">
+      <div class="w-[280px] p-8 flex flex-col flex-shrink-0 bg-white shadow">
         <%= render partial: 'shared/navbar' %>
+
+        <footer class="mt-auto">
+          <%= render partial: 'shared/footer' %>
+        </footer>
       </div>
-      <div>
+      <div class="w-full p-12 overflow-auto">
         <%= yield %>
       </div>
     </main>
-      <footer>
-        <%= render partial: 'shared/footer' %>
-      </footer>
+
   </body>
 </html>

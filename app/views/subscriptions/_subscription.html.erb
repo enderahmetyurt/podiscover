@@ -1,19 +1,19 @@
-<div id="<%= dom_id subscription %>">
+<div id="<%= dom_id subscription %>" class="bg-white transition-all hover:shadow hover:-translate-y-1 p-4 rounded-xl">
   <%= link_to(subscription.podcast) do %>
-    <div class="grid content-around gap-4 mt-6 grid-row-2">
-      <div>
+    <div class="grid content-around gap-4 grid-row-2">
+      <div class="rounded-xl">
         <% if subscription.podcast.image_urls.any? %>
-          <%= image_tag subscription.podcast.image_urls.second.url %>
+          <%= image_tag subscription.podcast.image_urls.second.url, class:"rounded-xl" %>
         <% else %>
-          <%= image_tag "podiscover.png" %>
+          <%= image_tag "podiscover.png", class:"rounded-xl" %>
         <% end %>
       </div>
       <div>
         <div class="text-lg">
           <%= subscription.podcast.name %>
         </div>
-        <div class="text-xs font-light">
-          <%= subscription.podcast.episodes.count %> current episodes
+        <div class="text-xs font-medium text-gray-400">
+          <%= subscription.podcast.episodes.count %> Current Episodes
         </div>
       </div>
     </div>

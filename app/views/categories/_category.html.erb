@@ -1,16 +1,16 @@
-<div id="<%= dom_id category %>">
-  <%= link_to(category) do %>
+<div>
+  <a href="#">
     <div class="grid content-around gap-4 mt-6 grid-row-2">
       <div>
-        <% if category.podcasts.any? %>
-          <%= image_tag category.podcasts.sample.image_urls.second.url, class: "object-cover h-48 w-96" %>
+        <% if false %>
+          <img class="object-cover h-48 w-96" src="/assets/podiscover-a5056d04d12701214de0c2ddfc7d56e87a93b2cd5629be80a2edd9798c8ccdb3.png">
         <% else %>
-          <%= image_tag "podiscover.png", class: "object-cover h-48 w-96" %>
+          <img class="object-cover h-48 w-96" src="https://i.scdn.co/image/ab67656300005f1fb52c3bf660d86c5e8a38469f">
         <% end %>
       </div>
       <div class="text-lg">
-        <%= category.name %>
+        Design & Architecture
       </div>
     </div>
-  <% end %>
+  </a>
 </div>

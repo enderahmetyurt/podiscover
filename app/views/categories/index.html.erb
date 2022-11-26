@@ -4,6 +4,8 @@
   </div>
 
   <div id="categories" class="grid min-w-full gap-4 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2">
-    <%= render @categories %>
+    <% 15.times do %>
+      <%= render "category" %>
+    <% end %>
   </div>
 </div>

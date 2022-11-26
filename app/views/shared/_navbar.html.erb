@@ -1,8 +1,17 @@
 <% if user_signed_in? %>
+  <div class="flex flex-col items-center justify-center px-8 py-6 bg-white rounded-lg shadow-sm">
+    <div>
+      <% if current_user.image_url.present? %>
+        <%= image_tag current_user.image_url, class: "w-40 h-40 bg-white rounded-full border border-gray-100 shadow-sm" %>
+      <% else %>
+        <%= image_tag "default.png", class: "w-40 h-40 bg-white rounded-full border border-gray-100 shadow-sm" %>
+      <% end %>
+    </div>
+  </div>
   <strong><%= current_user.nickname %></strong>
   <%= button_to "Logout", destroy_user_session_path, method: :delete %>
   <hr />
-  <div class="flex flex-col space-y-2 text-gray-400 font-semibold mt-5">
+  <div class="flex flex-col mt-5 space-y-2 font-semibold text-gray-400">
     <span>
       <%= link_to root_path, class: current_class?(activities_path) do %>
         <svg class="flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

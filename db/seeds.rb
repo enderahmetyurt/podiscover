@@ -631,3 +631,25 @@ podcasts.each do |podcast|
     "No genres for #{podcast[:uid]}"
   end
 end
+
+if User.first&.uid
+  user = User.first
+
+  podcast = FactoryBot.create(:podcast)
+  episode =  FactoryBot.create(:episode, podcast_id: podcast.id)
+  followed_user =  FactoryBot.create(:user)
+  relationship =  Relationship.create(follower_id: user.id, followed_id: followed_user.id)
+  likeable_activity =  Activity.create(activatable: Likeable.new(podcast_id: podcast.id, episode_id: episode.id), user_id: followed_user.id)
+  new_user =  FactoryBot.create(:user)
+
+  user.follow(new_user)
+  user.unfollow(new_user)
+  FactoryBot.create(:user)
+  Activity.create!(activatable: Commentable.new(episode_id: episode.id), user_id: followed_user.id)
+  episode2 = FactoryBot.create(:episode)
+  followed_user.follow(new_user)
+  Activity.create(activatable: Likeable.new(podcast_id: episode2.podcast.id, episode_id: episode2.id), user_id: followed_user.id)
+end
+
+
+

@@ -90,6 +90,7 @@ class User < ApplicationRecord
                      WHERE  follower_id = :user_id"
     Activity.where("user_id IN (#{following_ids})", user_id: id)
       .or(Activity.broadcastables.where.not(user_id: id))
+      .githubish_sort
       .order(created_at: :desc)
   end
 

@@ -2,37 +2,37 @@
   <strong><%= current_user.nickname %></strong>
   <%= button_to "Logout", destroy_user_session_path, method: :delete %>
   <hr />
-  <div class="flex flex-col mt-5">
-    <span>
+  <div class="flex flex-col justify-between mt-5 h-[170px]">
+    <div>
       <%= link_to root_path, class: current_class?(activities_path) do %>
-        🏡&nbsp;&nbsp;Home
+        🏡&nbsp;&nbsp;Feed
         <% end %>
-    </span>
-    <span>
+    </div>
+    <div>
       <%= link_to subscriptions_path, class: current_class?('/subscriptions')  do %>
         🎙&nbsp;&nbsp;Subscriptions
       <% end %>
-    </span>
-    <span>
+    </div>
+    <div>
       <%= link_to user_path(current_user), class: current_class?(user_path(current_user)) do %>
         📍&nbsp;&nbsp;Profile
       <% end %>
-    </span>
-    <span>
+    </div>
+    <div>
       <%= link_to users_path, class: current_class?(users_path) do %>
         👻&nbsp;&nbsp;Community
       <% end %>
-    </span>
-    <span>
+    </div>
+    <div>
       <%= link_to categories_path, class: current_class?(categories_path) do %>
-        🏷&nbsp;&nbsp;Categories
+        🗂️&nbsp;&nbsp;Categories
       <% end %>
-    </span>
+    </div>
 
-    <span class="hidden admin:block">
+    <div class="hidden admin:block">
       <%= link_to rails_admin_path, target: '_blank' do %>
         🧑‍💼&nbsp;&nbsp;Admin
       <% end %>
-    </span>
+    </div>
   </div>
 <% end %>

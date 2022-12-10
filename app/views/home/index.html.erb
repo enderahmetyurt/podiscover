@@ -13,9 +13,9 @@
             <span class="text-[#DD1B1B]">your next favourite</span>
             <span class="block text-[#561ff4] xl:inline">Podcast!</span>
           </h1>
-          <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">Find which podcasts your friends are listening to</p>
+          <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">Explore which podcasts your friends are listening to</p>
           <div class="relative flex flex-col sm:flex-row sm:space-x-4">
-            <%= button_to 'Log in with Spotify', user_spotify_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "bg-[#1db954] flex items-center w-full px-6 py-3 mb-3 text-lg text-white rounded-md sm:mb-0 sm:w-auto" %>   
+            <%= button_to 'Log in with Spotify', user_spotify_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "bg-[#1db954] flex items-center w-full px-6 py-3 mb-3 text-lg text-white rounded-md sm:mb-0 sm:w-auto" %>
           </div>
         </div>
       </div>
@@ -26,4 +26,62 @@
       </div>
     </div>
   </div>
+</section>
+
+<section class="py-20 bg-white tails-selected-element" contenteditable="true">
+    <div class="container max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold tracking-tight text-center">Features</h2>
+        <p class="mt-2 text-lg text-center text-gray-600">Check out our list of awesome features below.</p>
+        <div class="grid grid-cols-4 gap-8 mt-10 sm:grid-cols-8 lg:grid-cols-12 sm:px-8 xl:px-0">
+
+            <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <div class="p-3 text-6xl">
+                  🤖
+                </div>
+                <h4 class="text-xl font-medium text-gray-700">Easy connection</h4>
+                <p class="text-base text-center text-gray-500">Not need to add your podcasts manually.</p>
+            </div>
+
+            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <div class="p-3 text-6xl">
+                  📝
+                </div>
+                <h4 class="text-xl font-medium text-gray-700">Comments</h4>
+                <p class="text-base text-center text-gray-500">Write any comments to any podcast episodes, or see them.</p>
+            </div>
+
+            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <div class="p-3 text-6xl">
+                  💕
+                </div>
+                <h4 class="text-xl font-medium text-gray-700">Likes</h4>
+                <p class="text-base text-center text-gray-500">Give kudos to any podcast episodes.</p>
+            </div>
+
+            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <div class="p-3 text-6xl">
+                  🗂️
+                </div>
+                <h4 class="text-xl font-medium text-gray-700">Categories</h4>
+                <p class="text-base text-center text-gray-500">Find new podcasts in your favourite category.</p>
+            </div>
+
+            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <div class="p-3 text-6xl">
+                  👻
+                </div>
+                <h4 class="text-xl font-medium text-gray-700">Community</h4>
+                <p class="text-base text-center text-gray-500">Meet with new people who listen podcasts.</p>
+            </div>
+
+            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <div class="p-3 text-6xl">
+                  🔍
+                </div>
+                <h4 class="text-xl font-medium text-gray-700">Search</h4>
+                <p class="text-base text-center text-gray-500">Find podcasts by a keyword</p>
+            </div>
+
+        </div>
+    </div>
 </section>

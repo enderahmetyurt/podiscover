@@ -30,14 +30,14 @@
     </script>
   </head>
 
-  <body class="flex flex-col min-h-screen" <%= 'data-admin' if  current_user && current_user.is_admin? %>>
-    <section class="relative w-full px-8 text-gray-700 body-font">
-      <div class="container flex flex-wrap items-center py-5 mx-auto md:flex-row max-w-7xl">
+  <body class="flex flex-col min-h-screen" <%= 'data-admin' if current_user && current_user.is_admin? %>>
+    <section class="w-full">
+      <div class="flex flex-wrap items-center justify-center py-5">
         <%= render partial: 'shared/pd_logo' %>
         <%= link_to "Podiscover", root_path, class: "relative z-10 flex items-center w-auto text-2xl font-extrabold leading-none text-black select-none" %>
       </div>
     </section>
-    <main class="container flex flex-grow px-5 mx-auto mt-10">
+    <main class="flex flex-grow px-5 mx-auto mt-10 <%= "container" if current_user %>">
       <div class="mr-10">
         <%= render partial: 'shared/navbar' %>
       </div>
@@ -45,8 +45,8 @@
         <%= yield %>
       </div>
     </main>
-      <footer>
-        <%= render partial: 'shared/footer' %>
-      </footer>
+    <footer>
+      <%= render partial: 'shared/footer' %>
+    </footer>
   </body>
 </html>

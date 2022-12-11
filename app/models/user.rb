@@ -91,6 +91,7 @@ class User < ApplicationRecord
     Activity.where("user_id IN (#{following_ids})", user_id: id)
       .or(Activity.broadcastables.where.not(user_id: id))
       .order(created_at: :desc)
+      .group_by(&:activatable_type)
   end
 
   def self.image(auth)

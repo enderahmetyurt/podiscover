@@ -20,16 +20,43 @@
       </div>
     <% end %>
 
-    <%= turbo_stream_from "activities" %>
-    <div id="activities" class="divide-y">
+    <div class="divide-y">
+      <% @activities.each do |activity_group| %>
+        <% aa = activity_group.last.first %>
+        <% user = aa.user %>
+        <div data-controller="reveal" class="mt-5">
+          <div class="flex items-center mt-2" data-action="click->reveal#toggle">
+            <% if user.image_url.present? %>
+              <%= image_tag user.image_url, class: "w-12 h-12 rounded-full border border-gray-100 shadow-sm" %>
+            <% else %>
+              <%= image_tag "default.png", class: "w-12 h-12 rounded-full border border-gray-100 shadow-sm" %>
+            <% end %>
+            <div class="flex items-center w-full ml-5 space-x-10">
+              <div class="font-bold"><%= user.display_name %></div>
+              <div><%= activity_group.last.count %> <%= aa.activatable_type %></div>
+              <div class="text-sm text-red-800"><%= time_ago_in_words(aa.created_at) %></div>
+            </div>
+          </div>
+          <div class="flex flex-col hidden ml-10 bg-white" data-reveal-target="item">
+            <% activity_group.last.each do |activity|  %>
+              <div>
+                <% if activity.activatable_type == "Listen" %>
+                  <%= activity.listen.action %> to subscribe <%= link_to activity.listen.podcast.name, podcast_path(activity.listen.podcast), class: "text-[#561ff4]" %>
+                <% elsif activity.activatable_type == "Likeable" %>
+                  <%= activity.likeable.action %> <%= link_to activity.likeable.episode.name, podcast_episode_path(activity.likeable.episode.podcast, activity.likeable.episode), class: "text-[#561ff4]" %>
+                <% elsif activity.broadcastable? && activity.broadcastable.new_user_has_joined? %>
+                  New user <%= link_to activity.user.display_name, user_path(activity.user), class: "text-[#561ff4]" %> has joined! 🎉
+                <% elsif activity.activatable_type == "Followable" %>
+                  <%= activity.followable.action %> <%= link_to activity.followable.followed.display_name, user_path(activity.followable.followed), class: "text-[#561ff4]" %>
+                <% elsif activity.activatable_type == "Commentable" %>
+                  wrote a comment to <%= link_to activity.commentable.episode.name, podcast_episode_path(activity.commentable.episode.podcast, activity.commentable.episode), class: "text-[#561ff4]" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <%= turbo_frame_tag "pagination", src: activities_path(format: :turbo_stream), loading: :lazy do %>
-      <div class="flex items-center justify-center mt-10">
-        <% unless @activities.empty? %>
-            <%= image_tag "spinner.gif" %>
-        <% end %>
-      </div>
-    <% end %>
   </div>
 
   <div class="w-1/4 ml-10">

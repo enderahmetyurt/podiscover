@@ -5,7 +5,8 @@ class ActivitiesController < ApplicationController
 
   def index
     @podcast = Podcast.today_podcast
-    activities = current_user.activity_feed
-    @pagy, @activities = pagy_array(activities, items: 30)
+    @activities = current_user.activity_feed
+
+    # @pagy, @activities = pagy_array(activities, items: 30)
   end
 end

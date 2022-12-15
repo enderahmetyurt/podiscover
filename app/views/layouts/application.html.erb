@@ -36,15 +36,20 @@
 
   <body class="flex flex-col h-screen overflow-hidden bg-gray-100" <%= 'data-admin' if  current_user && current_user.is_admin? %>>
     <header class="relative w-full px-8 text-gray-700 body-font bg-white shadow">
-      <div class="flex flex-wrap items-center py-5 md:flex-row">
+    
+      <div class="flex items-center justify-between py-4">
+
         <%= render partial: 'shared/pd_logo' %>
-        <%= link_to "Podiscover", root_path, class: "relative z-10 flex items-center w-auto text-2xl font-extrabold leading-none text-black select-none" %>
+        <div class="block lg:hidden">
+          <%= render partial: 'shared/navbar' %>
+        </div>
       </div>
+
     </header>
 
     <main class="flex flex-grow overflow-hidden">
-      <div class="w-[280px] p-8 flex flex-col flex-shrink-0 bg-white shadow">
-        <div>
+      <div class="hidden lg:flex w-[280px] p-8 flex-col flex-shrink-0 bg-white shadow">
+        <div class="flex flex-col h-full">
           <%= render partial: 'shared/navbar' %>
 
           <footer class="mt-auto">

@@ -1,24 +1,21 @@
 <% if user_signed_in? %>
-  <div class="flex flex-col items-center justify-center px-8 py-6 bg-white rounded-lg shadow-sm">
-    <div>
-      <% if current_user.image_url.present? %>
-        <%= image_tag current_user.image_url, class: "w-40 h-40 bg-white rounded-full border border-gray-100 shadow-sm" %>
-      <% else %>
-        <%= image_tag "default.png", class: "w-40 h-40 bg-white rounded-full border border-gray-100 shadow-sm" %>
-      <% end %>
-    </div>
+  <div class="flex items-center">
+    <% if current_user.image_url.present? %>
+      <%= image_tag current_user.image_url, class: "flex-shrink-0 w-12 h-12 bg-white rounded-full border border-gray-100 shadow-sm" %>
+    <% else %>
+      <%= image_tag "default.png", class: "flex-shrink-0 w-12 h-12 bg-white rounded-full border border-gray-100 shadow-sm" %>
+    <% end %>
+    <strong class="hidden lg:block ml-4"><%= current_user.nickname %></strong>
   </div>
-  <strong><%= current_user.nickname %></strong>
-  <%= button_to "Logout", destroy_user_session_path, method: :delete %>
-  <hr />
-  <div class="flex flex-col mt-5 space-y-2 font-semibold text-gray-400">
-    <span>
+  <hr class="hidden lg:block my-4 border-gray-100" />
+  <div class="absolute lg:relative right-0 mx-8 lg:mx-0 bg-white lg:bg-transparent rounded-2xl lg:rounded-none shadow lg:shadow-none py-4 px-2 lg:p-0 z-40">
+    <div>
       <%= link_to root_path, class: current_class?(activities_path) do %>
         <svg class="flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M22.4042 9.57873L13.2376 1.468C12.8996 1.16696 12.4582 1 12.0001 1C11.5421 1 11.1006 1.16696 10.7626 1.468L1.59607 9.57873C1.40839 9.74591 1.2585 9.94929 1.15592 10.1759C1.05334 10.4026 1.00033 10.6475 1.00024 10.8952V21.1703C0.992792 21.6203 1.15597 22.0572 1.45857 22.3975C1.63032 22.5876 1.84189 22.7398 2.07905 22.8437C2.31622 22.9476 2.57349 23.0009 2.83356 22.9999H8.3335C8.57661 22.9999 8.80976 22.9059 8.98167 22.7385C9.15358 22.5711 9.25015 22.3441 9.25015 22.1074V16.7523C9.25015 16.5156 9.34673 16.2886 9.51864 16.1212C9.69054 15.9538 9.9237 15.8598 10.1668 15.8598H13.8334C14.0765 15.8598 14.3097 15.9538 14.4816 16.1212C14.6535 16.2886 14.7501 16.5156 14.7501 16.7523V22.1074C14.7501 22.3441 14.8467 22.5711 15.0186 22.7385C15.1905 22.9059 15.4236 22.9999 15.6667 22.9999H21.1667C21.4708 23.0025 21.7705 22.9296 22.0375 22.788C22.3281 22.6339 22.5707 22.4066 22.7401 22.1298C22.9094 21.8531 22.9992 21.537 23 21.2149V10.8952C22.9999 10.6475 22.9469 10.4026 22.8443 10.1759C22.7417 9.94929 22.5919 9.74591 22.4042 9.57873V9.57873Z" fill="#F06B80"/>
         </svg>
         <span>Feed</span>
-        <% end %>
+      <% end %>
     </div>
     <div>
       <%= link_to subscriptions_path, class: current_class?('/subscriptions')  do %>

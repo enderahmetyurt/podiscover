@@ -44,11 +44,13 @@
 
     <main class="flex flex-grow overflow-hidden">
       <div class="w-[280px] p-8 flex flex-col flex-shrink-0 bg-white shadow">
-        <%= render partial: 'shared/navbar' %>
+        <div>
+          <%= render partial: 'shared/navbar' %>
 
-        <footer class="mt-auto">
-          <%= render partial: 'shared/footer' %>
-        </footer>
+          <footer class="mt-auto">
+            <%= render partial: 'shared/footer' %>
+          </footer>
+        </div>
       </div>
       <div class="w-full p-12 overflow-auto">
         <%= yield %>

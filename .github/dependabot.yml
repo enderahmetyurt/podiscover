@@ -3,4 +3,4 @@ registries:
   gem-fury:
     type: rubygems-server
     url: https://gem.fury.io/enderahmetyurt
-    token: "${{secrets.BUNDLE_GEM__FURY__IO}}"
+    token: ${{secrets.BUNDLE_GEM__FURY__IO}}

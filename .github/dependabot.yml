@@ -4,3 +4,12 @@ registries:
     type: rubygems-server
     url: https://gem.fury.io/enderahmetyurt
     token: ${{secrets.BUNDLE_GEM__FURY__IO}}
+
+updates:
+- package-ecosystem: bundler
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 15
+  insecure-external-code-execution: allow

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_23_152442) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_17_085856) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -142,6 +142,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_152442) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "openai_requests", force: :cascade do |t|
+    t.text "prompt"
+    t.text "result"
+    t.integer "user_id"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "podcasts", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -190,6 +199,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_23_152442) do
     t.datetime "allow_email_usage_at"
     t.string "tmp_email"
     t.string "slug"
+    t.integer "daily_openai_credit", default: 5, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true

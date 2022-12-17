@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   has_many :activities, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :openai_requests
 
   after_create :send_new_user_email, :create_broadcast_activity
 
@@ -120,6 +121,11 @@ class User < ApplicationRecord
       :sluggified_nickname,
       [:sluggified_nickname, SecureRandom.hex(2)]
     ]
+  end
+
+
+  def can_openai?
+    daily_openai_credit > 0
   end
 
   private

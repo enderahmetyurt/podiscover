@@ -41,6 +41,7 @@ class User < ApplicationRecord
       user.external_url = auth.info.external_urls['spotify']
       user.image_url = image(auth)
       user.password = Devise.friendly_token[0, 20]
+      user.daily_openai_credit = 10
 
       user.save!
     end

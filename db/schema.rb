@@ -199,7 +199,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_085856) do
     t.datetime "allow_email_usage_at"
     t.string "tmp_email"
     t.string "slug"
-    t.integer "daily_openai_credit", default: 5, null: false
+    t.integer "daily_openai_credit", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true

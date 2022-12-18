@@ -30,4 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  openai:
+    results:
+      quota_problem: "Sorry I cannot answer your any question for today since your daily quota is over. Please come back tomorrow 👋"
+      no_answer: "I don't have any answer for you :/"
+      error: "I cannot say anything sorry :("
+

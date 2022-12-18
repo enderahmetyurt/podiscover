@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   has_many :activities, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :openai_requests
 
   after_create :send_new_user_email, :create_broadcast_activity
 
@@ -40,6 +41,7 @@ class User < ApplicationRecord
       user.external_url = auth.info.external_urls['spotify']
       user.image_url = image(auth)
       user.password = Devise.friendly_token[0, 20]
+      user.daily_openai_credit = 10
 
       user.save!
     end
@@ -120,6 +122,11 @@ class User < ApplicationRecord
       :sluggified_nickname,
       [:sluggified_nickname, SecureRandom.hex(2)]
     ]
+  end
+
+
+  def can_openai?
+    daily_openai_credit > 0
   end
 
   private

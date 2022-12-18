@@ -1,0 +1,18 @@
+<div class="w-full">
+  <div class="flex items-center">
+    <div class="w-3/4">
+      <h1 class="text-4xl font-bold">Discover</h1>
+      <div class="flex flex-col items-center justify-center w-full h-full px-5 py-20 mx-auto space-y-5 max-w-7xl tails-selected-element" contenteditable="true">
+          <div class="flex w-full rounded-md h-1/2">
+            🤡 <%= @prompt %>
+          </div>
+          <div class="flex w-full mt-5 rounded-md h-1/2">
+            🤖 <%= @result %>
+          </div>
+      </div>
+      <% if current_user.can_openai? %>
+        <%= link_to "Ask me Again 🤓", discovers_path %>
+      <% end %>
+    </div>
+  </div>
+</div>

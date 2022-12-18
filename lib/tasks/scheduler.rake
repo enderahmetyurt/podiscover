@@ -18,3 +18,10 @@ task find_daily_podcast: :environment do
   FindPodcastOfTheDay.perform_async
   puts "Finished finding podcast of the day"
 end
+
+desc "Reset users openai credits"
+task reset_user_openai_credits: :environment do
+  puts "Start reset"
+  User.update_all(daily_openai_credit: 5)
+  puts "Finished reset"
+end

@@ -34,17 +34,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
   </head>
 
-  <body class="flex flex-col h-screen overflow-hidden bg-gray-100" <%= 'data-admin' if  current_user && current_user.is_admin? %>>
-    <header class="relative w-full px-8 text-gray-700 bg-white shadow body-font">
-      <div class="flex flex-wrap items-center py-5 md:flex-row">
+  <body class="flex flex-col bg-gray-100" <%= 'data-admin' if  current_user && current_user.is_admin? %>>
+    <header class="relative w-full lg:px-8 text-gray-700 bg-white body-font">
+      <div class="max-w-6xl mx-auto px-4 flex flex-wrap items-center py-5 md:flex-row">
         <%= render partial: 'shared/pd_logo' %>
-        <%= link_to "Podiscover", root_path, class: "relative z-10 flex items-center w-auto text-2xl font-extrabold leading-none text-black select-none" %>
       </div>
     </header>
 
-    <main class="flex flex-grow overflow-hidden">
+    <main class="flex flex-grow">
 
-      <div class="w-full p-12 overflow-auto">
+      <div class="w-full">
         <%= yield %>
       </div>
     </main>

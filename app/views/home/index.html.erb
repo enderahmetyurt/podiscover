@@ -5,85 +5,91 @@
 <% end %>
 <div>
 <section class="px-2 bg-white py-15 md:px-0">
-  <div class="container items-center max-w-6xl px-8 mx-auto xl:px-5">
-    <div class="flex flex-wrap items-center sm:-mx-3">
-      <div class="w-full md:w-1/2 md:px-3">
+  <div class="container items-center max-w-6xl py-12 px-4 mx-auto">
+    <div class="flex flex-col-reverse lg:flex-row items-center">
+      <div class="w-full md:w-1/2">
         <div class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
-          <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl">
-            <span class="block xl:inline text-[#561ff4]">Discover</span>
-            <span class="text-[#DD1B1B]">your next favourite</span>
-            <span class="block text-[#561ff4] xl:inline">Podcast!</span>
+          <h1 class="text-4xl font-extrabold xl:leading-tight tracking-tight text-gray-900 sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl">
+            Discover Your Next Favorite Podcast <span class="text-[#8674F6]"> With <span class="font-black">Podiscover!</span> </span>
           </h1>
           <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">Explore which podcasts your friends are listening to</p>
           <div class="relative flex flex-col sm:flex-row sm:space-x-4">
-            <%= button_to 'Log in with Spotify', user_spotify_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "bg-[#1db954] flex items-center w-full px-6 py-3 mb-3 text-lg text-white rounded-md sm:mb-0 sm:w-auto" %>
+            <%= button_to 'Log in with Spotify', user_spotify_omniauth_authorize_path, method: :post, data: { turbo: "false" }, class: "bg-[#1FD662] flex items-center w-full px-8 py-3 mb-3 text-lg text-white rounded-full sm:mb-0 sm:w-auto" %>
           </div>
         </div>
       </div>
       <div class="w-full md:w-1/2">
-        <div class="w-full h-auto overflow-hidden rounded-md shadow-xl sm:rounded-xl">
-            <img src="https://cdn.devdojo.com/images/november2020/hero-image.jpeg">
+        <div class="w-full h-auto overflow-hidden">
+            <%= image_tag "hero.png" %>
           </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="py-20 bg-white tails-selected-element" contenteditable="true">
+<section class="py-20 bg-[#F4F4F8] tails-selected-element">
     <div class="container max-w-6xl mx-auto">
-        <h2 class="text-4xl font-bold tracking-tight text-center">Features</h2>
-        <p class="mt-2 text-lg text-center text-gray-600">Check out our list of awesome features below.</p>
-        <div class="grid grid-cols-4 gap-8 mt-10 sm:grid-cols-8 lg:grid-cols-12 sm:px-8 xl:px-0">
+        <h2 class="text-lg font-bold tracking-tight text-center text-[#8674F6]">Features</h2>
+        <p class="max-w-3xl mx-auto mt-2 text-5xl px-4 font-semibold text-center text-[#262729]">Check out our list of awesome features below.</p>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-8 mt-10 sm:px-8 xl:px-0">
 
-            <div class="relative flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
-                <div class="p-3 text-6xl">
-                  🤖
-                </div>
-                <h4 class="text-xl font-medium text-gray-700">Easy connection</h4>
+            <div class="text-center px-2 lg:px-8 py-12" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <%= image_tag "easy-connection.svg", class:"mx-auto" %>
+                <h4 class="mt-4 mb-2 text-xl font-semibold text-gray-700">Easy connection</h4>
                 <p class="text-base text-center text-gray-500">Not need to add your podcasts manually.</p>
             </div>
 
-            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
-                <div class="p-3 text-6xl">
-                  📝
-                </div>
-                <h4 class="text-xl font-medium text-gray-700">Comments</h4>
+            <div class="text-center px-2 lg:px-8 py-12" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <%= image_tag "comments.svg", class:"mx-auto" %>
+                <h4 class="mt-4 mb-2 text-xl font-semibold text-gray-700">Comments</h4>
                 <p class="text-base text-center text-gray-500">Write any comments to any podcast episodes, or see them.</p>
             </div>
 
-            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
-                <div class="p-3 text-6xl">
-                  💕
-                </div>
-                <h4 class="text-xl font-medium text-gray-700">Likes</h4>
+            <div class="text-center px-2 lg:px-8 py-12" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <%= image_tag "likes.svg", class:"mx-auto" %>
+                <h4 class="mt-4 mb-2 text-xl font-semibold text-gray-700">Likes</h4>
                 <p class="text-base text-center text-gray-500">Give kudos to any podcast episodes.</p>
             </div>
 
-            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
-                <div class="p-3 text-6xl">
-                  🗂️
-                </div>
-                <h4 class="text-xl font-medium text-gray-700">Categories</h4>
+            <div class="text-center px-2 lg:px-8 py-12" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <%= image_tag "categories.svg", class:"mx-auto" %>
+                <h4 class="mt-4 mb-2 text-xl font-semibold text-gray-700">Categories</h4>
                 <p class="text-base text-center text-gray-500">Find new podcasts in your favourite category.</p>
             </div>
 
-            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
-                <div class="p-3 text-6xl">
-                  👻
-                </div>
-                <h4 class="text-xl font-medium text-gray-700">Community</h4>
+            <div class="text-center px-2 lg:px-8 py-12" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <%= image_tag "community.svg", class:"mx-auto" %>
+                <h4 class="mt-4 mb-2 text-xl font-semibold text-gray-700">Community</h4>
                 <p class="text-base text-center text-gray-500">Meet with new people who listen podcasts.</p>
             </div>
 
-            <div class="flex flex-col items-center justify-between col-span-4 px-8 py-12 space-y-4 bg-gray-100 sm:rounded-xl" data-rounded="rounded-xl" data-rounded-max="rounded-full">
-                <div class="p-3 text-6xl">
-                  🔍
-                </div>
-                <h4 class="text-xl font-medium text-gray-700">Search</h4>
+            <div class="text-center px-2 lg:px-8 py-12" data-rounded="rounded-xl" data-rounded-max="rounded-full">
+                <%= image_tag "search.svg", class:"mx-auto" %>
+                <h4 class="mt-4 mb-2 text-xl font-semibold text-gray-700">Search</h4>
                 <p class="text-base text-center text-gray-500">Find podcasts by a keyword</p>
             </div>
 
         </div>
     </div>
 </section>
-</div>
+
+<footer class="bg-white flex flex-col lg:flex-row justify-between items-center py-8 px-4 lg:px-12">
+  <div class="flex items-center mb-4 lg:mb-0">
+    <%= render partial: 'shared/pd_logo' %>
+    <div class="ml-4 flex items-center justify-between">
+      <span class="flex space-x-4 mt-4">
+        <a href="https://twitter.com/podiscoverme" class="text-gray-400 hover:text-gray-500" target="_blank">
+          <span class="sr-only">Twitter</span>
+          <svg id="SvgjsSvg1041" width="30" height="30" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1042"></defs><g id="SvgjsG1043"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6-18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6.8 15 2.5 22.1-80.5-4-151.9-42.6-199.6-101.3-8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7-16-.4-31-4.8-44-12.1v1.2c0 47 33.4 86.1 77.7 95-8.1 2.2-16.7 3.4-25.5 3.4-6.2 0-12.3-.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3-33.1 26-74.9 41.5-120.3 41.5-7.8 0-15.5-.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-.1-8.4-.3-12.5C462.6 146 479 129 492 109.5z" fill="#6b7280" class="color000 svgShape"></path></svg></g></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/podiscoverme" class="text-gray-400 hover:text-gray-500" target="_blank">
+          <span class="sr-only">Linkedin</span>
+          <svg id="SvgjsSvg1026" width="30" height="30" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1027"></defs><g id="SvgjsG1028"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path d="M417.2 64H96.8C79.3 64 64 76.6 64 93.9V415c0 17.4 15.3 32.9 32.8 32.9h320.3c17.6 0 30.8-15.6 30.8-32.9V93.9C448 76.6 434.7 64 417.2 64zM183 384h-55V213h55v171zm-25.6-197h-.4c-17.6 0-29-13.1-29-29.5 0-16.7 11.7-29.5 29.7-29.5s29 12.7 29.4 29.5c0 16.4-11.4 29.5-29.7 29.5zM384 384h-55v-93.5c0-22.4-8-37.7-27.9-37.7-15.2 0-24.2 10.3-28.2 20.3-1.5 3.6-1.9 8.5-1.9 13.5V384h-55V213h55v23.8c8-11.4 20.5-27.8 49.6-27.8 36.1 0 63.4 23.8 63.4 75.1V384z" fill="#6b7280" class="color000 svgShape"></path></svg></g></svg>
+        </a>
+      </span>
+    </div>
+	</div>
+  <p class="text-sm text-gray-500 font-medium">
+    © 2022 Podiscover - Discover new Podcasts
+  </p>
+</footer>

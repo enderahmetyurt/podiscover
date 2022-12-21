@@ -12,4 +12,10 @@ module ApplicationHelper
       "hover:bg-gray-50 #{default_classes}" 
     end
   end
+
+  def pretty_openai_quota
+    daily_openai_credit = current_user.daily_openai_credit
+
+    daily_openai_credit.negative? ? 0 : daily_openai_credit
+  end
 end

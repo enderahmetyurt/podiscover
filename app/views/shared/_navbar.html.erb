@@ -53,6 +53,11 @@
         <span>Categories</span>
       <% end %>
     </div>
+    <div>
+      <%= link_to discovers_path, class: current_class?(discovers_path) do %>
+        🤖&nbsp;&nbsp;Discover
+      <% end %>
+    </div>
 
     <div class="hidden admin:block">
       <%= link_to rails_admin_path, target: '_blank' do %>

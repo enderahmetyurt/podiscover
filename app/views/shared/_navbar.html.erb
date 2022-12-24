@@ -5,10 +5,10 @@
     <% else %>
       <%= image_tag "default.png", class: "flex-shrink-0 w-12 h-12 bg-white rounded-full border border-gray-100 shadow-sm" %>
     <% end %>
-    <strong class="hidden lg:block ml-4"><%= current_user.nickname %></strong>
+    <strong class="hidden ml-4 lg:block"><%= current_user.nickname %></strong>
   </div>
-  <hr class="hidden lg:block my-4 border-gray-100" />
-  <div class="fixed lg:relative bottom-0 left-0 right-0 flex flex-row lg:flex-col justify-between mx-0 bg-white lg:bg-transparent rounded-2xl lg:rounded-none shadow lg:shadow-none py-4 px-2 lg:p-0 z-40">
+  <hr class="hidden my-4 border-gray-100 lg:block" />
+  <div class="fixed bottom-0 left-0 right-0 z-40 flex flex-row justify-between px-2 py-4 mx-0 bg-white shadow lg:relative lg:flex-col lg:bg-transparent rounded-2xl lg:rounded-none lg:shadow-none lg:p-0">
     <div>
       <%= link_to root_path, class: current_class?(activities_path) do %>
         <svg class="flex-shrink-0" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,9 +63,9 @@
     </div>
 
     <div class="hidden admin:block">
-      <%= link_to rails_admin_path, target: '_blank' do %>
-        🧑‍💼&nbsp;&nbsp;
-        <span class="hidden lg:block">Admin</span>
+      <hr>
+      <%= link_to rails_admin_path do %>
+        <span class="hidden mt-5 ml-5 text-red-500 lg:block">Admin</span>
       <% end %>
     </div>
   </div>

@@ -170,7 +170,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    loofah (2.19.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -197,9 +197,9 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.9-arm64-darwin)
+    nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.9-x86_64-linux)
+    nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.9)
       faraday (>= 0.17.3, < 3.0)
@@ -227,7 +227,7 @@ GEM
     public_suffix (4.0.6)
     puma (5.6.2)
       nio4r (~> 2.0)
-    racc (1.6.0)
+    racc (1.6.2)
     rack (2.2.4)
     rack-protection (2.2.0)
       rack

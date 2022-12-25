@@ -1,11 +1,12 @@
-<%= turbo_frame_tag "#{dom_id(episode)}_likes" do %>
-	<p class="my-5">
-		<strong class="block mb-1 font-medium">Like Count:</strong>
-		<%= episode.likes %>
-	</p>
-	<% if action == 'like' %>
-		<%= button_to 'Like!', podcast_episode_like_path(episode.podcast, episode), method: :patch, data: { turbo_frame: '_top' }, class: "text-green-500 font-bold" %>
-	<% else %>
-		<%= button_to 'Dislike!', podcast_episode_dislike_path(episode.podcast, episode), method: :patch, data: { turbo_frame: '_top' }, class: "text-red-500 font-bold" %>
+<div>
+	<%= turbo_frame_tag "#{dom_id(episode)}_likes", class: "flex items-center" do %>
+		<div>
+			<% if action == 'like' %>
+				<%= button_to image_tag("thumps_up.svg"), podcast_episode_like_path(episode.podcast, episode), method: :patch, data: { turbo_frame: '_top' }, class:"mx-auto mr-2" %>
+			<% else %>
+				<%= button_to image_tag("thumps_up_colored.svg"), podcast_episode_dislike_path(episode.podcast, episode), method: :patch, data: { turbo_frame: '_top' }, class:"mx-auto mr-2" %>
+			<% end %>
+		</div>
+		<div><%= episode.likes %></div>
 	<% end %>
-<% end %>
+</div>

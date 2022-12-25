@@ -1,66 +1,30 @@
 <div class="flex w-full mx-auto">
   <div>
-    <div class="flex flex-col items-center justify-start my-5 sm:flex-row">
-      <% if @podcast.image_urls.any? %>
-        <%= image_tag @podcast.image_urls.second.url %>
-      <% else %>
-        <%= image_tag "podiscover.png" %>
-      <% end %>
-      <% if action_name == "show" %>
-        <%= link_to  @podcast.external_url, class: "flex items-center", target: "_blank" do %>
-          <%= image_tag "spotify_logo.png", class: "ml-5 w-8 h-8" %>
-          <span class="ml-2 bg-transparent text-[#1db954] font-semibold">See on Spotify</span>
+    <div class="flex justify-start my-5 sm:flex-row rounded-xl">
+      <div class="flex flex-col items-center">
+        <% if @podcast.image_urls.any? %>
+          <%= image_tag @podcast.image_urls.second.url, class:"rounded-xl" %>
+        <% else %>
+          <%= image_tag "podiscover.png", class:"rounded-xl" %>
         <% end %>
-      <% end %>
-    </div>
-
-    <p class="my-5">
-      <strong class="block mb-1 font-medium">Name:</strong>
-      <%= @podcast.name %>
-    </p>
-
-    <p class="my-5">
-      <strong class="block mb-1 font-medium">Publisher:</strong>
-      <%= @podcast.publisher %>
-    </p>
-
-    <p class="my-5">
-      <strong class="block mb-1 font-medium">Description:</strong>
-      <%= @podcast.description %>
-    </p>
-
-    <p class="my-5">
-      <strong class="block mb-1 font-medium">Subscribers:</strong>
-      <% @podcast.users.each_with_index do |listener, index| %>
-        <%= link_to listener.nickname, listener, class: "text-blue-500" %>
-        <% unless @podcast.users.count-1 == index %>
-          <%= " and " %>
-        <% end %>
-      <% end %>
-    </p>
-
-    <% if @podcast.categories.any? %>
-      <p class="my-5">
-        <strong class="block mb-1 font-medium">Categories:</strong>
-        <% @podcast.categories.each do |category| %>
-          <%= link_to category.name, category_path(category), class: "text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 uppercase last:mr-0 mr-1" %>
-        <% end %>
-      </p>
-    <% end %>
-
-    <% if @episodes.any? %>
-      <h2 class="mt-16 text-xl font-bold">Last <%= @episodes.count %> Episodes</h2>
-      <div class="mb-10">
-        <% @episodes.each_with_index do |episode, index| %>
-          <%= render partial: 'episodes/episode', locals: { episode: episode } %>
-
-          <% if @episodes.count != index+1 %>
-            <hr class="my-5">
+        <% if action_name == "show" %>
+          <%= link_to  @podcast.external_url, class: "flex items-center mt-5", target: "_blank" do %>
+            <%= image_tag "spotify_logo.png", class: "ml-5 w-8 h-8" %>
+            <span class="ml-2 bg-transparent text-[#1db954] font-semibold">See on Spotify</span>
           <% end %>
         <% end %>
       </div>
-
-       <%= link_to 'All episodes', podcast_episodes_path(@podcast), class: "font-medium" %>
+      <div class="flex flex-col w-1/2 ml-5">
+        <div class="text-3xl font-extrabold"><%= @podcast.name %></div>
+        <div class="mt-1 text-xl font-bold text-gray-500"><%= @podcast.publisher %></div>
+        <div class="mt-8 text-sm font-medium leading-relaxed text-gray-500"><%= @podcast.description %></div>
+      </div>
+    </div>
+    <% if @episodes.any? %>
+      <h2 class="mt-16 mb-10 text-xl font-bold">Last <%= @episodes.count %> Episodes</h2>
+      <% @episodes.each_with_index do |episode, index| %>
+        <%= render partial: 'episodes/episode', locals: { episode: episode } %>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -9,8 +9,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Manrope', ...defaultTheme.fontFamily.sans],
       },
+      colors: {
+        'primary': '#8674F6',
+        'secondary': '#F0EEFF',
+      }
     },
   },
   plugins: [

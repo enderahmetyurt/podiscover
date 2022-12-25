@@ -1,11 +1,11 @@
-<div id="<%= dom_id category %>">
+<div class="p-4 transition-all bg-white hover:shadow hover:-translate-y-1 rounded-xl" id="<%= dom_id category %>">
   <%= link_to(category) do %>
-    <div class="grid content-around gap-4 mt-6 grid-row-2">
+    <div class="grid content-around gap-4 grid-row-2">
       <div>
         <% if category.podcasts.any? %>
-          <%= image_tag category.podcasts.sample.image_urls.second.url, class: "object-cover h-48 w-96" %>
+          <%= image_tag category.podcasts.sample.image_urls.second.url, class: "object-cover h-48 rounded-xl w-96" %>
         <% else %>
-          <%= image_tag "podiscover.png", class: "object-cover h-48 w-96" %>
+          <%= image_tag "podiscover.png", class: "object-cover h-48 rounded-xl w-96" %>
         <% end %>
       </div>
       <div class="text-lg">

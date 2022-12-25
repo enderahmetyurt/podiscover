@@ -4,9 +4,10 @@
   </div>
 
   <% if @subscriptions.empty? %>
-    <div class="flex flex-col items-center justify-center">
+    <div class="flex flex-col items-center justify-center bg-white rounded-xl p-12">
       <p class="text-gray-500">😳 You need to follow some people to see their podcasts</p>
-      <%= link_to 'Find some cool people 🥳', users_path %>
+      <%= image_tag "not-found.svg", class:"my-12" %>
+      <%=  link_to 'Find some cool people 🥳', users_path, class:"bg-primary text-white rounded-full px-6 py-2" %>
     </div>
   <% end %>
 

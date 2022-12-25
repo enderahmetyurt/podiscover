@@ -1,7 +1,7 @@
 <div class="flex flex-row">
   <div class="w-3/4 mb-5 divide-slate-200">
     <div>
-      <div class="flex justify-start my-5 sm:flex-row rounded-xl">
+      <div class="flex justify-start p-8 bg-white sm:flex-row rounded-xl">
         <div class="flex flex-col items-center">
           <% if @podcast.image_urls.any? %>
             <%= image_tag @podcast.image_urls.second.url, class:"rounded-xl" %>

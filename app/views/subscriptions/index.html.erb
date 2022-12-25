@@ -13,7 +13,7 @@
     <% end %>
 
     <%= turbo_stream_from "activities" %>
-    <div id="subscriptions" class="grid gap-4 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2">
+    <div id="subscriptions" class="grid gap-4 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2">
     </div>
     <%= turbo_frame_tag "pagination", src: subscriptions_path(format: :turbo_stream), loading: :lazy do %>
       <div class="flex items-center justify-center mt-10">

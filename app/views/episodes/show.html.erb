@@ -12,7 +12,7 @@
 <div class="flex flex-row">
   <div class="w-3/4 mb-5 divide-slate-200">
     <div class="flex justify-start p-8 bg-white sm:flex-row rounded-xl">
-      <div class="flex flex-col items-center w-1/2">
+      <div class="flex flex-col items-center w-fit">
         <% if @episode.episode_image_urls.any? %>
           <%= image_tag @episode.episode_image_urls.second.url, class:"rounded-xl" %>
         <% else %>
@@ -71,7 +71,7 @@
       <% end %>
     <% end %>
   </div>
-  <div class="w-1/4 ml-10">
+  <div class="hidden w-1/4 ml-10 lg:block">
     <%= render partial: 'shared/rightbar', locals: { podcast: today_podcast } %>
   </div>
 </div>

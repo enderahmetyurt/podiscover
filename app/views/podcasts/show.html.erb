@@ -3,7 +3,7 @@
     <div>
       <div class="justify-start p-8 bg-white sm:flex-row rounded-xl">
         <div class="flex">
-          <div class="flex flex-col items-center w-1/2">
+          <div class="flex flex-col items-center w-fit">
             <% if @podcast.image_urls.any? %>
               <%= image_tag @podcast.image_urls.second.url, class:"rounded-xl" %>
             <% else %>
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <div class="w-1/4 ml-10">
+  <div class="hidden w-1/4 ml-10 lg:block">
     <%= render partial: 'shared/rightbar', locals: { podcast: today_podcast } %>
   </div>
 </div>

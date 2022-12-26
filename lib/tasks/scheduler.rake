@@ -25,3 +25,17 @@ task reset_user_openai_credits: :environment do
   User.update_all(daily_openai_credit: 5)
   puts "Finished reset"
 end
+
+desc "Set nil non reachable users image urls"
+task fix_user_image_urls: :environment do
+  puts "Start fixing"
+  User.all.each do |user|
+    puts "user: #{user.id} image_url: #{user.image_url}"
+    begin
+      URI.open(user.image_url)
+    rescue
+      user.update(image_url: nil)
+    end
+  end
+  puts "Finish fixing"
+end

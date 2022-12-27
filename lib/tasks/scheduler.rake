@@ -22,7 +22,7 @@ end
 desc "Reset users openai credits"
 task reset_user_openai_credits: :environment do
   puts "Start reset"
-  User.update_all(daily_openai_credit: 5)
+  User.update_all(daily_openai_credit: 10)
   puts "Finished reset"
 end
 

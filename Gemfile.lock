@@ -225,7 +225,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
-    puma (5.6.2)
+    puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.4)
@@ -391,7 +391,7 @@ DEPENDENCIES
   pagy (~> 5.10)
   pg (~> 1.1)
   pry
-  puma (~> 5.0)
+  puma (~> 5.6)
   rails (= 7.0.4)
   rails_admin
   redis (~> 4.0)

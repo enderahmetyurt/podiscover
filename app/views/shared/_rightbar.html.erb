@@ -19,7 +19,7 @@
           <div class="ml-5">
             <div class="mb-1 text-sm font-bold"><%= podcast.name %></div>
             <div class="mb-4 text-xs font-bold text-gray-400"><%= podcast.publisher %></div>
-            <div class="text-xs font-medium leading-relaxed text-gray-500"><%= podcast.description %></div>
+            <div class="text-xs font-medium leading-relaxed text-gray-500"><%= podcast.description.truncate(100) %></div>
           </div>
         </div>
       </div>

@@ -3,9 +3,9 @@
     <div class="grid content-around gap-4 grid-row-2">
       <div>
         <% if category.podcasts.any? %>
-          <%= image_tag category.podcasts.sample.image_urls.second.url, class: "object-cover h-48 rounded-xl w-96" %>
+          <%= image_tag category.podcasts.sample.image_urls.first.url, class: "object-cover rounded-xl" %>
         <% else %>
-          <%= image_tag "podiscover.png", class: "object-cover h-48 rounded-xl w-96" %>
+          <%= image_tag "podiscover.png", class: "object-cover rounded-xl" %>
         <% end %>
       </div>
       <div class="text-lg">

@@ -1,9 +1,9 @@
 <div class="flex flex-col gap-8">
   <div class="flex items-center justify-between">
-    <h1 class="text-4xl font-bold">Advice</h1>
+    <h1 class="text-4xl font-bold">Old Chats</h1>
   </div>
 
-  <% current_user.openai_requests.reverse.each do |openai_request| %>
+  <% @requests_responses.each do |openai_request| %>
     <div class="p-4 transition-all bg-white hover:shadow hover:-translate-y-1 rounded-xl">
       <div class="text-lg">
       🤡 <span class="ml-2"><%= openai_request.prompt %></span>

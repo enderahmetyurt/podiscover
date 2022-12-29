@@ -21,8 +21,8 @@ class DiscoversController < ApplicationController
     end
   end
 
-  def all_advices
-    @requests = current_user.openai_requests.reverse
+  def all_responses
+    @requests_responses = current_user.openai_requests.order(created_at: :desc)
   end
 
   private

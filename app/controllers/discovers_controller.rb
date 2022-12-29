@@ -21,6 +21,10 @@ class DiscoversController < ApplicationController
     end
   end
 
+  def all_advices
+    @requests = current_user.openai_requests.reverse
+  end
+
   private
 
   def valid_prompt?

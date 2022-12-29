@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   resources :activities, only: %i[index], path: "feed"
   resources :discovers, only: %i[index], path: "discover" do
     get :advice, on: :collection
+    get :all_responses, on: :collection
   end
 
   root 'home#index'

@@ -1,18 +1,16 @@
-<div class="w-full">
-  <div class="flex items-center">
-    <div class="w-3/4">
-      <h1 class="text-4xl font-bold">Discover</h1>
-      <div class="flex flex-col items-center justify-center w-full h-full px-5 py-20 mx-auto space-y-5 max-w-7xl tails-selected-element" contenteditable="true">
-          <div class="flex w-full rounded-md h-1/2">
-            🤡 <%= @prompt %>
-          </div>
-          <div class="flex w-full mt-5 rounded-md h-1/2">
-            🤖 <%= @result %>
-          </div>
-      </div>
-      <% if current_user.can_openai? %>
-        <%= link_to "Ask me Again 🤓", discovers_path %>
-      <% end %>
+<div class="flex flex-col gap-8">
+  <div class="flex items-center justify-between">
+    <h1 class="text-4xl font-bold">Advice</h1>
+  </div>
+  <div class="p-4 transition-all bg-white hover:shadow hover:-translate-y-1 rounded-xl">
+    <div class="text-lg">
+    🤡 <span class="ml-2"><%= @prompt %></span>
     </div>
+    <div class="mt-2 text-lg">
+    🤖 <span class="ml-2"><%= @result %></span>
+    </div>
+  </div>
+  <div class="mt-5 text-sm text-gray-500">
+    <span><%= link_to 'See old chats', all_responses_discovers_path %></span>
   </div>
 </div>

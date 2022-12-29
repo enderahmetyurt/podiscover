@@ -35,18 +35,21 @@
   </head>
 
   <body class="flex flex-col bg-gray-100" <%= 'data-admin' if  current_user && current_user.is_admin? %>>
-    <header class="relative w-full lg:px-8 text-gray-700 bg-white body-font">
-      <div class="max-w-6xl mx-auto px-4 flex flex-wrap items-center py-5 md:flex-row">
+    <header class="relative w-full text-gray-700 bg-white lg:px-8 body-font">
+      <div class="flex flex-wrap items-center max-w-6xl px-4 py-5 mx-auto md:flex-row">
         <%= render partial: 'shared/pd_logo' %>
       </div>
     </header>
 
     <main class="flex flex-grow">
-
       <div class="w-full">
         <%= yield %>
       </div>
+      <div class='relative'>
+        <div class='fixed bottom-0 mb-10 ml-5'>
+          <a href="https://www.producthunt.com/posts/podiscover?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-podiscover" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=372772&theme=light&period=daily" alt="Podiscover - Discover&#0032;your&#0032;next&#0032;favorite&#0032;podcast | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+        </div>
+      </div>
     </main>
-
   </body>
 </html>

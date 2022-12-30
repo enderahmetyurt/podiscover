@@ -1,27 +1,43 @@
-<div class="w-full">
-  <div class="flex items-center">
-    <div class="w-3/4">
+<div class="flex flex-row">
+  <div class="w-3/4 mb-5 divide-slate-200">
+    <div class="mb-4">
       <h1 class="text-4xl font-bold">Podcasts</h1>
     </div>
-    <% if @podcasts.any? %>
-      <div class="w-1/4">
-        <%= render partial: "shared/search_form" %>
+
+    <% if @podcasts.empty? %>
+      <div class="flex flex-col items-center justify-center p-12 bg-white rounded-xl">
+        <p class="text-gray-500">No podcasts found</p>
+        <%= image_tag "not-found.svg", class:"my-12" %>
       </div>
     <% end %>
-  </div>
 
-  <% if @podcasts.any? %>
-    <div id="podcasts" class="grid min-w-full gap-4 2xl:grid-cols-6 xl:grid-cols-4 lg:grid-cols-2">
+    <div id="podcasts" class="grid gap-4 2xl:grid-cols-4 xl:grid-cols-3 lg:grid-cols-2">
       <% @podcasts.each do |podcast| %>
-        <%= render partial: "search_result", locals: { podcast: podcast } %>
+        <div id="<%= dom_id podcast %>" class="p-4 transition-all bg-white hover:shadow hover:-translate-y-1 rounded-xl">
+          <%= link_to(podcast) do %>
+            <div class="grid content-around gap-4 grid-row-2">
+              <div class="rounded-xl">
+                <% if podcast.image_urls.any? %>
+                  <%= image_tag podcast.image_urls.second.url, class:"rounded-xl" %>
+                <% else %>
+                  <%= image_tag "podiscover.png", class:"rounded-xl" %>
+                <% end %>
+              </div>
+              <div>
+                <div class="text-lg">
+                  <%= podcast.name %>
+                </div>
+                <div class="text-xs font-medium text-gray-400">
+                  <%= podcast.episodes.count %> Current Episodes
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
-  <% else %>
-    <div>
-      <div>
-        <p class="mt-5 mb-5 text-2xl ">No podcasts found</p>
-        <%= render partial: "shared/search_form" %>
-      </div>
-    </div>
-  <% end %>
+  </div>
+  <div class="w-1/4 ml-10">
+    <%= render partial: 'shared/rightbar', locals: { podcast: today_podcast } %>
+  </div>
 </div>

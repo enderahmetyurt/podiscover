@@ -17,7 +17,12 @@
             <%= form.text_field :prompt, placeholder: "The most popular podcasts ever", class: "flex-1 w-full px-5 py-5 text-2xl bg-gray-200 border border-gray-300 rounded-lg focus:ring-4 focus:border-blue-600 focus:ring-blue-600 focus:ring-opacity-50 focus:outline-none placeholder-gray-500 placeholder-opacity-50" %>
           <% end %>
         </div>
-        <p class="mt-5 text-gray-400"><span class="font-medium text-gray-700">Remaining credit</span> <%= pretty_openai_quota %></p>
+        <div class="flex items-center justify-between w-full">
+          <p class="text-gray-400 "><span class="font-medium text-gray-700">Remaining credit</span> <%= pretty_openai_quota %></p>
+          <div class="text-sm text-gray-500">
+            <span><%= link_to 'See old chats', all_responses_discovers_path %></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>

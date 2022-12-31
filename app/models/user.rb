@@ -124,9 +124,24 @@ class User < ApplicationRecord
     ]
   end
 
-
   def can_openai?
     daily_openai_credit > 0
+  end
+
+  def categories_count
+    query = "select c.name, count(*) as count from subscriptions as u
+      inner join podcasts as p on u.podcast_id = p.id
+      inner join genres as g on g.podcast_id = p.id
+      inner join categories as c on g.category_id = c.id
+      where u.user_id = #{id}
+      group by c.name
+      order by count desc"
+
+    results = ActiveRecord::Base.connection.execute(query)
+
+    if results.present?
+      results.to_a.first(3).map{|r| r["name"]}
+    end
   end
 
   private

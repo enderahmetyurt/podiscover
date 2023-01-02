@@ -22,4 +22,14 @@ module ApplicationHelper
   def today_podcast
     @today_podcast ||= Podcast.today_podcast
   end
+
+  def podcast_image(subscription)
+    image = subscription.podcast.image_urls.first
+
+    if image
+      image.url
+    else
+      "podiscover.png"
+    end
+  end
 end

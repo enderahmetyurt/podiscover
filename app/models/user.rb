@@ -144,6 +144,10 @@ class User < ApplicationRecord
     end
   end
 
+  def description
+    "subscribes #{self.subscriptions.count} podcasts"
+  end
+
   private
 
   def sluggified_nickname

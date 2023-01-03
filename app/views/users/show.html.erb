@@ -1,3 +1,14 @@
+<%  content_for :og_header do %>
+  <%= tag(:meta, name: "twitter:card", content: "summary") %>
+  <%= tag(:meta, name: "twitter:title", content: @user.nickname) %>
+  <%= tag(:meta, name: "twitter:description", content: @user.description) %>
+  <%= tag(:meta, name: "twitter:image", content: @user.image_url) %>
+  <%= tag(:meta, property: "og:title", content: @user.nickname) %>
+  <%= tag(:meta, property: "og:description", content: @user.description) %>
+  <%= tag(:meta, property: "og:image", content: @user.image_url) %>
+  <%= tag(:meta, property: "og:url", content: user_path(@user)) %>
+<% end %>
+
 <div class="w-full">
   <div class="flex items-center justify-between py-4 pr-8 ml-20 space-x-12 bg-white rounded-xl">
     <div class="flex items-center">

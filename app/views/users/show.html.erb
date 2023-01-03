@@ -26,7 +26,7 @@
         <div class="text-gray-400">
           Subscribes <%= @user.podcasts.count %> Podcasts
         </div>
-          <div class="absolute text-sm font-thin text-gray-400 mt-[125px]">
+          <div class="mt-5 text-sm font-thin text-gray-400">
             <% @user.categories_count.each do |category| %>
               <%= link_to "##{category.downcase}", category_path(Category.find_by(name: category)) %>
             <% end %>

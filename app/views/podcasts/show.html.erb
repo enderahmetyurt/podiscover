@@ -26,12 +26,33 @@
         </div>
       </div>
       <% if @episodes.any? %>
-        <h2 class="mt-16 mb-10 text-xl font-bold">Last <%= @episodes.count %> Episodes</h2>
+        <h2 class="mt-16 mb-5 text-xl font-bold">Last <%= @episodes.count %> Episodes</h2>
         <% @episodes.each_with_index do |episode, index| %>
           <%= render partial: 'episodes/episode', locals: { episode: episode } %>
         <% end %>
       <% end %>
     </div>
+    <% if @podcast.subscriptions.any? %>
+      <h2 class="mt-10 mb-5 text-xl font-bold">Subscribers</h2>
+      <div class="grid grid-cols-5 gap-4 p-8 bg-white rounded-xl">
+        <% @subscribers.each do |subscriber| %>
+          <%= link_to user_path(subscriber.user) do %>
+            <div class="flex flex-col items-center">
+              <div>
+                <% if subscriber.user.image_url.present? %>
+                  <%= image_tag subscriber.user.image_url, class: "w-20 w-20 rounded-full border border-gray-100 bg-white shadow-sm" %>
+                <% else %>
+                  <%= image_tag "default.png", class: "w-20 w-20 rounded-full border border-gray-100 bg-whiteshadow-sm" %>
+                <% end %>
+              </div>
+              <div class="mt-3 text-sm font-semibold">
+                <%= subscriber.user.nickname %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="hidden w-1/4 ml-10 lg:block">

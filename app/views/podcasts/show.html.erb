@@ -34,11 +34,11 @@
     </div>
     <% if @podcast.subscriptions.any? %>
       <h2 class="mt-10 mb-5 text-xl font-bold">Subscribers</h2>
-      <div class="grid grid-cols-5 gap-4 p-8 bg-white rounded-xl">
+      <div class="grid grid-cols-5 gap-4 p-4 bg-white rounded-xl">
         <% @subscribers.each do |subscriber| %>
           <%= link_to user_path(subscriber.user) do %>
             <div class="flex flex-col items-center">
-              <div>
+              <div class="flex w-20 h-20">
                 <% if subscriber.user.image_url.present? %>
                   <%= image_tag subscriber.user.image_url, class: "w-20 w-20 rounded-full border border-gray-100 bg-white shadow-sm" %>
                 <% else %>

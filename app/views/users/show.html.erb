@@ -28,11 +28,11 @@
         <div class="text-gray-400">
           Subscribes <%= @user.podcasts.count %> Podcasts
         </div>
-          <div class="mt-5 text-sm font-thin text-gray-400">
-            <% @user.categories_count.each do |category| %>
-              <%= link_to "##{category.downcase}", category_path(Category.find_by(name: category)) %>
-            <% end %>
-          </div>
+        <div class="mt-5">
+          <% @user.categories_count.each do |category| %>
+            <%= render(CategoriesComponent.new(name: category)) %>
+          <% end %>
+        </div>
       </div>
     </div>
     <% if current_user %>

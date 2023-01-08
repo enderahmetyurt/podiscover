@@ -14,6 +14,11 @@
             <div class="text-3xl font-extrabold"><%= @podcast.name %></div>
             <div class="mt-1 text-xl font-bold text-gray-500"><%= @podcast.publisher %></div>
             <div class="mt-8 text-sm font-medium leading-relaxed text-gray-500"><%= @podcast.description %></div>
+            <div class="mt-5">
+              <% @podcast.categories.each do |category| %>
+                <%= render(CategoriesComponent.new(name: category.name)) %>
+              <% end %>
+            </div>
           </div>
         </div>
         <div>

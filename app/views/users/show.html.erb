@@ -13,11 +13,13 @@
   <div class="flex items-center justify-between py-4 pr-8 space-x-12 bg-white lg:ml-20 rounded-xl">
     <div class="flex items-center">
       <div class="flex w-20 h-20 lg:w-40 lg:h-40 lg:relative translate-x-1/4 lg:-translate-x-1/2">
-        <% if @user.image_url.present? %>
-          <%= image_tag @user.image_url, class: "rounded-full border border-gray-100 bg-white shadow-sm" %>
-        <% else %>
-          <%= image_tag "default.png", class: "rounded-full border border-gray-100 bg-whiteshadow-sm" %>
-        <% end %>
+        <div class="flex w-40 h-40">
+          <% if @user.image_url.present? %>
+            <%= image_tag @user.image_url, class: "w-40 w-40 rounded-full border border-gray-100 bg-white shadow-sm" %>
+          <% else %>
+            <%= image_tag "default.png", class: "w-40 w-40 rounded-full border border-gray-100 bg-whiteshadow-sm" %>
+          <% end %>
+        </div>
       </div>
       <div class="flex flex-col ml-12 lg:-ml-12 h-max justify-evenly">
         <div class="text-lg font-bold ">

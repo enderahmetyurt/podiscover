@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   protect_from_forgery with: :exception
+  before_action :record_page_view
 
   def after_sign_in_path_for(resource)
     if resource.allow_email_usage_at.nil?
@@ -10,6 +11,12 @@ class ApplicationController < ActionController::Base
     else
       activities_path
     end
+  end
+
+  def record_page_view
+    # Add a condition to record only your canonical domain
+    # and use a gem such as crawler_detect to skip bots.
+    ActiveAnalytics.record_request(request)
   end
 
   protected

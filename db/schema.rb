@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_17_085856) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_14_075049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_analytics_views_per_days", force: :cascade do |t|
+    t.string "site", null: false
+    t.string "page", null: false
+    t.date "date", null: false
+    t.bigint "total", default: 1, null: false
+    t.string "referrer_host"
+    t.string "referrer_path"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.index ["date"], name: "index_active_analytics_views_per_days_on_date"
+    t.index ["referrer_host", "referrer_path", "date"], name: "index_active_analytics_views_per_days_on_referrer_and_date"
+    t.index ["site", "page", "date"], name: "index_active_analytics_views_per_days_on_site_and_date"
+  end
 
   create_table "activities", force: :cascade do |t|
     t.integer "user_id"

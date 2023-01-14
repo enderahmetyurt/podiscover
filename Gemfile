@@ -106,3 +106,4 @@ gem 'flipper'
 gem 'flipper-active_record'
 
 gem "view_component"
+gem 'active_analytics'

@@ -2,7 +2,7 @@
 require 'open-uri'
 
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:spotify]
 
   has_many :subscriptions, dependent: :destroy

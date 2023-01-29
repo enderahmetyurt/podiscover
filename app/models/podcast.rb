@@ -14,13 +14,9 @@ class Podcast < ApplicationRecord
 
   def self.today_podcast
     if Rails.env.production?
-      podcast_id = Rails.cache.fetch(:today_podcast,
-                                     expires_at: Time.current.end_of_day) do
-        find_by(podcast_of_the_day_at: Date.today.all_day).id
-      end
-      find(podcast_id)
+      find_by(podcast_of_the_day_at: Date.today.all_day)
     else
-      first
+      Podcast.first
     end
   end
 

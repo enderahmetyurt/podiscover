@@ -1,0 +1,11 @@
+<div>
+	<%= turbo_frame_tag "#{dom_id(episode)}_listens", class: "flex items-center" do %>
+		<div>
+			<% if action == 'unlistened' %>
+				<%= button_to image_tag("marked_as_unlistened_icon.svg"), podcast_episode_marked_as_unlistened_path(episode.podcast, episode), method: :patch, data: { turbo_frame: '_top' } %>
+			<% else %>
+				<%= button_to image_tag("mark_as_listened_icon.svg"), podcast_episode_marked_as_listened_path(episode.podcast, episode), method: :patch, data: { turbo_frame: '_top' }, class:"mx-auto mr-2" %>
+			<% end %>
+		</div>
+	<% end %>
+</div>

@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       resources :comments
       patch :like, to: 'episodes#like'
       patch :dislike, to: 'episodes#dislike'
+      patch :marked_as_listened, to: 'episodes#marked_as_listened'
+      patch :marked_as_unlistened, to: 'episodes#marked_as_unlistened'
     end
   end
 

@@ -31,7 +31,7 @@
         <div class="mt-8 text-sm font-medium leading-relaxed text-gray-500"><%= sanitize @episode.html_description %></div>
       </div>
     </div>
-		<div class="flex p-8 my-5 bg-white rounded-xl">
+		<div class="flex items-center p-8 my-5 bg-white rounded-xl">
 			<div class="flex items-center mr-5">
 				<% last_likeable = current_user.activities.where(activatable_type: "Likeable").last&.likeable %>
 				<% if last_likeable && last_likeable.episode_id == @episode.id && last_likeable.action == 'liked' %>
@@ -43,6 +43,13 @@
 			<div class="flex items-center">
 				<%= image_tag "comments_icon.svg", class:"mx-auto mr-2" %>
 				<%= @episode.comments.count %>
+			</div>
+			<div class="relative flex items-center ml-5 bottom-[-4px]">
+				<% if @episode.listed_by?(current_user) %>
+					<%= render partial: 'episodes/listens', locals: { episode: @episode, action: 'unlistened' } %>
+				<% else %>
+					<%= render partial: 'episodes/listens', locals: { episode: @episode, action: 'listened' } %>
+				<% end %>
 			</div>
 		</div>
     <div class="flex p-8 my-5 bg-white rounded-xl">

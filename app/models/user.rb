@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :subscriptions, dependent: :destroy
   has_many :podcasts, through: :subscriptions, source: :podcast
+  has_many :user_listened_episodes, class_name: 'UserListenedEpisode'
+  has_many :listened_episodes, through: :user_listened_episodes, source: :episode
 
   has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy

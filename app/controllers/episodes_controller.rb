@@ -48,4 +48,36 @@ class EpisodesController < ApplicationController
       end
     end
   end
+
+  def marked_as_listened
+    @episode = Episode.find(params[:episode_id])
+
+    UserListenedEpisode.create!(user_id: current_user.id, episode_id: @episode.id) unless @episode.listed_by?(current_user)
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "#{dom_id(@episode)}_listens",
+          partial: 'episodes/listens',
+          locals: { episode: @episode, action: 'unlistened' }
+        )
+      end
+    end
+  end
+
+  def marked_as_unlistened
+    @episode = Episode.find(params[:episode_id])
+
+    UserListenedEpisode.find_by(user_id: current_user.id, episode_id: @episode.id).destroy if @episode.listed_by?(current_user)
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "#{dom_id(@episode)}_listens",
+          partial: 'episodes/listens',
+          locals: { episode: @episode, action: 'listened' }
+        )
+      end
+    end
+  end
 end

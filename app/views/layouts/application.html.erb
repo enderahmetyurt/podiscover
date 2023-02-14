@@ -28,15 +28,15 @@
             a.appendChild(r);
         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
   </head>
 
   <body class="flex flex-col h-screen overflow-hidden bg-gray-100" <%= 'data-admin' if  current_user && current_user.is_admin? %>>
-    <header class="relative w-full px-8 text-gray-700 body-font bg-white shadow">
-    
+    <header class="relative w-full px-8 text-gray-700 bg-white shadow body-font">
+
       <div class="flex items-center justify-between py-4">
 
         <%= render partial: 'shared/pd_logo' %>
@@ -58,8 +58,9 @@
         </div>
       </div>
 
-      <div class="w-full px-4 py-8 lg:p-12 overflow-scroll">
+      <div class="w-full px-4 py-8 overflow-scroll lg:p-12">
         <%= yield %>
+        <a href="https://www.supportturkey.org/" style=" text-align: center; margin: 0; background: #DC2638; width: 150px; color: #fff; padding: 5px 20px; border-radius: 5px 5px 0px 0px; text-decoration: none; font-size: 16px; position: fixed; top: calc(50vh - 150px); right: 0px; transform: rotate(-90deg); transform-origin: bottom right; z-index: 1001; " target="_blank" rel="noopener noreferrer">#SupportTurkey</a>
       </div>
     </main>
 

@@ -7,7 +7,7 @@ source 'https://gem.fury.io/enderahmetyurt/' do
   gem 'rspotify'
 end
 
-ruby '3.1.2'
+ruby '3.2.0'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '7.0.4.1'

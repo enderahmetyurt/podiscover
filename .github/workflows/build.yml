@@ -21,10 +21,5 @@ jobs:
           cp Gemfile.docker Gemfile
           cp Gemfile.lock.docker Gemfile.lock
 
-      - name: Run Docker Compose
-        run: |
-          docker-compose up --build
-
       - name: Build Docker Image
-        run: |
-          docker build -t podiscover_docker:${{ github.sha }} .
+        run: docker build -t podiscover:{{github.sha}} .

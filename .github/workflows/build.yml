@@ -22,12 +22,9 @@ jobs:
           cp Gemfile.lock.docker Gemfile.lock
 
       - name: Build Docker Image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: podiscover_docker:${{ github.sha }}
-
-      - name: Precompile Assets
         run: |
-          docker run --rm -v $PWD:/app podiscover_docker:${{ github.sha }} bundle exec rake assets:precompile
+          docker build -t podiscover_docker:${{ github.sha }} .
+
+      - name: Build Docker Compose
+        run: |
+          docker-compose up --build

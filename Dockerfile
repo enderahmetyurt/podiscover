@@ -13,6 +13,9 @@ RUN bundle install
 # Copy the rest of the application code into the image
 COPY . .
 
+# Uncomment the following line to precompile assets for local development
+# RUN bundle exec rails assets:precompile
+
 # Expose port 3000 for the Rails server
 EXPOSE 3000
 

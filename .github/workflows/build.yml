@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build Docker Image and Run Docker Compose
+    name: Build Docker Image for Podiscover
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,10 +23,3 @@ jobs:
 
       - name: Build Docker Image
         run: docker build -t podiscover:${{github.sha}} .
-
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: podiscover
-          path: |
-            podiscover:${{github.sha}}

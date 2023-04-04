@@ -36,3 +36,5 @@
 
 # Ignore editor files
 .nova/
+
+postgres-data

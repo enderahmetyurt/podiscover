@@ -22,17 +22,20 @@ cp Gemfile.docker Gemfile
 cp Gemfile.lock.docker Gemfile.lock
 ```
 
+- To revert copy the files back:
+
+```bash
+cp Gemfile Gemfile.docker
+cp Gemfile.lock Gemfile.lock.docker
+mv Gemfile.github Gemfile
+mv Gemfile.lock.github Gemfile.lock
+```
+
 - Run the following commands to build the docker image and run the app, then run migrations and install tailwindcss with bash commands:
 
 ```bash
 docker-compose up
-docker-compose run app bin/rails db:migrate RAILS_ENV=development
-docker-compose run app bash
-
-> rails tailwindcss:install
-> Y # yes for prompt
-> exit
-
+docker-compose run app bin/rails db:migrate
 ```
 
 You can visit http://localhost:3000 to view the app.

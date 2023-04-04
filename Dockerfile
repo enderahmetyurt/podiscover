@@ -9,17 +9,15 @@ COPY Gemfile Gemfile.lock ./
 
 # Install dependencies
 RUN bundle install
-RUN gem install rspotify
-RUN gem install 'tailwindcss-rails'
-
 
 # Copy the rest of the application code into the image
 COPY . .
 
+# Precompile assets
+RUN bundle exec rails assets:precompile
+
 # Expose port 3000 for the Rails server
 EXPOSE 3000
-
-RUN ruby -v
 
 # Start the Rails server
 CMD ["rails", "server", "-b", "0.0.0.0"]

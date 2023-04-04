@@ -27,3 +27,7 @@ jobs:
           context: .
           push: true
           tags: podiscover_docker:${{ github.sha }}
+
+      - name: Precompile Assets
+        run: |
+          docker run --rm -v $PWD:/app podiscover_docker:${{ github.sha }} bundle exec rake assets:precompile

@@ -14,12 +14,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Copy Gemfiles
-        run: |
-          cp Gemfile Gemfile.github
-          cp Gemfile.lock Gemfile.lock.github
-          cp Gemfile.docker Gemfile
-          cp Gemfile.lock.docker Gemfile.lock
-
       - name: Build Docker Image
         run: docker build -t podiscover:${{github.sha}} .

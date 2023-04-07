@@ -2,8 +2,6 @@
 
 Find your next podcast.
 
-www.podiscover.me
-
 ## Development Setup
 
 ### Prerequisites
@@ -13,29 +11,17 @@ www.podiscover.me
 
 - Create .env file and update `SPOTIFY_CLIENT_ID` and `SPOTIFY_SECRET_ID` with your Spotify Developer ClientID and Secret.
 
-- Update Gemfile and Gemfile.lock with Gemfile.lock.docker and Gemfile.docker or run the following commands:
+- Install Postgresql client for avoiding `pg` gem installation error: `brew install postgresql` for Mac.
+
+- Run the following commands to build the docker image and run the app, then run migrations with bash commands:
 
 ```bash
-cp Gemfile Gemfile.github
-cp Gemfile.lock Gemfile.lock.github
-cp Gemfile.docker Gemfile
-cp Gemfile.lock.docker Gemfile.lock
-```
-
-- To revert copy the files back:
-
-```bash
-cp Gemfile Gemfile.docker
-cp Gemfile.lock Gemfile.lock.docker
-mv Gemfile.github Gemfile
-mv Gemfile.lock.github Gemfile.lock
-```
-
-- Run the following commands to build the docker image and run the app, then run migrations and install tailwindcss with bash commands:
-
-```bash
+# Build the docker image and run the app -d for detached mode
 docker-compose up
+# Run migrations
 docker-compose run app bin/rails db:migrate
+# Precompile assets if needed
+# bundle exec rails assets:precompile
 ```
 
 You can visit http://localhost:3000 to view the app.

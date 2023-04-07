@@ -3,11 +3,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-source 'https://gem.fury.io/enderahmetyurt/' do
-  gem 'rspotify'
-end
+ruby '3.2.2'
 
-ruby '3.2.1'
+gem 'rspotify', git: 'https://github.com/enderahmetyurt/rspotify'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '7.0.4.3'
@@ -65,7 +63,7 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
   gem "rubocop", "~> 1.0"
   gem "standard", "~> 1.0"
 end

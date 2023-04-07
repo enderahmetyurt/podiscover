@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    command: bundle exec rails s -b 0.0.0.0
+    environment:
+      DATABASE_URL: postgres://myuser:mypassword@db/mydatabase
+      RAILS_ENV: development
+      RACK_ENV: development
+    volumes:
+      - .:/app
+      - bundle:/bundle
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+volumes:
+  bundle:

@@ -16,6 +16,7 @@ services:
     command: bundle exec rails s -b 0.0.0.0
     environment:
       DATABASE_URL: postgres://myuser:mypassword@db/mydatabase
+      REDIS_URL: redis://redis:6379/1
       RAILS_ENV: development
       RACK_ENV: development
     volumes:
@@ -25,6 +26,11 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - redis
+
+  redis:
+    image: redis
+    restart: always
 
 volumes:
   bundle:

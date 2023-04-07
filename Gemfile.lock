@@ -211,6 +211,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.2-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.14.2-x86_64-linux)
+      racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
@@ -239,7 +241,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.1)
-    puma (5.6.5)
+    puma (6.2.1)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.4)
@@ -375,6 +377,8 @@ GEM
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.27-arm64-darwin)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.27-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.1)
     tilt (2.1.0)
     timeout (0.3.2)
@@ -415,6 +419,7 @@ GEM
 PLATFORMS
   aarch64-linux
   arm64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   active_analytics
@@ -436,7 +441,7 @@ DEPENDENCIES
   pagy (~> 5.10)
   pg (~> 1.1)
   pry
-  puma (~> 5.6)
+  puma (~> 6.2)
   rails (= 7.0.4.3)
   rails_admin
   redis (~> 4.0)

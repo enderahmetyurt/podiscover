@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   protect_from_forgery with: :exception
   before_action :record_page_view
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def after_sign_in_path_for(resource)
     if resource.allow_email_usage_at.nil?
@@ -27,5 +28,9 @@ class ApplicationController < ActionController::Base
     else
       redirect_to root_path
     end
+  end
+
+  def record_not_found
+    redirect_to root_path
   end
 end

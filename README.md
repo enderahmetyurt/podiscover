@@ -7,7 +7,7 @@ Find your next podcast.
 ### Prerequisites
 
 - Spotify Developer ClientID and Secret from [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/) 
-    - Check routes.rb file to add callback url. It seems to be `http://localhost:3000/users/auth/spotify` or `http://localhost:3000/users/callback` couldn't get it work.
+    - Add callback url as `http://localhost:3000/users/auth/spotify/callback`.
 
 - Create .env file and update `SPOTIFY_CLIENT_ID` and `SPOTIFY_SECRET_ID` with your Spotify Developer ClientID and Secret.
 

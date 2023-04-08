@@ -7,20 +7,29 @@
     <div class="flex w-full mx-auto">
       <div>
         <div class="flex flex-col my-5 sm:flex-row">
-          <div class="rounded-xl">
-            <%= link_to podcast_path(podcast) do %>
-              <% if podcast.image_urls.any? %>
-                <%= image_tag podcast.image_urls.second.url, class:"rounded-xl" %>
-              <% else %>
-                <%= image_tag "podiscover.png", class:"rounded-xl" %>
+          <% if podcast.nil? %>
+            <div class="rounded-xl">
+              <%= image_tag "podiscover.png", class:"rounded-xl" %>
+            </div>
+            <div class="ml-5">
+              <div class="mb-1 text-sm font-bold">No podcast of the day</div>
+            </div>
+          <% else %>
+            <div class="rounded-xl">
+              <%= link_to podcast_path(podcast) do %>
+                <% if podcast.image_urls.any? %>
+                  <%= image_tag podcast.image_urls.second.url, class:"rounded-xl" %>
+                <% else %>
+                  <%= image_tag "podiscover.png", class:"rounded-xl" %>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
-          <div class="ml-5">
-            <div class="mb-1 text-sm font-bold"><%= podcast.name %></div>
-            <div class="mb-4 text-xs font-bold text-gray-400"><%= podcast.publisher %></div>
-            <div class="text-xs font-medium leading-relaxed text-gray-500"><%= podcast.description.truncate(100) %></div>
-          </div>
+            </div>
+            <div class="ml-5">
+              <div class="mb-1 text-sm font-bold"><%= podcast.name %></div>
+              <div class="mb-4 text-xs font-bold text-gray-400"><%= podcast.publisher %></div>
+              <div class="text-xs font-medium leading-relaxed text-gray-500"><%= podcast.description.truncate(100) %></div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

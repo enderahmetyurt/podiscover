@@ -8,7 +8,7 @@ class PodcastsController < ApplicationController
   end
 
   def show
-    return redirect_to podcasts_path unless params[:id].present?
+    redirect_to podcasts_path unless params[:id].present?
 
     @podcast = Podcast.find(params[:id])
     @all_episodes = @podcast.episodes.sort_by { |e| e.release_date.to_date }.reverse

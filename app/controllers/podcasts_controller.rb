@@ -17,10 +17,6 @@ class PodcastsController < ApplicationController
   end
 
   def search
-    if params[:query].present?
-      @podcasts = Podcast.search(params[:query])
-    else
-      @podcasts = Podcast.all
-    end
+    @podcasts = params[:query].present? ? Podcast.search(params[:query]) : Podcast.all
   end
 end

@@ -38,7 +38,7 @@
       <% end %>
     </div>
     <% if @podcast.subscriptions.any? %>
-      <div class="relative top-0 bottom-12">
+      <div>
         <h2 class="mt-10 mb-5 text-xl font-bold">Subscribers</h2>
         <div class="grid grid-cols-5 gap-4 p-4 bg-white rounded-xl">
           <% @subscribers.each do |subscriber| %>
@@ -56,8 +56,8 @@
                 </div>
               </div>
             <% end %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>

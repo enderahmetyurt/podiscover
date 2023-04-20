@@ -64,7 +64,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'main'
-  gem "rubocop", "~> 1.0"
+  gem "rubocop", "~> 1.50"
   gem "standard", "~> 1.0"
 end
 

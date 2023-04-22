@@ -91,7 +91,7 @@ gem 'friendly_id'
 gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'
 
-gem 'pagy', '~> 5.10'
+gem 'pagy', '~> 6.0'
 
 gem 'sendgrid-ruby'
 

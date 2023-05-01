@@ -24,6 +24,6 @@ class Podcast < ApplicationRecord
   end
 
   def self.search(query)
-    where("name ILIKE ?", "%#{query}%")
+    where("name ILIKE :query or description ILIKE :query or publisher ILIKE :query", query: "%#{query}%")
   end
 end

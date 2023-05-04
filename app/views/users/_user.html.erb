@@ -1,6 +1,6 @@
 <div class="" id="<%= dom_id user %>">
   <%= link_to(user) do %>
-    <div class="flex flex-col bg-white shadow-sm rounded-lg py-6 px-8 items-center justify-center">
+    <div class="flex flex-col items-center justify-center px-8 py-6 bg-white rounded-lg shadow-sm">
       <div>
         <% if user.image_url.present? %>
           <%= image_tag user.image_url, class: "w-40 h-40 bg-white rounded-full border border-gray-100 shadow-sm" %>
@@ -8,15 +8,15 @@
           <%= image_tag "default.png", class: "w-40 h-40 bg-white rounded-full border border-gray-100 shadow-sm" %>
         <% end %>
       </div>
-      <div class="text-center mt-4">
+      <div class="mt-4 text-center">
         <div class="text-lg font-bold">
           <%= user.nickname %>
         </div>
-        <p class="text-gray-400 mt-2">
-          Subscribes <%= user.podcasts.count %> Podcasts
+        <p class="mt-2 text-gray-400">
+          subscribes <%= user.podcasts.count %> podcasts
         </p>
       </div>
-      <div class="mt-6 bg-primary text-white border border-transparent hover:bg-secondary hover:text-primary rounded-full px-6 py-2">
+      <div class="px-6 py-2 mt-6 text-white border border-transparent rounded-full bg-primary hover:bg-secondary hover:text-primary">
         View Profile
       </div>
     </div>

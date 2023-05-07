@@ -38,3 +38,6 @@
 .nova/
 
 postgres-data
+
+# Operating System Files
+.DS_Store

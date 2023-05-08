@@ -40,9 +40,13 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
+# To ignore precompile step we can send ENV['RUNNING_CI']=true to dockerfile
+# RSpotify.authenticate in /config/application.rb brakes the build if spotify ENV vars not set right
+ARG RUNNING_CI="false"
 # Precompiling assets for container without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 bundle exec bin/rails assets:precompile
-RUN bundle exec rake tailwindcss:build
+RUN if [ "$RUNNING_CI" = "false" ]; then \
+      SECRET_KEY_BASE_DUMMY=1 bin/rails assets:precompile && bundle exec rake tailwindcss:build; \
+    fi
 
 FROM base
 

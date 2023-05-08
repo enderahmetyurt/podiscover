@@ -27,3 +27,5 @@ jobs:
           context: .
           push: true
           tags: eaydev/podiscover:${{ github.sha }}
+        env:
+          RUNNING_CI: true

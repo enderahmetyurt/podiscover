@@ -32,5 +32,6 @@ jobs:
         file: Dockerfile
         push: false
         tags: eaydev/podiscover:sha_${{ github.sha }}
+        build-args: RUNNING_CI=true
     - name: List Docker images
       run: docker images

@@ -18,10 +18,18 @@ Find your next podcast.
 ```bash
 # Build the docker image and run the app -d for detached mode
 docker-compose up
+
+# Create database if this is first setup
+docker-compose run app bin/rails db:create
+
 # Run migrations
 docker-compose run app bin/rails db:migrate
+
 # Precompile assets if needed
 # bundle exec rails assets:precompile
+
+# If tailwindcss upgraded and given an error
+# bundle exec rake tailwindcss:build
 ```
 
 You can visit http://localhost:3000 to view the app.

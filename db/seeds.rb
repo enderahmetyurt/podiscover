@@ -6,16 +6,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-podcasts = [{:uid=>"63zeZeyHMgERmbwhDhIrD1", :genres=>[{"__typename"=>"PodcastTopic", "title"=>"Documentary", "uri"=>"spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
-{:uid=>"4aavXzJwwW4Yy43lAlfjLf", :genres=>[{"__typename"=>"PodcastTopic", "title"=>"Documentary", "uri"=>"spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
-{:uid=>"5ixqcoDt93GVu6tr6eaiuh", :genres=>[{"__typename"=>"PodcastTopic", "title"=>"Documentary", "uri"=>"spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
-{:uid=>"0ouPKjo1tKkj8V4nNI7mBv", :genres=>[{"__typename"=>"PodcastTopic", "title"=>"Documentary", "uri"=>"spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
-{:uid=>"64cCsH4LCyO5U52xUU4Pax", :genres=>[{"__typename"=>"PodcastTopic", "title"=>"Documentary", "uri"=>"spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
-{:uid=>"2YLFthx5PP55WTazamT0zn", :genres=>[{"__typename"=>"PodcastTopic", "title"=>"Documentary", "uri"=>"spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
-{:uid=>"31NmrC2kMHlzrORqqOWAF3", :genres=>[{"__typename"=>"PodcastTopic", "title"=>"Documentary", "uri"=>"spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
-{:uid=>"5phxjbOeUgwqkWfirBFmgJ", :genres=>[{"__typename"=>"PodcastTopic", "title"=>"Documentary", "uri"=>"spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
-{:uid=>"7hgnfI4D2P5baN9CZxrIw1", :genres=>[{"__typename"=>"PodcastTopic", "title"=>"Documentary", "uri"=>"spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
-{:uid=>"5kRel8SUkrQyFX25anyPWi", :genres=>[{"__typename"=>"PodcastTopic", "title"=>"Documentary", "uri"=>"spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]}]
+podcasts = [{uid: "63zeZeyHMgERmbwhDhIrD1", genres: [{"__typename" => "PodcastTopic", "title" => "Documentary", "uri" => "spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
+  {uid: "4aavXzJwwW4Yy43lAlfjLf", genres: [{"__typename" => "PodcastTopic", "title" => "Documentary", "uri" => "spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
+  {uid: "5ixqcoDt93GVu6tr6eaiuh", genres: [{"__typename" => "PodcastTopic", "title" => "Documentary", "uri" => "spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
+  {uid: "0ouPKjo1tKkj8V4nNI7mBv", genres: [{"__typename" => "PodcastTopic", "title" => "Documentary", "uri" => "spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
+  {uid: "64cCsH4LCyO5U52xUU4Pax", genres: [{"__typename" => "PodcastTopic", "title" => "Documentary", "uri" => "spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
+  {uid: "2YLFthx5PP55WTazamT0zn", genres: [{"__typename" => "PodcastTopic", "title" => "Documentary", "uri" => "spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
+  {uid: "31NmrC2kMHlzrORqqOWAF3", genres: [{"__typename" => "PodcastTopic", "title" => "Documentary", "uri" => "spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
+  {uid: "5phxjbOeUgwqkWfirBFmgJ", genres: [{"__typename" => "PodcastTopic", "title" => "Documentary", "uri" => "spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
+  {uid: "7hgnfI4D2P5baN9CZxrIw1", genres: [{"__typename" => "PodcastTopic", "title" => "Documentary", "uri" => "spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]},
+  {uid: "5kRel8SUkrQyFX25anyPWi", genres: [{"__typename" => "PodcastTopic", "title" => "Documentary", "uri" => "spotify:genre:0JQ5DAqbMKFCWOPjGCVIq4"}]}]
 
 # Creating categories
 
@@ -23,7 +23,7 @@ podcasts.each do |podcast|
   puts "Creating category #{podcast[:uid]}"
   if podcast[:genres]
     podcast[:genres].each do |genre|
-      category = Category.find_or_create_by(name: genre["title"])
+      Category.find_or_create_by(name: genre["title"])
     end
   else
     "No genres for #{podcast[:uid]}"

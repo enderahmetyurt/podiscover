@@ -8,6 +8,6 @@ class UserMailer < ApplicationMailer
 
   def new_user(user)
     @user = user
-    mail(to: ENV['ADMIN_EMAIL'], subject: "A new user has joined 🥹")
+    mail(to: ENV["ADMIN_EMAIL"], subject: "A new user has joined 🥹")
   end
 end

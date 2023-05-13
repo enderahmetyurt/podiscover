@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Dotenv::Railtie.load if %w[development test].include? ENV['RAILS_ENV']
+Dotenv::Railtie.load if %w[development test].include? ENV["RAILS_ENV"]
 
 module Spotipods
   class Application < Rails::Application
@@ -24,6 +24,6 @@ module Spotipods
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Spotify API authentication, server will fail to boot if client not found.
-    RSpotify.authenticate(ENV['SPOTIFY_CLIENT_ID'], ENV['SPOTIFY_SECRET_ID'])
+    RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_SECRET_ID"])
   end
 end

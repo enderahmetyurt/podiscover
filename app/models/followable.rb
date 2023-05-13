@@ -1,7 +1,7 @@
 class Followable < ApplicationRecord
-  AVAILABLE_ACTIONS = %w(followed unfollowed).freeze
+  AVAILABLE_ACTIONS = %w[followed unfollowed].freeze
 
-  validates :action, inclusion: { in: AVAILABLE_ACTIONS }
+  validates :action, inclusion: {in: AVAILABLE_ACTIONS}
 
-  belongs_to :followed, class_name: 'User'
+  belongs_to :followed, class_name: "User"
 end

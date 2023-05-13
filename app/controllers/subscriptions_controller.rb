@@ -2,10 +2,10 @@
 
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     subscriptions = current_user.feed.uniq { |s| s.podcast_id }
-    sorted_subscriptions = subscriptions.sort_by{ |s| s.podcast.users.count }.reverse
+    sorted_subscriptions = subscriptions.sort_by { |s| s.podcast.users.count }.reverse
     @pagy, @subscriptions = pagy_array(sorted_subscriptions, items: 30)
   end
 

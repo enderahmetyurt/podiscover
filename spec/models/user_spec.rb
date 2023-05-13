@@ -1,18 +1,18 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe User, :type => :model do
+RSpec.describe User, type: :model do
   describe "after create callbacks" do
     let(:user) { FactoryBot.create(:user) }
 
     it "should send new user email after a user created" do
       user
-      expect(ActionMailer::Base.deliveries.last.to).to eq([ENV['ADMIN_EMAIL']])
+      expect(ActionMailer::Base.deliveries.last.to).to eq([ENV["ADMIN_EMAIL"]])
     end
 
     it "should create related broadcastable" do
-      expect{ user }.to change { Broadcastable.count }.by 1
+      expect { user }.to change { Broadcastable.count }.by 1
       expect(user.activities.broadcastables).not_to be_empty
-      expect(user.activities.first.broadcastable.action).to eq 'new_user_has_joined'
+      expect(user.activities.first.broadcastable.action).to eq "new_user_has_joined"
     end
   end
 
@@ -26,8 +26,8 @@ RSpec.describe User, :type => :model do
 
     it "should have appended 4 character uid if nickname is used as a slug for a different user" do
       expect(user.nickname).to eq another_user.nickname
-      expect(another_user.slug).to include 'john-doe'
-      expect(another_user.slug.split('john-doe-').last.size).to eq 4
+      expect(another_user.slug).to include "john-doe"
+      expect(another_user.slug.split("john-doe-").last.size).to eq 4
     end
   end
 
@@ -59,12 +59,12 @@ RSpec.describe User, :type => :model do
     end
 
     it "should create a followed activity when user starts to follow another user" do
-      expect{ user.follow(new_user) }.to change{ Followable.where(action: 'followed').count }.from(0).to(1)
+      expect { user.follow(new_user) }.to change { Followable.where(action: "followed").count }.from(0).to(1)
     end
 
     it "should create an unfollowed activity when user stops to follow another user" do
       user.follow(new_user)
-      expect{ user.unfollow(new_user) }.to change{ Followable.where(action: 'unfollowed').count }.from(0).to(1)
+      expect { user.unfollow(new_user) }.to change { Followable.where(action: "unfollowed").count }.from(0).to(1)
     end
   end
 end

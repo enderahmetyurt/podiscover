@@ -1,28 +1,28 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Episode, type: :request do
   let(:user) { FactoryBot.create(:user) }
 
   before { sign_in user }
 
-  describe '#index' do
+  describe "#index" do
     it do
       get users_path
 
       expect(response).to have_http_status(200)
-      expect(response.body).to include 'Community'
+      expect(response.body).to include "Community"
     end
   end
 
-  describe '#show' do
-    it 'supports :id' do
+  describe "#show" do
+    it "supports :id" do
       get "/users/#{user.id}"
 
       expect(response).to have_http_status(200)
       expect(response.body).to include user.display_name
     end
 
-    it 'supports :slug' do
+    it "supports :slug" do
       get "/users/#{user.slug}"
 
       expect(response).to have_http_status(200)
@@ -30,40 +30,40 @@ RSpec.describe Episode, type: :request do
     end
   end
 
-  describe '#following' do
-    it 'supports :id' do
+  describe "#following" do
+    it "supports :id" do
       get "/users/#{user.id}/following"
 
       expect(response).to have_http_status(200)
-      expect(response.body).to include 'Following'
+      expect(response.body).to include "Following"
     end
 
-    it 'supports :slug' do
+    it "supports :slug" do
       get "/users/#{user.slug}/following"
 
       expect(response).to have_http_status(200)
-      expect(response.body).to include 'Following'
+      expect(response.body).to include "Following"
     end
   end
 
-  describe '#followers' do
+  describe "#followers" do
     it "supports :id" do
       get "/users/#{user.id}/followers"
 
       expect(response).to have_http_status(200)
-      expect(response.body).to include 'Follower'
+      expect(response.body).to include "Follower"
     end
 
     it "supports :slug" do
       get "/users/#{user.slug}/followers"
 
       expect(response).to have_http_status(200)
-      expect(response.body).to include 'Follower'
+      expect(response.body).to include "Follower"
     end
   end
 
-  describe '#email_confirmation' do
-    it 'supports :id'do
+  describe "#email_confirmation" do
+    it "supports :id" do
       get "/users/#{user.id}/email_confirmation"
 
       expect(response).to have_http_status(200)
@@ -71,7 +71,7 @@ RSpec.describe Episode, type: :request do
       expect(response.body).to include user.email
     end
 
-    it 'supports :slug' do
+    it "supports :slug" do
       get "/users/#{user.slug}/email_confirmation"
 
       expect(response).to have_http_status(200)
@@ -80,7 +80,7 @@ RSpec.describe Episode, type: :request do
     end
   end
 
-  describe '#allow_email_confirmation' do
+  describe "#allow_email_confirmation" do
     it "supports :id" do
       post "/users/#{user.id}/allow_email_confirmation"
 
@@ -100,7 +100,7 @@ RSpec.describe Episode, type: :request do
     end
   end
 
-  describe '#deny_email_confirmation' do
+  describe "#deny_email_confirmation" do
     it "supports :id" do
       post "/users/#{user.id}/deny_email_confirmation"
 

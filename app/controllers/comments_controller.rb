@@ -11,10 +11,8 @@ class CommentsController < ApplicationController
     if @comment.save
       Activity.create!(activatable: Commentable.new(comment_id: @comment.id, episode_id: @comment.episode.id), user_id: current_user.id)
 
-      redirect_to podcast_episode_path(@comment.episode.podcast.id, @comment.episode_id)
-    else
-      redirect_to podcast_episode_path(@comment.episode.podcast.id, @comment.episode_id)
     end
+    redirect_to podcast_episode_path(@comment.episode.podcast.id, @comment.episode_id)
   end
 
   private

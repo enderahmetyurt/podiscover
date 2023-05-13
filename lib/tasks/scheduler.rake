@@ -32,7 +32,7 @@ task fix_user_image_urls: :environment do
   User.all.each do |user|
     puts "user: #{user.id} image_url: #{user.image_url}"
     begin
-      URI.open(user.image_url)
+      URI.parse(user.image_url).open
     rescue
       user.update(image_url: nil)
     end

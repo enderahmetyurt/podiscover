@@ -15,7 +15,7 @@ class DiscoversController < ApplicationController
       @result = if current_user.can_openai?
         OpenaiService.call(current_user, @prompt)
       else
-        t("openai.results.quota_problem")
+        I18n.t("openai.results.quota_problem")
       end
     else
       flash[:warn] = "Please check your question."

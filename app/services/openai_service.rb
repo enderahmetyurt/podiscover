@@ -29,10 +29,10 @@ class OpenaiService
 
         result
       else
-        t("openai.results.no_answer")
+        I18n.t("openai.results.no_answer")
       end
     rescue
-      t("openai.results.error")
+      I18n.t("openai.results.error")
     end
   end
 end

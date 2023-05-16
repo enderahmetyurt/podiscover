@@ -17,7 +17,7 @@ class OpenaiService
     request = user.openai_requests.build(prompt:)
 
     begin
-      response = RestClient.post(URL, data.to_json, headers:)
+      response = RestClient.post(URL, data.to_json, headers)
       body = JSON.parse(response)
 
       if body.present? && body["choices"].any?

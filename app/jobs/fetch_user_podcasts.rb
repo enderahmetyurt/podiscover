@@ -13,7 +13,7 @@ class FetchUserPodcasts
 
       if response.present?
         podcasts += response
-        i += 1
+        i += 50
         response = nil
       else
         break

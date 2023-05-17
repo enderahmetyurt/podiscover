@@ -7,14 +7,6 @@ GIT
       omniauth-oauth2 (>= 1.6)
       rest-client (~> 2.0.2)
 
-GIT
-  remote: https://github.com/faker-ruby/faker.git
-  revision: a4c2ee5fcb5f3114184f8b20a8f9fbacd3fd58d8
-  branch: main
-  specs:
-    faker (3.2.0)
-      i18n (>= 1.8.11, < 2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -134,6 +126,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (3.2.0)
+      i18n (>= 1.8.11, < 2)
     faraday (2.7.4)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -437,7 +431,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_bot_rails
-  faker!
+  faker
   flipper
   flipper-active_record
   friendly_id

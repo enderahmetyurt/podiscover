@@ -12,7 +12,7 @@
         </div>
       </div>
     <% elsif @activities.empty? %>
-          <div class="my-10">
+      <div class="my-10">
         <div class="flex flex-col items-center justify-center">
           <p class="text-gray-500">😳 Your followings haven't done any activity yet </p>
         </div>
@@ -24,8 +24,9 @@
     </div>
     <%= turbo_frame_tag "pagination", src: activities_path(format: :turbo_stream), loading: :lazy do %>
       <div class="flex items-center justify-center mt-10">
+        <%= @activities.count %>
         <% unless @activities.empty? %>
-            <%= image_tag "spinner.gif" %>
+          <%= image_tag "spinner.gif" %>
         <% end %>
       </div>
     <% end %>

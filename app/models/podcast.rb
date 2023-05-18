@@ -14,8 +14,7 @@ class Podcast < ApplicationRecord
 
   def self.today_podcast
     if Rails.env.production?
-      podcast_id = Rails.cache.fetch(:today_podcast,
-                                     expires_at: Time.current.end_of_day) do
+      podcast_id = Rails.cache.fetch(:today_podcast, expires_at: Time.current.end_of_day) do
         find_by(podcast_of_the_day_at: Date.today.all_day).id
       end
       find(podcast_id)
@@ -25,6 +24,6 @@ class Podcast < ApplicationRecord
   end
 
   def self.search(query)
-    where("name ILIKE ?", "%#{query}%")
+    where("name ILIKE :query or description ILIKE :query or publisher ILIKE :query", query: "%#{query}%")
   end
 end

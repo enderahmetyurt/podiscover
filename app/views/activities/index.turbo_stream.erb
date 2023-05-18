@@ -1,9 +1,9 @@
 <%= turbo_stream.append "activities" do %>
-    <%= render partial: "activities/activity", collection: @activities %>
+  <%= render partial: "activities/activity", collection: @activities %>
 <% end %>
 
 <% unless @pagy.page == @pagy.last %>
-    <%= turbo_stream.replace "pagination" do %>
-        <%= turbo_frame_tag "pagination", src: activities_path(page: @pagy.next, format: :turbo_stream), loading: :lazy %>
-    <% end %>
+  <%= turbo_stream.replace "pagination" do %>
+    <%= turbo_frame_tag "pagination", src: activities_path(page: @pagy.next, format: :turbo_stream), loading: :lazy %>
+  <% end %>
 <% end %>

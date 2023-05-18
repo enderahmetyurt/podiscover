@@ -1,24 +1,25 @@
 # frozen_string_literal: true
-require 'sidekiq/web'
+
+require "sidekiq/web"
 
 Rails.application.routes.draw do
-  get 'comment/index'
-  get 'category/index'
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  get "comment/index"
+  get "category/index"
+  mount RailsAdmin::Engine => "/admin", :as => "rails_admin"
   authenticate :user, lambda { |u| u.is_admin? } do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
     mount ActiveAnalytics::Engine, at: "analytics"
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
   resources :podcasts, only: %i[index show] do
     get :search, on: :collection
     resources :episodes, only: %i[show index] do
       resources :comments
-      patch :like, to: 'episodes#like'
-      patch :dislike, to: 'episodes#dislike'
-      patch :marked_as_listened, to: 'episodes#marked_as_listened'
-      patch :marked_as_unlistened, to: 'episodes#marked_as_unlistened'
+      patch :like, to: "episodes#like"
+      patch :dislike, to: "episodes#dislike"
+      patch :marked_as_listened, to: "episodes#marked_as_listened"
+      patch :marked_as_unlistened, to: "episodes#marked_as_unlistened"
     end
   end
 
@@ -45,5 +46,5 @@ Rails.application.routes.draw do
     get :all_responses, on: :collection
   end
 
-  root 'home#index'
+  root "home#index"
 end

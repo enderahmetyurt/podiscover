@@ -13,7 +13,7 @@ class FetchUserPodcasts
 
       if response.present?
         podcasts += response
-        i += 1
+        i += 50
         response = nil
       else
         break
@@ -31,26 +31,22 @@ class FetchUserPodcasts
       pp.language = podcast.languages.first # TODO: make it an array
       pp.publisher = podcast.publisher
       pp.uri = podcast.uri
-      pp.external_url = podcast.external_urls['spotify']
+      pp.external_url = podcast.external_urls["spotify"]
 
       pp.save!
 
       if pp.image_urls.any?
         pp.image_urls.destroy_all
-        podcast.images.each do |image|
-          ImageUrl.create(url: image['url'], height: image['height'], width: image['width'], podcast_id: pp.reload.id)
-        end
-      else
-        podcast.images.each do |image|
-          ImageUrl.create(url: image['url'], height: image['height'], width: image['width'], podcast_id: pp.reload.id)
-        end
+      end
+      podcast.images.each do |image|
+        ImageUrl.create(url: image["url"], height: image["height"], width: image["width"], podcast_id: pp.reload.id)
       end
 
       subscription = Subscription.find_by(user_id: user_id, podcast_id: pp.id)
 
       if subscription.blank?
         Subscription.create!(user_id: user_id, podcast_id: pp.id)
-        Activity.create!(activatable: Listen.new(podcast_id: pp.id, action: 'started'), user_id: user_id)
+        Activity.create!(activatable: Listen.new(podcast_id: pp.id, action: "started"), user_id: user_id)
       end
     end
   end
@@ -68,7 +64,7 @@ class FetchUserPodcasts
     Subscription.where(user_id: user.id, podcast_id: podcast_ids).destroy_all
 
     podcast_ids.each do |podcast_id|
-      Activity.create!(activatable: Listen.new(podcast_id: podcast_id, action: 'stoped'), user_id: user_id)
+      Activity.create!(activatable: Listen.new(podcast_id: podcast_id, action: "stoped"), user_id: user_id)
     end
   end
 end

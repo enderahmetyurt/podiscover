@@ -1,23 +1,23 @@
 # frozen_string_literal: true
 
 class OpenaiService
-  URL = "https://api.openai.com/v1/completions".freeze
+  URL = "https://api.openai.com/v1/completions"
 
   def self.call(user, prompt)
     data = {
-      "model": "text-davinci-003",
-      "prompt": prompt,
-      "temperature": 0.6,
-      "max_tokens": 4000,
-      "top_p": 1,
-      "frequency_penalty": 1,
-      "presence_penalty": 1
+      model: "text-davinci-003",
+      prompt: prompt,
+      temperature: 0.6,
+      max_tokens: 4000,
+      top_p: 1,
+      frequency_penalty: 1,
+      presence_penalty: 1
     }
-    headers = { "Content-Type" => "application/json", "Authorization" => "Bearer #{ENV["OPENAI_TOKEN"]}"}
+    headers = {"Content-Type" => "application/json", "Authorization" => "Bearer #{ENV["OPENAI_TOKEN"]}"}
     request = user.openai_requests.build(prompt:)
 
     begin
-      response = RestClient.post(URL, data.to_json, headers = headers)
+      response = RestClient.post(URL, data.to_json, headers)
       body = JSON.parse(response)
 
       if body.present? && body["choices"].any?
@@ -29,10 +29,10 @@ class OpenaiService
 
         result
       else
-        t("openai.results.no_answer")
+        I18n.t("openai.results.no_answer")
       end
-    rescue => exception
-      t("openai.results.error")
+    rescue
+      I18n.t("openai.results.error")
     end
   end
 end

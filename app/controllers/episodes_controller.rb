@@ -19,14 +19,14 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:episode_id])
 
     @episode.increment!(:likes)
-    Activity.create!(activatable: Likeable.new(podcast_id: @episode.podcast.id, episode_id: @episode.id, action: 'liked'), user_id: current_user.id)
+    Activity.create!(activatable: Likeable.new(podcast_id: @episode.podcast.id, episode_id: @episode.id, action: "liked"), user_id: current_user.id)
 
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
           "#{dom_id(@episode)}_likes",
-          partial: 'episodes/likes',
-          locals: { episode: @episode, action: 'dislike' }
+          partial: "episodes/likes",
+          locals: {episode: @episode, action: "dislike"}
         )
       end
     end
@@ -36,14 +36,14 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:episode_id])
 
     @episode.decrement!(:likes)
-    Activity.create!(activatable: Likeable.new(podcast_id: @episode.podcast.id, episode_id: @episode.id, action: 'disliked'), user_id: current_user.id)
+    Activity.create!(activatable: Likeable.new(podcast_id: @episode.podcast.id, episode_id: @episode.id, action: "disliked"), user_id: current_user.id)
 
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
           "#{dom_id(@episode)}_likes",
-          partial: 'episodes/likes',
-          locals: { episode: @episode, action: 'like' }
+          partial: "episodes/likes",
+          locals: {episode: @episode, action: "like"}
         )
       end
     end
@@ -58,8 +58,8 @@ class EpisodesController < ApplicationController
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
           "#{dom_id(@episode)}_listens",
-          partial: 'episodes/listens',
-          locals: { episode: @episode, action: 'unlistened' }
+          partial: "episodes/listens",
+          locals: {episode: @episode, action: "unlistened"}
         )
       end
     end
@@ -74,8 +74,8 @@ class EpisodesController < ApplicationController
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
           "#{dom_id(@episode)}_listens",
-          partial: 'episodes/listens',
-          locals: { episode: @episode, action: 'listened' }
+          partial: "episodes/listens",
+          locals: {episode: @episode, action: "listened"}
         )
       end
     end

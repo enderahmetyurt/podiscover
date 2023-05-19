@@ -3,12 +3,11 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-  get "comment/index"
-  get "category/index"
   mount RailsAdmin::Engine => "/admin", :as => "rails_admin"
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => "/sidekiq"
     mount ActiveAnalytics::Engine, at: "analytics"
+    mount MaintenanceTasks::Engine => "/maintenance_tasks"
   end
 
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}

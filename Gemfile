@@ -83,6 +83,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "database_cleaner"
+  gem "vcr"
+  gem "webmock"
 end
 
 gem "devise"
@@ -106,3 +109,4 @@ gem "flipper-active_record"
 
 gem "view_component"
 gem "active_analytics"
+gem "maintenance_tasks"

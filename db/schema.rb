@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_04_074219) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_19_083946) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +73,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_074219) do
     t.index ["episode_id"], name: "index_episode_image_urls_on_episode_id"
   end
 
+  create_table "episode_segments", force: :cascade do |t|
+    t.integer "episode_id"
+    t.integer "segment_id"
+    t.string "start"
+    t.string "finish"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "episodes", force: :cascade do |t|
     t.string "audio_preview_url"
     t.bigint "duration_ms"
@@ -86,6 +96,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_074219) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "likes", default: 0, null: false
+    t.string "audio_url"
+    t.jsonb "segments"
     t.index ["podcast_id"], name: "index_episodes_on_podcast_id"
   end
 
@@ -154,6 +166,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_074219) do
     t.string "action"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "maintenance_tasks_runs", force: :cascade do |t|
+    t.string "task_name", null: false
+    t.datetime "started_at", precision: nil
+    t.datetime "ended_at", precision: nil
+    t.float "time_running", default: 0.0, null: false
+    t.bigint "tick_count", default: 0, null: false
+    t.bigint "tick_total"
+    t.string "job_id"
+    t.bigint "cursor"
+    t.string "status", default: "enqueued", null: false
+    t.string "error_class"
+    t.string "error_message"
+    t.text "backtrace"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "arguments"
+    t.integer "lock_version", default: 0, null: false
+    t.index ["task_name", "status", "created_at"], name: "index_maintenance_tasks_runs", order: { created_at: :desc }
   end
 
   create_table "openai_requests", force: :cascade do |t|

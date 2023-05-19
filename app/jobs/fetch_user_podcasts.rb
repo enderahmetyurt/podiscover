@@ -38,6 +38,7 @@ class FetchUserPodcasts
       if pp.image_urls.any?
         pp.image_urls.destroy_all
       end
+
       podcast.images.each do |image|
         ImageUrl.create(url: image["url"], height: image["height"], width: image["width"], podcast_id: pp.reload.id)
       end

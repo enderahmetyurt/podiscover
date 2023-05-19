@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://itunes.apple.com/search?media=podcast&term=hello-test
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin22 arm64) ruby/3.2.2p53
+      Host:
+      - itunes.apple.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Apple-Jingle-Correlation-Key:
+      - IT7PYZRMXCUTSY52VP3LX5MQ34
+      X-Apple-Request-Uuid:
+      - 44fefc66-2cb8-a939-63ba-abf6bbf590df
+      X-Apple-Translated-Wo-Url:
+      - "/WebObjects/MZStoreServices.woa/ws/wsSearch?term=hello-test&media=podcast&urlDesc="
+      Apple-Tk:
+      - 'false'
+      X-B3-Spanid:
+      - 2213ab54c8283a01
+      Content-Type:
+      - text/javascript; charset=utf-8
+      B3:
+      - 44fefc662cb8a93963baabf6bbf590df-2213ab54c8283a01
+      X-Content-Type-Options:
+      - nosniff
+      X-B3-Traceid:
+      - 44fefc662cb8a93963baabf6bbf590df
+      X-Webobjects-Loadaverage:
+      - '0'
+      X-Responding-Instance:
+      - 'MZStoreServices:4082000:::'
+      Apple-Seq:
+      - '0'
+      Content-Disposition:
+      - attachment; filename=1.txt
+      Apple-Originating-System:
+      - MZStoreServices
+      Content-Encoding:
+      - gzip
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Apple-Orig-Url:
+      - https://mzstoreservices-int.itunes.apple.com/search?term=hello-test&media=podcast
+      X-Apple-Application-Site:
+      - MR22
+      Apple-Timing-App:
+      - 64 ms
+      X-Apple-Application-Instance:
+      - '4082000'
+      Content-Length:
+      - '627'
+      Vary:
+      - Accept-Encoding
+      Cache-Control:
+      - max-age=75554
+      Date:
+      - Fri, 19 May 2023 11:51:00 GMT
+      X-Cache:
+      - TCP_MEM_HIT from a195-175-177-14.deploy.akamaitechnologies.com (AkamaiGHost/11.0.4.2-48551439)
+        (-)
+      X-True-Cache-Key:
+      - "/L/itunes.apple.com/search vcd=2897 ci2=media=podcast&term=hello-test///"
+      Connection:
+      - keep-alive
+      X-Apple-Partner:
+      - origin.0
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAM2US27bMBCG9zqFIcC7yKQepBwDRZE4RZtFi6B1umhgFJQ0sVlLlEDSkZ0gN+kleob2YB3Jryh9ZVMgCwHUP6N/Pg2HdBznzum5Gswyt+Nyqaw78o/2inFHvSvnzq21qCrQk3UF7si1WqQL96jnLqTK8L0qs1QY2yhCW2nsOap+wDmNKRv6KKdlnkNqZanaUOjzkPOYxRhqzX5RNz7vRNHU+/5Vg5VF71So7Mc3t+P3x5TW9wkGY1Cm1JD93eifWRvgjxLqS51jxtzayowI2fbGDLCBOQzSsiBLQzbZZNYfh/3TcZGDJYd+vVyWL6Iu5FN9tyrZ+LaMXoKM/XHUP/WJzA5N3le5Bsi63nVdD0ylQSxAt85mXtYkiDkdxscEKmnKDAxpPtw36H8SYrfqUi/QPqQPCkgTesbkg+LWWGFl2paQhZgBsfNlkZCLLYEfMHITkSghTJCM4oKJjDLuMZYMvWsacy8d4iqEiPkizIAnKSluxeeQx9Rnx3Hg0ziMIoRigy/VjIR0FdIkadZdPv48+Dhd8d/y+fR5ACLHCp8D4mHUL7RM8YjRAaW72epKh9Q32S5y1FxYOQgDZ8I2BzSgQehR5vn+hLJRyEaUfurWebWqcplKq8DgLeeq0u6U/Uw/SkmxgHow8tvrMgjYTpnIAt7KPJeYHjDO2oKYpNf4+eWHk5ZgqTWodKOcNUqlsed6/RqUhu39MoF0rsq8nK030MqCsifZDZ48vX6Pe6VmmDVugB4P4PPYYOTAEXywwbPm784zbMyVi0d82GgBd6e7UBvo/vYOzp3eT517x3F+AnQhbWatBgAA
+  recorded_at: Fri, 19 May 2023 11:50:59 GMT
+recorded_with: VCR 6.1.0

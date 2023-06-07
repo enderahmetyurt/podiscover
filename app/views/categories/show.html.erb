@@ -16,9 +16,11 @@
       <div id="<%= dom_id podcast %>" class="p-4 transition-all bg-white hover:shadow hover:-translate-y-1 rounded-xl">
         <%= link_to(podcast) do %>
           <div class="grid content-around gap-4 grid-row-2">
-            <div class="rounded-xl">
-              <%= image_tag podcast.image_urls.second.url, class: "object-cover rounded-xl" %>
-            </div>
+            <% if podcast.image_urls.any? && podcast.image_urls.second %>
+              <div class="rounded-xl">
+                <%= image_tag podcast.image_urls.second.url, class: "object-cover rounded-xl" %>
+              </div>
+            <% end %>
             <div class="text-lg">
               <%= podcast.name %>
             </div>

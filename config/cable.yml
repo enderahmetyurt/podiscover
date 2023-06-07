@@ -1,5 +1,5 @@
 local: &local
-  url: redis://localhost:6379
+  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379" } %>
 
 development: *local
 test: *local

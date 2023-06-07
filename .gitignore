@@ -41,3 +41,5 @@ postgres-data
 
 # Operating System Files
 .DS_Store
+
+.idea/

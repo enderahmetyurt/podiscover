@@ -18,6 +18,8 @@ Find your next podcast.
 ```bash
 # Build the docker image and run the app -d for detached mode
 docker-compose up
+# or 
+docker-compose -f docker-compose.dev.yml up
 
 # Create database if this is first setup
 docker-compose run app bin/rails db:create

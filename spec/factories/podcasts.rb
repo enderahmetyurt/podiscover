@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :podcast do
     name { Faker::Lorem.sentence }
     description { Faker::Lorem.paragraph }
-    language { "tr" }
-    publisher { Faker::Name }
+    language { Faker::Address.country_code }
+    publisher { Faker::Name.first_name_neutral }
   end
 end

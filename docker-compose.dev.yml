@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: postgres
+    image: postgres:latest
     restart: always
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
@@ -28,7 +28,7 @@ services:
       - .env
 
   redis:
-    image: redis
+    image: redis:latest
     restart: always
     ports:
       - "6379:6379"

@@ -8,6 +8,12 @@
 
 # db/seeds.rb
 
+puts "Starting seeding..."
+puts "Rails.env: #{Rails.env}"
+exit if Rails.env.production?
+
+puts "Seeding development database..."
+
 # =begin
 Podcast.create(
   name: "Remote Ruby",

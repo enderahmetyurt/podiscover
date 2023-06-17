@@ -35,6 +35,8 @@ class FetchUserPodcasts
 
       pp.save!
 
+      # We need to keep this since we don't want to change front-end for now.
+      # TODO: Remove this after image urls data migration.
       if pp.image_urls.any?
         pp.image_urls.destroy_all
       end
@@ -42,6 +44,19 @@ class FetchUserPodcasts
       podcast.images.each do |image|
         ImageUrl.create(url: image["url"], height: image["height"], width: image["width"], podcast_id: pp.reload.id)
       end
+
+      if pp.extras["image_urls"]
+        pp.extras = {}
+      end
+
+      images = []
+
+      podcast.images.each do |image|
+        images << {url: image["url"], height: image["height"], width: image["width"]}
+      end
+
+      pp.extras = {image_urls: images}
+      pp.save!
 
       subscription = Subscription.find_by(user_id: user_id, podcast_id: pp.id)
 

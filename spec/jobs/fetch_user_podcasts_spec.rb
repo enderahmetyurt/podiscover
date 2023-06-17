@@ -34,8 +34,8 @@ RSpec.describe FetchUserPodcasts, type: :job do
       podcast = user.podcasts.first
 
       expect(user.podcasts.count).to eq(42)
-      expect(podcast.image_urls.count).to eq(3)
-      expect(podcast.image_urls.second.url).to eq("https://i.scdn.co/image/ab67656300005f1f950861e86b6884fcf8e458b6")
+      expect(podcast.extras["image_urls"].count).to eq(3)
+      expect(podcast.extras["image_urls"].second["url"]).to eq("https://i.scdn.co/image/ab67656300005f1f950861e86b6884fcf8e458b6")
     end
   end
 end

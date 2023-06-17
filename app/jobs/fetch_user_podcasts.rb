@@ -61,7 +61,7 @@ class FetchUserPodcasts
     missing_podcast_ids = podcast_uids - podcasts.map(&:id)
     podcast_ids = user_podcasts.where(uid: missing_podcast_ids).pluck(:id)
 
-    puts "Missing podcast ids: #{podcast_ids} for user #{user.email}"
+    puts "Missing podcast ids: #{podcast_ids} for user #{user.email}" unless Rails.env.test?
     Subscription.where(user_id: user.id, podcast_id: podcast_ids).destroy_all
 
     podcast_ids.each do |podcast_id|

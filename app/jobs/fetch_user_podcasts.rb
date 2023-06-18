@@ -45,10 +45,6 @@ class FetchUserPodcasts
         ImageUrl.create(url: image["url"], height: image["height"], width: image["width"], podcast_id: pp.reload.id)
       end
 
-      if pp.extras["image_urls"]
-        pp.extras = {}
-      end
-
       images = []
 
       podcast.images.each do |image|

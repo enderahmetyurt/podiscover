@@ -73,16 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_075921) do
     t.index ["episode_id"], name: "index_episode_image_urls_on_episode_id"
   end
 
-  create_table "episode_segments", force: :cascade do |t|
-    t.integer "episode_id"
-    t.integer "segment_id"
-    t.string "start"
-    t.string "finish"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "episodes", force: :cascade do |t|
     t.string "audio_preview_url"
     t.bigint "duration_ms"
@@ -96,8 +86,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_075921) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "likes", default: 0, null: false
-    t.string "audio_url"
-    t.jsonb "segments"
     t.index ["podcast_id"], name: "index_episodes_on_podcast_id"
   end
 

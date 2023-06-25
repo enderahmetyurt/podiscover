@@ -4,5 +4,9 @@ FactoryBot.define do
     description { Faker::Lorem.paragraph }
     language { Faker::Address.country_code }
     publisher { Faker::Name.first_name_neutral }
+
+    trait :with_extras do
+      extras { {image_urls: [{url: Faker::LoremFlickr.image}, {url: Faker::LoremFlickr.image}, {url: Faker::LoremFlickr.image}]} }
+    end
   end
 end

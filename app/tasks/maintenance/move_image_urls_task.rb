@@ -7,16 +7,16 @@ module Maintenance
     end
 
     def process(podcast)
-      if podcast.extras["image_urls"].nil?
-        images = []
+      return if podcast.extras["image_urls"].present?
 
-        podcast.image_urls.each do |image|
-          images << {url: image.url, height: image.height, width: image.width}
-        end
+      images = []
 
-        podcast.extras = {image_urls: images}
-        podcast.save!
+      podcast.image_urls.each do |image|
+        images << {url: image.url, height: image.height, width: image.width}
       end
+
+      podcast.extras = {image_urls: images}
+      podcast.save!
     end
   end
 end

@@ -85,7 +85,7 @@ RSpec.describe Episode, type: :request do
       post "/users/#{user.id}/allow_email_confirmation"
 
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to(subscriptions_path)
+      expect(response).to redirect_to(activities_path)
       expect(user.reload.allow_email_usage_at).not_to be nil
       expect(user.tmp_email).to be nil
     end
@@ -94,7 +94,7 @@ RSpec.describe Episode, type: :request do
       post "/users/#{user.slug}/allow_email_confirmation"
 
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to(subscriptions_path)
+      expect(response).to redirect_to(activities_path)
       expect(user.reload.allow_email_usage_at).not_to be nil
       expect(user.tmp_email).to be nil
     end
@@ -105,7 +105,7 @@ RSpec.describe Episode, type: :request do
       post "/users/#{user.id}/deny_email_confirmation"
 
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to(subscriptions_path)
+      expect(response).to redirect_to(activities_path)
       expect(user.reload.allow_email_usage_at).to be nil
       expect(user.tmp_email).not_to be nil
     end
@@ -114,7 +114,7 @@ RSpec.describe Episode, type: :request do
       post "/users/#{user.slug}/deny_email_confirmation"
 
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to(subscriptions_path)
+      expect(response).to redirect_to(activities_path)
       expect(user.reload.allow_email_usage_at).to be nil
       expect(user.tmp_email).not_to be nil
     end

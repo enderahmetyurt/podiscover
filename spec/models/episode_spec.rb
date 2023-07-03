@@ -12,7 +12,7 @@ RSpec.describe Episode, type: :model do
   end
 
   it "should return tr flag when language is tr" do
-    episode = FactoryBot.create(:episode)
+    episode = FactoryBot.create(:episode, language: "tr")
     expect(episode.language_emoji).to eq("🇹🇷")
   end
 

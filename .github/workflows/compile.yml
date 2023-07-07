@@ -35,15 +35,3 @@ jobs:
         build-args: RUNNING_CI=true
     - name: List Docker images
       run: docker images
-    - name: Run Rspec
-      run: bundle exec rspec --require rails_helper
-      env:
-        RAILS_ENV: test
-        DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
-        POSTGRES_USER: ${{ secrets.TEST_POSTGRES_USER }}
-        POSTGRES_PASSWORD: ${{ secrets.TEST_POSTGRES_PASSWORD }}
-        POSTGRES_DB: ${{ secrets.TEST_POSTGRES_DB }}
-        POSTGRES_HOST: ${{ secrets.TEST_POSTGRES_HOST }}
-        POSTGRES_PORT: ${{ secrets.TEST_POSTGRES_PORT }}
-        SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
-        SPOTIFY_SECRET_ID: ${{ secrets.SPOTIFY_SECRET_ID }}

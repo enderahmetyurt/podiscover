@@ -13,6 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2023_06_17_075921) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "timescaledb"
 
   create_table "active_analytics_views_per_days", force: :cascade do |t|
     t.string "site", null: false

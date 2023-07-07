@@ -39,5 +39,12 @@ jobs:
       run: bundle exec rspec --require rails_helper
       env:
         RAILS_ENV: test
+        DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL: true
+        POSTGRES_USER: ${{ secrets.TEST_POSTGRES_USER }}
+        POSTGRES_PASSWORD: ${{ secrets.TEST_POSTGRES_PASSWORD }}
+        POSTGRES_DB: ${{ secrets.TEST_POSTGRES_DB }}
+        POSTGRES_HOST: ${{ secrets.TEST_POSTGRES_HOST }}
+        POSTGRES_PORT: ${{ secrets.TEST_POSTGRES_PORT }}
+        DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
         SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
         SPOTIFY_SECRET_ID: ${{ secrets.SPOTIFY_SECRET_ID }}

@@ -34,7 +34,7 @@ jobs:
     
     - name: Run Rubocop
       run: |
-        gem install rubocop
+        gem install rubocop rubocop-rspec
         bundle exec rubocop
 
     - name: Build, Test & Publish Docker Image

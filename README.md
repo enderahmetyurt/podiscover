@@ -6,7 +6,7 @@ Find your next podcast.
 
 ### Prerequisites
 
-- Spotify Developer ClientID and Secret from [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/) 
+- Spotify Developer ClientID and Secret from [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/)
     - Add callback url as `http://localhost:3000/users/auth/spotify/callback`.
 
 - Create .env file and update `SPOTIFY_CLIENT_ID` and `SPOTIFY_SECRET_ID` with your Spotify Developer ClientID and Secret.
@@ -18,7 +18,7 @@ Find your next podcast.
 ```bash
 # Build the docker image and run the app -d for detached mode
 docker-compose up
-# or 
+# or
 docker-compose -f docker-compose.dev.yml up
 
 # Create database if this is first setup
@@ -38,3 +38,4 @@ You can visit http://localhost:3000 to view the app.
 
 ## Status Badges
 [![Ruby CI](https://github.com/enderahmetyurt/podiscover/actions/workflows/compile.yml/badge.svg?branch=main)](https://github.com/enderahmetyurt/podiscover/actions/workflows/compile.yml)
+[![Test CI](https://github.com/enderahmetyurt/podiscover/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/enderahmetyurt/podiscover/actions/workflows/test.yml)

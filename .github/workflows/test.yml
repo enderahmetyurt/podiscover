@@ -54,6 +54,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_SECRET_ID: ${{ secrets.SPOTIFY_SECRET_ID }}
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
 
       - name: Run RSpec
         run: COVERAGE=true bundle exec rspec --require rails_helper
@@ -63,3 +64,4 @@ jobs:
           POSTGRES_PASSWORD: postgres
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_SECRET_ID: ${{ secrets.SPOTIFY_SECRET_ID }}
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}

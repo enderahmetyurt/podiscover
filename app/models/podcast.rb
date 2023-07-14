@@ -6,7 +6,6 @@ class Podcast < ApplicationRecord
   has_many :subscriptions
   has_many :users, through: :subscriptions, source: :user
 
-  has_many :image_urls, dependent: :destroy
   has_many :episodes, dependent: :destroy
 
   has_many :genres, dependent: :destroy
@@ -25,5 +24,9 @@ class Podcast < ApplicationRecord
 
   def self.search(query)
     where("name ILIKE :query or description ILIKE :query or publisher ILIKE :query", query: "%#{query}%")
+  end
+
+  def image_urls
+    extras["image_urls"]
   end
 end

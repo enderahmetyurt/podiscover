@@ -17,7 +17,7 @@ module Maintenance
     end
 
     it "shouldn't move images urls to a podcast extra field if the podcast has already" do
-      podcast = FactoryBot.create(:podcast, :with_extras)
+      podcast = FactoryBot.create(:podcast)
 
       Maintenance::MoveImageUrlsTask.process(podcast)
 

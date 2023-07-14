@@ -23,23 +23,10 @@ Podcast.create(
   language: "en",
   publisher: "Jason Charnes, Chris Oliver, Andrew Mason",
   external_url: "https://open.spotify.com/show/23ZxPAyiZx2rTJ4NjYycLN",
-  )
+  extras: {image_urls: [{url: Faker::LoremFlickr.image}, {url: Faker::LoremFlickr.image}, {url: Faker::LoremFlickr.image}]}
+)
 
 remote_ruby_podcast = Podcast.find_by(name: "Remote Ruby")
-
-ImageUrl.create(
-  url: "https://i.scdn.co/image/bc3b8d03ee5d99733ce866d6be8918adccf94c44",
-  podcast_id: remote_ruby_podcast.id,
-  created_at: "1996-12-25 00:00:00.000000",
-  updated_at: "2023-06-07 18:47:56.709827"
-)
-
-ImageUrl.create(
-  url: "https://i.scdn.co/image/bc3b8d03ee5d99733ce866d6be8918adccf94c44",
-  podcast_id: remote_ruby_podcast.id,
-  created_at: "1996-12-25 00:00:00.000000",
-  updated_at: "2023-06-07 18:47:56.709827"
-)
 
 Category.create(
   name: "Technology",
@@ -66,11 +53,6 @@ categories = FactoryBot.create_list(:category, 5)
 # For each podcast, create a genre associated with a random category
 podcasts.each do |podcast|
   FactoryBot.create(:genre, podcast: podcast, category: categories.sample)
-end
-
-# create 2 ImageUrl for each podcasts
-podcasts.each do |podcast|
- FactoryBot.create_list(:image_url, 2, podcast: podcast)
 end
 
 # Create 2 episodes for each podcast

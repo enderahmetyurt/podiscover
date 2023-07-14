@@ -27,7 +27,7 @@ module ApplicationHelper
     image = subscription.podcast.image_urls.first
 
     if image
-      image.url
+      image["url"]
     else
       "podiscover.png"
     end

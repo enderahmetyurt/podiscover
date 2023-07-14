@@ -18,7 +18,7 @@
             <div class="rounded-xl">
               <%= link_to podcast_path(podcast) do %>
                 <% if podcast.image_urls.any? %>
-                  <%= image_tag podcast.image_urls.second.url, class:"rounded-xl" %>
+                  <%= image_tag podcast.image_urls.second["url"], class:"rounded-xl" %>
                 <% else %>
                   <%= image_tag "podiscover.png", class:"rounded-xl" %>
                 <% end %>

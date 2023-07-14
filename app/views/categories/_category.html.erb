@@ -6,7 +6,7 @@
           <% category.podcasts.sample(4).each do |podcast| %>
             <div>
               <% if podcast && podcast.image_urls.any? %>
-                <%= image_tag podcast.image_urls.first.url, class: "object-cover rounded-xl" %>
+                <%= image_tag podcast.image_urls.first["url"], class: "object-cover rounded-xl" %>
               <% else %>
                 <%= image_tag "podiscover.png", class: "object-cover rounded-xl" %>
               <% end %>
@@ -17,7 +17,7 @@
         <div class="grid content-around gap-4 grid-row-2">
           <div>
             <% if category.podcasts.any? && category.podcasts.sample.image_urls.any? %>
-              <%= image_tag category.podcasts.sample.image_urls.first.url, class: "object-cover rounded-xl" %>
+              <%= image_tag category.podcasts.sample.image_urls.first["url"], class: "object-cover rounded-xl" %>
             <% else %>
               <%= image_tag "podiscover.png", class: "object-cover rounded-xl" %>
             <% end %>

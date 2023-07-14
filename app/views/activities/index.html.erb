@@ -24,7 +24,6 @@
     </div>
     <%= turbo_frame_tag "pagination", src: activities_path(format: :turbo_stream), loading: :lazy do %>
       <div class="flex items-center justify-center mt-10">
-        <%= @activities.count %>
         <% unless @activities.empty? %>
           <%= image_tag "spinner.gif" %>
         <% end %>

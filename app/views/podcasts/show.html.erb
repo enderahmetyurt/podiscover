@@ -5,7 +5,7 @@
         <div class="flex">
           <div class="flex flex-col items-center w-fit">
             <% if @podcast.image_urls.any? %>
-              <%= image_tag @podcast.image_urls.second.url, class:"rounded-xl" %>
+              <%= image_tag @podcast.image_urls.second["url"], class:"rounded-xl" %>
             <% else %>
               <%= image_tag "podiscover.png", class:"rounded-xl" %>
             <% end %>

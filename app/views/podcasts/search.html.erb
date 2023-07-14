@@ -22,7 +22,7 @@
             <div class="grid content-around gap-4 grid-row-2">
               <div class="rounded-xl">
                 <% if podcast.image_urls.any? %>
-                  <%= image_tag podcast.image_urls.second.url, class:"rounded-xl" %>
+                  <%= image_tag podcast.image_urls.second["url"], class:"rounded-xl" %>
                 <% else %>
                   <%= image_tag "podiscover.png", class:"rounded-xl" %>
                 <% end %>

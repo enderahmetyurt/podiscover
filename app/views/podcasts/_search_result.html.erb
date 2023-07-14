@@ -2,7 +2,7 @@
   <%= link_to(podcast) do %>
     <div class="grid content-around gap-4 mt-6 grid-row-2">
       <div>
-        <%= image_tag podcast.image_urls.second.url, class: "object-cover h-48 w-96" %>
+        <%= image_tag podcast.image_urls.second["url"], class: "object-cover h-48 w-96" %>
       </div>
       <div class="text-lg">
         <%= podcast.name %>

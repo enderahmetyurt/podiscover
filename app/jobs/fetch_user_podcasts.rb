@@ -33,18 +33,6 @@ class FetchUserPodcasts
       pp.uri = podcast.uri
       pp.external_url = podcast.external_urls["spotify"]
 
-      pp.save!
-
-      # We need to keep this since we don't want to change front-end for now.
-      # TODO: Remove this after image urls data migration.
-      if pp.image_urls.any?
-        pp.image_urls.destroy_all
-      end
-
-      podcast.images.each do |image|
-        ImageUrl.create(url: image["url"], height: image["height"], width: image["width"], podcast_id: pp.reload.id)
-      end
-
       images = []
 
       podcast.images.each do |image|

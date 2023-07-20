@@ -101,7 +101,7 @@ class User < ApplicationRecord
   def self.image(auth)
     return nil if auth.info.images.empty?
 
-    profile_image_url = auth.info.images.first.url
+    profile_image_url = auth.info.images.last.url
 
     begin
       URI.parse(profile_image_url).open

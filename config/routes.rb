@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
   resources :podcasts, only: %i[index show] do
     get :search, on: :collection
+    get "subscribers", to: "podcasts#subscribers"
     resources :episodes, only: %i[show index] do
       resources :comments
       patch :like, to: "episodes#like"

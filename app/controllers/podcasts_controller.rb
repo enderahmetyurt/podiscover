@@ -19,4 +19,9 @@ class PodcastsController < ApplicationController
   def search
     @podcasts = params[:query].present? ? Podcast.search(params[:query]) : Podcast.all
   end
+
+  def subscribers
+    @podcast = Podcast.find(params[:podcast_id])
+    @users = @podcast.users
+  end
 end

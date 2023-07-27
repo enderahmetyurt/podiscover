@@ -1,0 +1,24 @@
+<div class="" id="<%= dom_id user %>">
+  <%= link_to(user) do %>
+    <div class="flex flex-col items-center justify-center px-8 py-6 bg-white rounded-lg shadow-sm">
+      <div>
+        <% if user.image_url.present? %>
+          <%= image_tag user.image_url, class: "w-40 h-40 bg-white rounded-full border border-gray-100 shadow-sm" %>
+        <% else %>
+          <%= image_tag "default.png", class: "w-40 h-40 bg-white rounded-full border border-gray-100 shadow-sm" %>
+        <% end %>
+      </div>
+      <div class="mt-4 text-center">
+        <div class="text-lg font-bold">
+          <%= user.nickname %>
+        </div>
+        <p class="mt-2 text-gray-400">
+          subscribes <%= user.podcasts.count %> podcasts
+        </p>
+      </div>
+      <div class="px-6 py-2 mt-6 text-white border border-transparent rounded-full bg-primary hover:bg-secondary hover:text-primary">
+        View Profile
+      </div>
+    </div>
+  <% end %>
+</div>

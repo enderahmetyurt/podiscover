@@ -35,6 +35,8 @@
         <% @episodes.each_with_index do |episode, index| %>
           <%= render partial: 'episodes/episode', locals: { episode: episode } %>
         <% end %>
+
+        <%= link_to "See all episodes", podcast_episodes_path(@podcast), class: "text-gray-500 text-sm" %>
       <% end %>
     </div>
     <% if @podcast.subscriptions.any? %>

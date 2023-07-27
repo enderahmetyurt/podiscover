@@ -1,10 +1,10 @@
 <div class="w-full">
-  <div class="flex items-center justify-between">
-	<h1 class="text-4xl font-bold"><%= link_to @podcast.name, podcast_path(@podcast), class: "text-red-600" %>'s All Episodes</h1>
+  <div class="flex items-center justify-between mb-8">
+	  <h1 class="text-4xl font-bold"><%= link_to @podcast.name, podcast_path(@podcast), class: "text-red-600" %> Episodes</h1>
   </div>
-  
+
   <% if @episodes.empty? %>
-    <div class="flex flex-col items-center justify-center bg-white rounded-xl p-12">
+    <div class="flex flex-col items-center justify-center p-12 bg-white rounded-xl">
       <p class="text-gray-500">😳 You need to follow some people to see their podcasts</p>
       <%= image_tag "not-found.svg", class:"my-12" %>
       <%=  link_to 'Find some cool people 🥳', users_path, class:"bg-primary text-white rounded-full px-6 py-2" %>
@@ -12,9 +12,9 @@
   <% end %>
 
   <%= turbo_stream_from "episodes" %>
-  <div id="episodes" class="divide-y"> 
+  <div id="episodes" class="divide-y">
   </div>
-  
+
   <%= turbo_frame_tag "pagination", src: podcast_episodes_path(@podcast, format: :turbo_stream), loading: :lazy do %>
 	<div class="flex items-center justify-center mt-10">
 	  <% unless @episodes.empty? %>

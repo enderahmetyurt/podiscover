@@ -106,6 +106,7 @@ jobs:
         run: |
           cp config/database.yml.actions config/database.yml
           cat config/database.yml
+          bundle exec rails db:prepare --trace
           bundle exec rails db:setup --trace
         env:
           RAILS_ENV: test

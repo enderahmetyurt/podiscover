@@ -1,14 +1,14 @@
 <div class="p-4 bg-white rounded-xl" id="<%= dom_id activity %>">
   <div class="flex p-5">
-    <%= link_to user_path(activity.user) do %>
-      <div>
+    <div class="shrink-0">
+      <%= link_to user_path(activity.user) do %>
         <% if activity.user.image_url.present? %>
           <%= image_tag activity.user.image_url, class: "w-12 h-12 rounded-full border border-gray-100 shadow-sm" %>
         <% else %>
           <%= image_tag "default.png", class: "w-12 h-12 rounded-full border border-gray-100 shadow-sm" %>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
 
     <div class="flex flex-col ml-5">
       <div class="flex items-center space-x-4">

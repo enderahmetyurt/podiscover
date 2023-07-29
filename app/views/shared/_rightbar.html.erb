@@ -2,36 +2,18 @@
   <div>
     <%= render partial: "shared/search_form" %>
   </div>
-  <div class="p-8 mt-5 bg-white rounded-xl">
+  <div class="justify-start p-8 mt-5 bg-white rounded-xl">
     <div class="text-lg font-semibold">Podcast of the day</div>
-    <div class="flex w-full mx-auto">
-      <div>
-        <div class="flex flex-col my-5 sm:flex-row">
-          <% if podcast.nil? %>
-            <div class="rounded-xl">
+      <div class="flex flex-col items-center mt-5">
+        <div class="flex shrink-0">
+          <%= link_to podcast_path(podcast) do %>
+            <% if podcast.image_urls.any? %>
+              <%= image_tag podcast.image_urls.second["url"], class:"rounded-xl" %>
+            <% else %>
               <%= image_tag "podiscover.png", class:"rounded-xl" %>
-            </div>
-            <div class="ml-5">
-              <div class="mb-1 text-sm font-bold">No podcast of the day</div>
-            </div>
-          <% else %>
-            <div class="rounded-xl">
-              <%= link_to podcast_path(podcast) do %>
-                <% if podcast.image_urls.any? %>
-                  <%= image_tag podcast.image_urls.second["url"], class:"rounded-xl" %>
-                <% else %>
-                  <%= image_tag "podiscover.png", class:"rounded-xl" %>
-                <% end %>
-              <% end %>
-            </div>
-            <div class="ml-5">
-              <div class="mb-1 text-sm font-bold"><%= podcast.name %></div>
-              <div class="mb-4 text-xs font-bold text-gray-400"><%= podcast.publisher %></div>
-              <div class="text-xs font-medium leading-relaxed text-gray-500"><%= podcast.description.try(:truncate, 100) %></div>
-            </div>
+            <% end %>
           <% end %>
         </div>
       </div>
-    </div>
   </div>
 </div>

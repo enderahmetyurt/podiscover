@@ -1,4 +1,9 @@
-<div class="flex flex-col">
+<div class="flex flex-col space-x-4 space-y-5">
+	<div>
+		<% if user_signed_in? %>
+			<%= button_to "Logout", destroy_user_session_path, method: :delete, class:"text-red-400" %>
+		<% end %>
+	</div>
 	<div class="flex items-center">
 		<svg class="flex-shrink-0 width="30" height="30" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path d="M197.86 70.4884C197.866 72.7745 198.322 75.0376 199.202 77.1475C200.082 79.2576 201.37 81.1736 202.99 82.786C204.611 84.3987 206.534 85.6762 208.648 86.5456C210.763 87.4151 213.028 87.8595 215.314 87.8534C247.637 87.7686 278.67 100.527 301.585 123.324C324.501 146.118 337.422 177.084 337.506 209.407C337.591 241.729 324.833 272.762 302.037 295.678C279.241 318.593 248.277 331.515 215.954 331.6C211.367 331.657 206.988 333.522 203.769 336.792C200.55 340.059 198.751 344.467 198.763 349.056C198.775 353.643 200.597 358.04 203.833 361.291C207.07 364.543 211.458 366.385 216.045 366.42C236.623 366.364 256.987 362.259 275.978 354.335C294.969 346.409 312.212 334.822 326.723 320.234C341.237 305.644 352.733 288.341 360.558 269.31C368.381 250.277 372.381 229.892 372.327 209.315C372.273 188.737 368.167 168.373 360.243 149.382C352.317 130.393 340.731 113.149 326.143 98.6368C311.555 84.1251 294.25 72.6273 275.219 64.804C256.188 56.9794 235.801 52.9799 215.223 53.034C210.606 53.0461 206.183 54.892 202.927 58.1653C199.67 61.4387 197.848 65.8717 197.86 70.4889L197.86 70.4884Z" fill="url(#paint0_linear_105_8640)"/>
@@ -22,23 +27,7 @@
 		</svg>
 
 		<p class="text-sm font-medium text-gray-500">
-			Discover new Podcasts <br>
-			© 2022 Podiscover
+			© 2023 Podiscover<br>
 		</p>
-	</div>
-	<div class="flex items-center justify-between">
-		<span class="flex mt-4 space-x-4">
-			<a href="https://twitter.com/podiscoverme" class="text-gray-400 hover:text-gray-500" target="_blank">
-				<span class="sr-only">Twitter</span>
-				<svg id="SvgjsSvg1041" width="30" height="30" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1042"></defs><g id="SvgjsG1043"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6-18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6.8 15 2.5 22.1-80.5-4-151.9-42.6-199.6-101.3-8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7-16-.4-31-4.8-44-12.1v1.2c0 47 33.4 86.1 77.7 95-8.1 2.2-16.7 3.4-25.5 3.4-6.2 0-12.3-.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3-33.1 26-74.9 41.5-120.3 41.5-7.8 0-15.5-.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-.1-8.4-.3-12.5C462.6 146 479 129 492 109.5z" fill="#6b7280" class="color000 svgShape"></path></svg></g></svg>
-			</a>
-			<a href="https://www.linkedin.com/company/podiscoverme" class="text-gray-400 hover:text-gray-500" target="_blank">
-				<span class="sr-only">Linkedin</span>
-				<svg id="SvgjsSvg1026" width="30" height="30" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1027"></defs><g id="SvgjsG1028"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path d="M417.2 64H96.8C79.3 64 64 76.6 64 93.9V415c0 17.4 15.3 32.9 32.8 32.9h320.3c17.6 0 30.8-15.6 30.8-32.9V93.9C448 76.6 434.7 64 417.2 64zM183 384h-55V213h55v171zm-25.6-197h-.4c-17.6 0-29-13.1-29-29.5 0-16.7 11.7-29.5 29.7-29.5s29 12.7 29.4 29.5c0 16.4-11.4 29.5-29.7 29.5zM384 384h-55v-93.5c0-22.4-8-37.7-27.9-37.7-15.2 0-24.2 10.3-28.2 20.3-1.5 3.6-1.9 8.5-1.9 13.5V384h-55V213h55v23.8c8-11.4 20.5-27.8 49.6-27.8 36.1 0 63.4 23.8 63.4 75.1V384z" fill="#6b7280" class="color000 svgShape"></path></svg></g></svg>
-			</a>
-		</span>
-		<% if user_signed_in? %>
-			<%= button_to "Logout", destroy_user_session_path, method: :delete, class:"text-red-400" %>
-		<% end %>
 	</div>
 </div>

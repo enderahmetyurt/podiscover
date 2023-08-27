@@ -3,7 +3,10 @@ require "rails_helper"
 RSpec.describe Podcast, type: :request do
   let(:user) { FactoryBot.create(:user) }
 
-  before { sign_in user }
+  before {
+    sign_in user
+    FactoryBot.create(:podcast)
+  }
 
   describe "#show" do
     it "returns 200 when a podcast exists" do

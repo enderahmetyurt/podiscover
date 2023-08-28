@@ -37,5 +37,5 @@ docker-compose run app bin/rails db:migrate
 You can visit http://localhost:3000 to view the app.
 
 ## Status Badges
-[![Ruby CI](https://github.com/enderahmetyurt/podiscover/actions/workflows/compile.yml/badge.svg?branch=main)](https://github.com/enderahmetyurt/podiscover/actions/workflows/compile.yml)
+[![Ruby CI](https://github.com/enderahmetyurt/podiscover/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/enderahmetyurt/podiscover/actions/workflows/build.yml)
 [![Test CI](https://github.com/enderahmetyurt/podiscover/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/enderahmetyurt/podiscover/actions/workflows/test.yml)

@@ -43,7 +43,7 @@
     </div>
     <% if @podcast.subscriptions.any? %>
       <div>
-        <h2 class="mt-10 mb-5 text-xl font-bold">Subscribers (<%= first_five_subscribers(@podcast.subscriptions).count %>)</h2>
+        <h2 class="mt-10 mb-5 text-xl font-bold">Subscribers (<%= @podcast.subscriptions.count %>)</h2>
         <div class="grid grid-cols-5 gap-4 p-4 mb-5 bg-white rounded-xl">
           <% first_five_subscribers(@podcast.subscriptions).each do |subscriber| %>
             <%= link_to user_path(subscriber.user) do %>

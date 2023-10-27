@@ -31,10 +31,10 @@ class User < ApplicationRecord
 
     if user.present?
       user.update!(
-        display_name: auth.info.display_name,
         image_url: User.image(auth),
         external_url: auth.info.external_urls["spotify"]
       )
+      user.display_name = auth.info.display_name unless user.update_manuelly
     else
       user = User.new
       user.provider = auth.provider

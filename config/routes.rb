@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :dashboard, only: [:index]
 
-  resources :users, only: %i[index show] do
+  resources :users do
     member do
       get :following, :followers
       get :email_confirmation

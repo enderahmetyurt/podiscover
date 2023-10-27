@@ -39,6 +39,18 @@ class UsersController < ApplicationController
     redirect_to activities_path
   end
 
+  def edit
+  end
+
+  def update
+    @user.display_name = user_params["display_name"]
+    @user.update_manuelly = true
+    @user.save!
+
+    flash[:warn] = "User updated"
+    redirect_to @user
+  end
+
   private
 
   def find_user
@@ -47,5 +59,9 @@ class UsersController < ApplicationController
 
   def tmp_email_generator
     SecureRandom.hex(10) + "@example.com"
+  end
+
+  def user_params
+    params.require(:user).permit!
   end
 end

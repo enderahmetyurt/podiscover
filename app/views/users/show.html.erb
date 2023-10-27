@@ -10,6 +10,11 @@
 <% end %>
 
 <div class="w-full">
+  <% if flash[:warn] %>
+    <div class="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800" role="alert">
+      <span class="font-medium"><%= flash[:warn] %></span>
+    </div>
+  <% end %>
   <div class="flex items-center justify-between py-4 pr-8 space-x-12 bg-white lg:ml-20 rounded-xl">
     <div class="flex items-center">
       <div class="flex w-20 h-20 lg:w-40 lg:h-40 lg:relative translate-x-1/4 lg:-translate-x-1/2">
@@ -24,6 +29,9 @@
       <div class="flex flex-col ml-12 lg:-ml-12 h-max justify-evenly">
         <div class="text-lg font-bold ">
           <%= @user.nickname %>
+          <% if @user == current_user %>
+            <%= link_to  "Edit Profile", edit_user_path(@user), class: "text-sm font-thin text-gray-400 ml-10" %>
+          <% end %>
         </div>
         <div class="text-gray-400">
           subscribes <%= @user.podcasts.count %> podcasts

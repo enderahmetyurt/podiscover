@@ -29,4 +29,12 @@ class Podcast < ApplicationRecord
   def image_urls
     extras["image_urls"]
   end
+
+  def total_likes_count
+    episodes.map(&:likes).sum
+  end
+
+  def total_comments_count
+    episodes.map(&:comments).count { |c| c.size > 0 }
+  end
 end

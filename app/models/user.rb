@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :openai_requests
 
+  has_many :own_shows, class_name: "Podcast", foreign_key: "owner_id"
+
   after_create :send_new_user_email, :create_broadcast_activity
 
   extend FriendlyId

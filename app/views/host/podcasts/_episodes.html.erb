@@ -1,0 +1,31 @@
+<%= turbo_frame_tag "episodes", class: "shadow overflow-hidden rounded border-b border-gray-200" do %>
+  <table class="min-w-full bg-white">
+    <thead class="text-white bg-gray-800">
+      <tr>
+        <th id="episodes-name" class="px-6 py-3 text-sm font-semibold text-left uppercase hover:cursor-pointer">
+          <%= sort_link(column: "name", label: "Name") %>
+        </th>
+        <th id="episodes-release-date" class="px-6 py-3 text-sm font-semibold text-left uppercase hover:cursor-pointer">
+          <%= sort_link(column: "release_date", label: "Release Date") %>
+        </th>
+        <th id="episodes-likes-count" class="px-6 py-3 text-sm font-semibold text-left uppercase hover:cursor-pointer">
+          <%= sort_link(column: "likes", label: "Likes Count") %>
+        </th>
+        <th id="episodes-comments-count" class="px-6 py-3 text-sm font-semibold text-left uppercase hover:cursor-pointer">
+          Comments Count
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="text-gray-700">
+      <% episodes.each do |episode| %>
+        <tr>
+          <td class="px-6 py-3 text-left"><%= link_to episode.name, podcast_episode_path(episode.podcast, episode) %></td>
+          <td class="px-6 py-3 text-left"><%= episode.release_date %></td>
+          <td class="px-6 py-3 text-left"><%= episode.likes %></td>
+          <td class="px-6 py-3 text-left"><%= episode.comments.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

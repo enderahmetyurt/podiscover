@@ -46,5 +46,11 @@ Rails.application.routes.draw do
     get :all_responses, on: :collection
   end
 
+  namespace :host do
+    resources :podcasts do
+      get :episodes
+    end
+  end
+
   root "home#index"
 end

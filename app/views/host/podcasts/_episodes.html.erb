@@ -20,7 +20,7 @@
     <tbody class="text-gray-700">
       <% episodes.each do |episode| %>
         <tr>
-          <td class="px-6 py-3 text-left"><%= link_to episode.name, podcast_episode_path(episode.podcast, episode) %></td>
+          <td class="px-6 py-3 text-left"><%= link_to episode.name, host_podcast_episode_path(episode.podcast, episode), data: {turbo_frame: "_top"} %></td>
           <td class="px-6 py-3 text-left"><%= episode.release_date %></td>
           <td class="px-6 py-3 text-left"><%= episode.likes %></td>
           <td class="px-6 py-3 text-left"><%= episode.comments.count %></td>

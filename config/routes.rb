@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   namespace :host do
     resources :podcasts do
       get :episodes
+      resources :episodes, only: %i[show index]
     end
   end
 

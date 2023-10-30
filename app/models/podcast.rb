@@ -11,6 +11,8 @@ class Podcast < ApplicationRecord
   has_many :genres, dependent: :destroy
   has_many :categories, through: :genres
 
+  belongs_to :owner, class_name: "User"
+
   def self.today_podcast
     if Rails.env.production?
       podcast_id = Rails.cache.fetch(:today_podcast, expires_at: Time.current.end_of_day) do

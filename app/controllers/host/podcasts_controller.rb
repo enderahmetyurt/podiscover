@@ -13,6 +13,7 @@ module Host
 
     def episodes
       podcast = Podcast.find(params[:podcast_id])
+
       @episodes = podcast.episodes.order("#{params[:column]} #{params[:direction]}")
     end
 

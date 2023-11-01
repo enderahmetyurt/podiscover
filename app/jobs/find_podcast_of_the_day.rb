@@ -10,7 +10,7 @@ class FindPodcastOfTheDay
     podcast = podcasts.find(ids[rand_number])
 
     if podcast
-      podcast.update(podcast_of_the_day_at: Time.now)
+      podcast.update_attribute(:podcast_of_the_day_at, Time.now)
     else
       Podcast.first
     end

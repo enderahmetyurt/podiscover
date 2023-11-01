@@ -11,7 +11,7 @@ class Podcast < ApplicationRecord
   has_many :genres, dependent: :destroy
   has_many :categories, through: :genres
 
-  belongs_to :owner, class_name: "User"
+  belongs_to :owner, class_name: "User", optional: true
 
   def self.today_podcast
     if Rails.env.production?

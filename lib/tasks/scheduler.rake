@@ -43,6 +43,6 @@ end
 desc "Send new episodes to user"
 task send_new_episodes_to_user: :environment do
   User.find_each(batch_size: 100) do |user|
-    FindLatestEpisodeJob.new(user.id)
+    FindLatestEpisodeJob.perform_async(user.id)
   end
 end

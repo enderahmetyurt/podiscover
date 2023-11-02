@@ -10,4 +10,11 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: ENV["ADMIN_EMAIL"], subject: "A new user has joined 🥹")
   end
+
+  def new_episodes(user, episodes)
+    @user = user
+    @episodes = episodes
+
+    mail(to: user.email, subject: "Your podcasts have new episodes 🎉")
+  end
 end

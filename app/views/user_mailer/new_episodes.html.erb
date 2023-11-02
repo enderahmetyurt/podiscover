@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Horay, you have new episodes!</h1>
+    <% @episodes.each do |episode| %>
+      <p><%= episode.name %> - <%= link_to  "Listen", episode.external_urls %></p>
+    <% end %>
+  </body>
+</html>

@@ -100,6 +100,7 @@ gem "sendgrid-ruby"
 gem "rails_admin"
 gem "sassc-rails"
 gem "sidekiq"
+gem "resend"
 
 gem "sentry-ruby"
 gem "sentry-rails"

@@ -9,7 +9,7 @@ class FindLatestEpisodeJob
 
     podcasts.each do |podcast|
       podcast.episodes.each do |episode|
-        if episode.release_date == Date.current
+        if episode.release_date.to_date == Date.current
           new_episodes << episode
         end
       end

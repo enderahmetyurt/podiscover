@@ -6,7 +6,7 @@
   <body>
     <h1>Horay, you have new episodes!</h1>
     <% @episodes.each do |episode| %>
-      <p><%= episode.name %> - <%= link_to  "Listen", episode.external_urls %></p>
+      <p><%= episode.podcast.name %> - <%= episode.name %> - <%= link_to  "Listen", episode.external_urls %></p>
     <% end %>
   </body>
 </html>

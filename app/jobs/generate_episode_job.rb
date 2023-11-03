@@ -1,6 +1,6 @@
 class GenerateEpisodeJob
   include Sidekiq::Worker
-  sidekiq_options queue: "default"
+  sidekiq_options queue: "default", retry: 2
 
   def perform(podcast_id)
     podcast = Podcast.find(podcast_id)
@@ -11,6 +11,8 @@ class GenerateEpisodeJob
     rescue RestClient::NotFound
       puts "Error Podcast: #{podcast.name}"
     end
+
+    return if podcast_response.nil?
 
     episodes = podcast_response.episodes
     latest_episode = podcast.episodes.max_by { |e| e.release_date.to_date }

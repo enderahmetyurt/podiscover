@@ -139,7 +139,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    drb (2.1.1)
+    drb (2.2.0)
       ruby2_keywords
     erubi (1.12.0)
     factory_bot (6.2.1)
@@ -224,7 +224,7 @@ GEM
     minitest (5.20.0)
     msgpack (1.7.0)
     multi_xml (0.6.0)
-    mutex_m (0.1.2)
+    mutex_m (0.2.0)
     nested_form (0.3.2)
     net-imap (0.4.2)
       date
@@ -445,7 +445,7 @@ GEM
     unicode-display_width (2.4.2)
     vcr (6.2.0)
     version_gem (1.1.3)
-    view_component (3.5.0)
+    view_component (3.8.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
